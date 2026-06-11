@@ -8,7 +8,9 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [sitemap()],
   build: {
-    // Génère /a-propos.html plutôt que /a-propos/index.html pour des URLs propres
-    format: 'file',
+    // 'directory' (défaut) -> /a-propos/index.html : servi nativement sur /a-propos
+    // par tous les hébergeurs statiques (Vercel inclus). 'file' cassait les sous-pages
+    // sur Vercel (404 NOT_FOUND), car /a-propos n'était pas mappé vers a-propos.html.
+    format: 'directory',
   },
 });
