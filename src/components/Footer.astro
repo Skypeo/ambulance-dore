@@ -1,0 +1,72 @@
+---
+import { site } from '../data/site.js';
+import logo from '../assets/logo-440w.webp';
+const year = 2026;
+---
+
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src={logo.src} width={logo.width} height={logo.height} alt="Ambulances Doré" />
+        <p>
+          Ambulances, VSL, taxis conventionnés, transport PMR et pompes funèbres
+          en Loir-et-Cher depuis 2007. L'humain au cœur de nos priorités.
+        </p>
+        <div class="foot-contact">
+          <a href={site.phoneMainHref}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+            {site.phoneMain}
+          </a>
+          <a href={`mailto:${site.email}`}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            {site.email}
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ambulances</h4>
+        <ul>
+          <li><a href="/transport-ambulance">Transport en ambulance</a></li>
+          <li><a href="/taxi-conventionne">Taxi conventionné</a></li>
+          <li><a href="/taxi-vsl">VSL</a></li>
+          <li><a href="/transport-pmr">Transport PMR</a></li>
+          <li><a href="/taxi-prive">Taxi privé</a></li>
+          <li><a href="/mission-samu">Mission SAMU</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Pompes Funèbres</h4>
+        <ul>
+          <li><a href="/pompes-funebres">Le pôle funéraire</a></li>
+          <li><a href="/organisation-obseques">Organisation des obsèques</a></li>
+          <li><a href="/contrat-obseques">Contrat obsèques</a></li>
+          <li><a href="/funerarium">Funérarium</a></li>
+          <li><a href="/articles-funeraires">Articles funéraires</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Agences & infos</h4>
+        <ul>
+          <li><a href="/nos-agences">Nos agences</a></li>
+          <li><a href={site.phoneMainHref}>Chaussée-St-Victor — {site.phoneMain}</a></li>
+          <li><a href={site.phoneOucquesHref}>Oucques — {site.phoneOucques}</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/vie-privee">Vie privée</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} Ambulances Doré — Tous droits réservés</span>
+      <span>
+        <a href="/mentions-legales">Mentions légales</a> ·
+        <a href="/vie-privee">Vie privée</a>
+      </span>
+    </div>
+  </div>
+</footer>

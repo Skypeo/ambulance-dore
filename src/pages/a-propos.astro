@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'À propos — Ambulances Doré, transport sanitaire près de Blois';
+const description =
+  "Créée en 2007 à La Chaussée-Saint-Victor, Ambulances Doré réunit ambulanciers et chauffeurs de taxi conventionné. Une flotte de 3 taxis, 7 VSL et 4 ambulances, l'humain au cœur de nos priorités.";
+
+const stars = Array(5).fill(0);
+const avis = [
+  {
+    name: 'Christine',
+    text: "Ayant eu recours ce vendredi 5 novembre 2021 aux services des Taxis DORÉ, je tenais à remercier toute l'équipe. À l'accueil, j'ai eu une personne à l'écoute, réactive et très arrangeante (malgré une demande tardive et un déplacement médical de longue distance à organiser). L'ambulancier était lui aussi d'une extrême gentillesse, prévenant et très sympathique. Grâce à eux, j'étais rassurée et détendue, ce qui est important dans un cadre médical. Merci encore à cette belle équipe !",
+  },
+  {
+    name: 'Cassandre Georget',
+    text: "Très performants. Ils ont toujours été très gentils et corrects 😊",
+  },
+  {
+    name: 'Sandrine Dantin',
+    text: "Très compétents et très courtois",
+  },
+];
+---
+<Base title={title} description={description} current="/a-propos">
+  <PageHero
+    eyebrow="L'entreprise"
+    title="Les ambulanciers et chauffeurs de taxi des Ambulances Doré vous <em>offrent leurs services</em>."
+    lead="Créée en 2007, Ambulances Doré est une société de taxis conventionnés près de Blois. Implantés au cœur de la commune de La Chaussée Saint-Victor, nous possédons une autorisation pour stationner à Sambin et à Mont-prés-Chambord."
+    crumbs={[{ label: 'À propos' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Notre flotte de véhicules est révisée régulièrement afin de vous garantir un service de qualité et confortable.</p>
+          <p>Nos équipes prennent le volant d'un de nos 3 taxis, 7 VSL et 4 ambulances afin de vous conduire à vos lieux de rendez-vous.</p>
+          <a href="/contact" class="btn-primary">Demander un renseignement
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <Figure src="/images/equipe.webp" alt="Les ambulances Doré dans leur garage" />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-band">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat"><div class="num" data-count="2007">0</div><div class="lab">Année de création de l'entreprise</div></div>
+        <div class="stat"><div class="num" data-count="14">0</div><div class="lab">Véhicules : 3 taxis, 7 VSL, 4 ambulances</div></div>
+        <div class="stat"><div class="num" data-count="40" data-suffix=" km">0</div><div class="lab">Rayon d'intervention autour de Blois</div></div>
+        <div class="stat"><div class="num" data-count="24/7">24/7</div><div class="lab">Une équipe disponible tous les jours</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Sécurité & hygiène</div>
+          <h2>Respect des normes de sécurité et d'hygiène <em>à bord</em>.</h2>
+          <p>Soucieux de la qualité de nos services, nous veillons au respect de la sécurité et du confort à bord de nos taxis conventionnés et de nos ambulances.</p>
+          <p>Dans le contexte sanitaire actuel, tous nos véhicules sont désinfectés et nettoyés entre chaque trajet. Ainsi, l'hygiène est garantie dans nos taxis.</p>
+        </div>
+        <Figure src="/images/apropos-securite.webp" alt="Respect de la sécurité et de l'hygiène à bord" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/apropos-cpam.webp" alt="Prise en charge par l'assurance maladie" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Assurance maladie</div>
+          <h2>Prise en charge de vos transports médicaux par <em>l'assurance maladie</em>.</h2>
+          <p>Agréée par les caisses d'assurance maladie, notre société de taxis conventionnés facilite vos déplacements grâce à une prise en charge au tiers, partielle ou complète de vos déplacements.</p>
+          <p>Besoin de plus de renseignements sur notre service de taxis ou la CPAM pour la prise en charge de vos frais ? Contactez nos équipes d'ambulanciers pour leur poser toutes vos questions.</p>
+          <p>Cliniques, centres de soins, maisons de retraite, hôpitaux, cabinets médicaux, gares, aéroports, etc. : soyez garanti d'arriver à temps à tous vos rendez-vous !</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Témoignages</div><h2>Nos clients nous font confiance et <em>le disent</em> !</h2></div></div>
+      <div class="avis-grid">
+        {avis.map((a) => (
+          <div class="avis-card" data-reveal>
+            <div class="q">”</div>
+            <div class="stars">
+              {stars.map(() => (
+                <svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></svg>
+              ))}
+            </div>
+            <p>{a.text}</p>
+            <div class="avis-foot">
+              <div class="av">{a.name.charAt(0)}</div>
+              <div><strong>{a.name}</strong><span>Client·e — avis vérifié</span></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Réservez dès aujourd'hui votre transport en ambulance." text="Notre équipe vous répond et organise vos déplacements en toute sérénité." />
+</Base>

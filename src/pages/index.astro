@@ -1,0 +1,227 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroMesh from '../components/HeroMesh.astro';
+import ReserveForm from '../components/ReserveForm.astro';
+import { site } from '../data/site.js';
+
+const title = 'Ambulances Doré - Vos transports en ambulance, VSL et taxi conventionné';
+const description =
+  "Les Ambulances Doré, entreprise de transport sanitaire près de Blois : ambulance, VSL, taxi conventionné et transport PMR. Disponibles 24h/24, 7j/7. L'humain au cœur de nos priorités.";
+---
+
+<Base title={title} description={description} current="/">
+  <!-- HERO SCINDÉ EN 2 PÔLES -->
+  <section class="hero" id="accueil">
+    <HeroMesh />
+    <div class="container">
+      <div class="hero-titlewrap" data-reveal>
+        <div class="hero-tag" style="margin-left:auto;margin-right:auto">
+          <span class="dot"></span>
+          Disponible 24h/24 — 7j/7 dans tout le Loir-et-Cher
+        </div>
+        <h1>L'humain au cœur de <em>nos priorités.</em></h1>
+        <p class="lead">
+          Les Ambulances Doré, c'est avant tout une entreprise de transport qui met ses
+          compétences au service de ses clients.
+        </p>
+      </div>
+
+      <div class="hero-split">
+        <!-- PÔLE AMBULANCES -->
+        <div class="pole pole-amb" data-reveal="left">
+          <span class="pole-art"></span>
+          <span class="pole-eyebrow">Pôle santé</span>
+          <h2>Vos transports en ambulance, VSL et taxi conventionné</h2>
+          <p>
+            Nos taxis et ambulances sont équipés de tout le matériel médical nécessaire pour vous
+            assurer confort et sécurité à bord. Nos équipes sont formées et aptes à intervenir en
+            toutes circonstances.
+          </p>
+          <ul class="pole-list">
+            <li>Ambulance</li><li>VSL</li><li>Taxi conventionné</li><li>Transport PMR</li><li>Mission SAMU</li>
+          </ul>
+          <div class="pole-cta-row">
+            <a href="/contact" class="btn-solid">
+              Réserver un transport sanitaire
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href={site.phoneMainHref} class="pole-call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+              {site.phoneMain}
+            </a>
+          </div>
+        </div>
+
+        <!-- PÔLE POMPES FUNÈBRES (contenu provisoire — lorem en attente du client) -->
+        <div class="pole pole-pf" data-reveal="right">
+          <span class="pole-art"></span>
+          <span class="pole-eyebrow">Pôle funéraire</span>
+          <h2>Pompes funèbres &amp; accompagnement des familles</h2>
+          <p>
+            Organisation complète des obsèques, contrat de prévoyance, funérarium et articles
+            funéraires. Une présence digne et bienveillante pour vous épauler à chaque étape.
+          </p>
+          <ul class="pole-list">
+            <li>Organisation d'obsèques</li><li>Contrat obsèques</li><li>Funérarium</li><li>Articles funéraires</li>
+          </ul>
+          <div class="pole-cta-row">
+            <a href="/pompes-funebres" class="btn-solid">
+              Découvrir le pôle funéraire
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href={site.pf.phoneHref} class="pole-call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+              Permanence 24h/24
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-ecg" aria-hidden="true">
+      <svg viewBox="0 0 1600 60" preserveAspectRatio="none">
+        <path d="M0,30 L200,30 L210,30 L218,10 L226,50 L234,5 L242,55 L250,30 L450,30 L460,30 L468,12 L476,48 L484,8 L492,52 L500,30 L750,30 L760,30 L768,15 L776,45 L784,5 L792,55 L800,30 L1050,30 L1060,30 L1068,12 L1076,48 L1084,8 L1092,52 L1100,30 L1350,30 L1360,30 L1368,15 L1376,45 L1384,5 L1392,55 L1400,30 L1600,30" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- POINTS FORTS (repris de l'ancien site) -->
+  <section class="values-band">
+    <div class="container">
+      <div class="row">
+        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M8 12l3 3 6-6"/></svg> Démarche RSE</span>
+        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> 24h/24 - 7j/7</span>
+        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg> Ponctualité</span>
+        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg> Humanité</span>
+        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Disponibilité et écoute</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉSERVATION (présente sur l'ancien accueil) -->
+  <ReserveForm />
+
+  <!-- SERVICES -->
+  <section class="section plain" id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Nos prestations</div>
+          <h2>Déplacez-vous en toute sécurité aux côtés d'une <em>équipe bienveillante</em>.</h2>
+        </div>
+        <p>Vous recherchez une entreprise de taxi et d'ambulance près de Blois ? Avec près de 15 ans d'expérience, Ambulances Doré est la société de taxi professionnelle, formée et habilitée qu'il vous faut. Nous prenons en charge tous les patients.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="svc feat" style="grid-column:span 7">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h2m14 0h2M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" /><path d="M10 12V8h4v4" /><circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" /><path d="M12 6v-2M10 5h4" /></svg></div>
+          <h3>Ambulance</h3>
+          <p><strong style="color:#fff">Transport médical allongé ou semi-assis.</strong><br />Notre équipe est compétente pour accompagner tous nos clients dans les meilleures conditions.</p>
+          <a href="/transport-ambulance" class="more">Découvrir le service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </article>
+
+        <article class="svc" style="grid-column:span 5">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17h2m12 0h2M6 17v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /><path d="M11 8h2M12 7v2" /></svg></div>
+          <h3>Véhicule sanitaire léger (VSL)</h3>
+          <p><strong>Transport sanitaire assis.</strong><br />Prenez place à bord de notre véhicule sanitaire léger pour votre transport médicalisé, avec l'accompagnement de professionnels de la santé.</p>
+          <a href="/taxi-vsl" class="more">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </article>
+
+        <article class="svc" style="grid-column:span 5">
+          <span class="hex-bg"></span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="6" r="3" /><path d="M8 10v6M5 22l3-6 3 6M15 8h3l-2 5h3l-4 9" /></svg></div>
+          <h3>Transport PMR</h3>
+          <p><strong>Transport de personnes à mobilité réduite.</strong><br />Nous nous engageons à rendre nos transports plus inclusifs. Nous assurons le transport PMR pour favoriser votre autonomie.</p>
+          <a href="/transport-pmr" class="more">Détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </article>
+
+        <article class="svc" style="grid-column:span 7">
+          <span class="hex-bg"></span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 17h14M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /><rect x="10" y="5" width="4" height="3" rx=".5" /></svg></div>
+          <h3>Taxi conventionné</h3>
+          <p><strong>Transport en position assise.</strong><br />Transport vers vos rendez-vous médicaux : faites appel à nos taxis et ambulances !</p>
+          <a href="/taxi-conventionne" class="more">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AGRÉÉ + NOTRE ATOUT (repris de l'ancien site) -->
+  <section class="section warm">
+    <div class="container">
+      <div class="split-grid">
+        <div class="split-card dark" data-reveal="left">
+          <div class="eyebrow" style="color:#a8c8ff">Tiers payant</div>
+          <h3>Service de transport sanitaire agréé et conventionné.</h3>
+          <p>Vous avez un rendez-vous médical, mais vous ne pouvez pas utiliser votre voiture ?</p>
+          <p>En faisant appel à un taxi conventionné ou un VSL pour votre transport médical, vos frais de transport peuvent être couverts par l'assurance maladie. Ce remboursement s'effectue sur présentation de l'ordonnance de votre médecin.</p>
+        </div>
+        <div class="split-card light" data-reveal="right">
+          <div class="eyebrow">Notre atout</div>
+          <h3>Placer l'humain au centre de nos préoccupations.</h3>
+          <p>Nous vous garantissons respect, ponctualité et disponibilité pour vous servir. Nous considérons notre profession comme un service médical avant tout.</p>
+          <p>Les Ambulances Doré, c'est une équipe de personnes soucieuses de mieux vous connaître pour répondre à vos attentes. Nous vous accompagnons tout au long de votre parcours de soins et facilitons votre transport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (présente sur l'ancien accueil) -->
+  <section class="section plain">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Questions fréquentes</div>
+          <h2>Vos questions sur la prise en charge en <em>ambulance</em>.</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Qui a le droit au transport en ambulance ?</summary>
+          <p>Si votre état de santé l'exige, l'assurance maladie peut prendre en charge tout ou partie des frais liés au transport assis professionnalisé en VSL ou en ambulance. Ce bon de transport CPAM peut être prescrit par le corps médical ou faire l'objet d'un accord préalable.</p>
+        </details>
+        <details>
+          <summary>Qui prend en charge les frais d'ambulance ?</summary>
+          <p>Les frais de transport sont couverts par l'assurance maladie, sur ordonnance, dans les situations suivantes : entrées et sorties de l'hôpital ; transport de patients atteints d'une affection de longue durée (ALD) ; transport longue distance (plus de 150 km) ; transports liés aux examens en rapport avec les accidents du travail et maladies professionnelles.</p>
+        </details>
+        <details>
+          <summary>Comment faire pour avoir un bon de transport VSL ?</summary>
+          <p>Pour obtenir un bon de transport en VSL, vous devez consulter un médecin. Votre médecin vous examine et vous prescrit une ordonnance adaptée à votre état de santé. Par conséquent, le mode de transport, par exemple un VSL, dont vous bénéficiez est mentionné dans l'ordonnance — si votre cas le permet.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENCES -->
+  <section class="section warm" id="agences">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Nos agences</div>
+          <h2>Deux implantations<br />au service du <em>Loir-et-Cher</em>.</h2>
+        </div>
+        <p>4 Rue René Descartes, 41260 La Chaussée-Saint-Victor. Ouvert 24 heures sur 24, du lundi au dimanche.</p>
+      </div>
+      <div class="agencies-grid">
+        <article class="agency">
+          <div class="info">
+            <h3>Chaussée-Saint-Victor / Les Montils</h3>
+            <p class="addr">{site.addressMain.street}<br />{site.addressMain.zip} {site.addressMain.city}</p>
+            <a href={site.phoneMainHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneMain}</a>
+            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
+          </div>
+          <div class="map-side"><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
+        </article>
+        <article class="agency">
+          <div class="info">
+            <h3>Oucques</h3>
+            <p class="addr">{site.addressOucques.street}<br />{site.addressOucques.zip} {site.addressOucques.city}</p>
+            <a href={site.phoneOucquesHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneOucques}</a>
+            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
+          </div>
+          <div class="map-side"><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>

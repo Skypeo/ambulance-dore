@@ -1,0 +1,60 @@
+---
+// Formulaire de demande de transport (repris de la maquette validée).
+// action mailto en fallback statique ; à brancher sur un backend/Formspree au déploiement.
+import { site } from '../data/site.js';
+const { id = 'reserver' } = Astro.props;
+---
+<section class="reserve" id={id}>
+  <div class="container">
+    <div class="reserve-inner" data-reveal>
+      <div class="eyebrow" style="justify-content:center">Réservation en ligne</div>
+      <h2>Réservez votre transport : ambulance, VSL ou <em>taxi</em>.</h2>
+    </div>
+    <p class="sub">Vous venez de programmer un rendez-vous médical ? Détendez-vous et planifiez dès maintenant vos déplacements.</p>
+
+    <form class="form-card" action={`mailto:${site.email}`} method="post" enctype="text/plain" data-reveal>
+      <div class="form-row">
+        <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" required /></div>
+        <div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" type="text" required /></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" required /></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="date">Date souhaitée</label><input id="date" name="date" type="date" required /></div>
+        <div class="field"><label for="heure">Heure souhaitée</label><input id="heure" name="heure" type="time" required /></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="depart">Ville de départ</label><input id="depart" name="depart" type="text" required /></div>
+        <div class="field"><label for="arrivee">Ville d'arrivée</label><input id="arrivee" name="arrivee" type="text" required /></div>
+      </div>
+      <div class="field" style="margin-top:6px">
+        <label>Type de transport</label>
+        <div class="vehicle-pick">
+          <label class="veh-opt"><input type="radio" name="veh" value="Ambulance" checked />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 17h14M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /><rect x="10" y="5" width="4" height="3" rx=".5" /></svg>
+            Ambulance</label>
+          <label class="veh-opt"><input type="radio" name="veh" value="VSL" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17h2m12 0h2M6 17v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /></svg>
+            VSL</label>
+          <label class="veh-opt"><input type="radio" name="veh" value="Taxi" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="6" width="16" height="12" rx="2" /><path d="M8 6v-2h8v2" /></svg>
+            Taxi</label>
+          <label class="veh-opt"><input type="radio" name="veh" value="TPMR" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="6" r="3" /><path d="M8 10v6M5 22l3-6 3 6" /></svg>
+            TPMR</label>
+        </div>
+      </div>
+      <div class="field" style="margin-top:6px">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Précisez votre demande (motif, établissement, accompagnant…)"></textarea>
+      </div>
+      <button class="form-submit" type="submit">
+        Envoyer ma demande de réservation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+      </button>
+      <p class="form-note">Demande non contractuelle. Pour une prise en charge immédiate, appelez le {site.phoneMain}.</p>
+    </form>
+  </div>
+</section>

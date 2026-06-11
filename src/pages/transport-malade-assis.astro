@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Transport de malades assis | Ambulances Doré';
+const description =
+  "Transport de malades en position assise (VSL, taxi conventionné) avec accompagnement complet. Véhicules récents et climatisés pour vos rendez-vous médicaux près de Blois.";
+---
+<Base title={title} description={description} current="/transport-malade-assis">
+  <PageHero
+    eyebrow="Transport en ambulance"
+    title="Transport de malades assis : bénéficiez d'un <em>accompagnement complet</em> avec nos équipes."
+    lead="Peur du médecin, des piqûres, crainte des radios… Ce n'est pas toujours évident d'être totalement détendu lors d'un rendez-vous médical. Et ce n'est pas votre tension artérielle qui vous dira le contraire !"
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Malades assis' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Nous ne pouvons pas résoudre votre peur des « blouses blanches », mais nous pouvons vous garantir un transport irréprochable.</p>
+          <p>Les Ambulances Doré se chargent de vos déplacements médicaux. Nous adaptons nos véhicules en fonction de votre état de santé et de vos besoins.</p>
+        </div>
+        <Figure src="/images/malade-assis.webp" alt="Transport de malade en position assise" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/vsl.webp" alt="Réservation d'un transport en VSL" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">VSL</div>
+          <h2>Réservez votre transport en VSL pour <em>tous vos rendez-vous</em>.</h2>
+          <p>Pour bénéficier d'un déplacement médical par notre service, prenez rendez-vous dès maintenant.</p>
+          <p>Vous avez un accompagnateur ? Parfait ! Nos VSL disposent de suffisamment de places. Nos véhicules sont récents, climatisés, confortables, sécurisés et adaptés.</p>
+          <p>Une sortie d'hôpital, de maison de retraite ou d'un autre établissement ? Formée aux gestes et aux soins de premiers secours, notre équipe d'ambulanciers s'occupe de votre transport en toute sécurité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Comment choisir ?</div>
+          <h2>Véhicule sanitaire léger ou ambulance, <em>comment choisir</em> ?</h2>
+          <p class="lead-p">Il existe plusieurs modes de transport pour vous rendre à vos rendez-vous médicaux.</p>
+          <p>Vous ne savez pas comment le choix est fait ? C'est votre médecin qui sélectionne le véhicule en fonction de votre état de santé :</p>
+          <ul class="ticks">
+            <li>Ambulance : le transport s'effectue en position allongée ou semi-allongée avec un professionnel de santé à vos côtés ;</li>
+            <li>Véhicule sanitaire léger : vous êtes autonome et le transport se fait en position assise. Un ambulancier vous aide si nécessaire et dans le respect des règles d'hygiène.</li>
+          </ul>
+        </div>
+        <Figure src="/images/soin-patient.webp" alt="Choix du véhicule selon l'état de santé" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Dans quelles circonstances ?</div><h2>Un transport sanitaire, oui, mais dans <em>quelles circonstances</em> ?</h2></div>
+        <p>Dans quels cas votre condition médicale nécessite-t-elle de recourir à un transport assis professionnel ?</p>
+      </div>
+      <div class="prose" data-reveal>
+        <p>Quelques exemples :</p>
+        <ul class="ticks">
+          <li>Entrée et sortie après hospitalisation, pour votre sécurité et celle des autres ;</li>
+          <li>Soins postopératoires sur convocation ;</li>
+          <li>Traitement ambulatoire ;</li>
+          <li>Personne en situation de handicap ;</li>
+          <li>Traitements médicaux ;</li>
+          <li>Examens en lien avec un arrêt de travail ;</li>
+          <li>Maladie professionnelle ;</li>
+          <li>Affection de longue durée (ALD).</li>
+        </ul>
+        <p>Ce sont les professionnels de santé qui prescrivent les transports en VSL.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Un rendez-vous médical à venir ?" text="Réservez dès maintenant votre transport assis en VSL ou taxi conventionné." />
+</Base>

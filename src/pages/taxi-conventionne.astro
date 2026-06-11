@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Taxi conventionné et VSL | Ambulances Doré';
+const description =
+  "Demandez votre prise en charge en taxi conventionné et VSL : transport sanitaire conventionné CPAM et agréé ARS, en position assise ou allongée, près de Blois.";
+---
+<Base title={title} description={description} current="/taxi-conventionne">
+  <PageHero
+    eyebrow="Transport sanitaire"
+    title="Demandez votre prise en charge en taxi conventionné et <em>VSL</em>."
+    lead="Composée d'ambulanciers diplômés d'État et d'auxiliaires ambulanciers, l'équipe des Ambulances Doré est en mesure d'assurer vos transports sanitaires en toute sécurité."
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Taxi conventionné' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Notre flotte d'ambulances, de VSL et de taxis dispose d'un système de géolocalisation. Couplé à des logiciels de régulation, il permet d'assurer le transport sanitaire de nos patients dans les meilleures conditions.</p>
+          <p>Que ce soit pour un transport de votre domicile vers un centre médical, pour un transfert interhospitalier, ou encore pour des urgences signalées par le SAMU, notre équipe maîtrise tous les gestes techniques et d'urgence.</p>
+          <p>L'humain est aussi au cœur de nos valeurs. Notre personnel adopte toujours une attitude accommodante, rassurante et bienveillante envers tous les patients.</p>
+        </div>
+        <Figure src="/images/taxi-conventionne.webp" alt="Taxi conventionné agréé par l'Assurance Maladie" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/malade-allonge.webp" alt="Transport sanitaire allongé et assis" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Allongée ou assise</div>
+          <h2>Transport sanitaire en position <em>allongée et assise</em>.</h2>
+          <p>Pour répondre à toutes sortes d'exigences, nous avons mis en place un système de transport sanitaire efficace et optimisé, conventionné par la CPAM et agréé par l'ARS.</p>
+          <p>Notre équipe qualifiée et nos véhicules adaptés nous permettent de prendre en charge le transport des patients en position allongée ou semi-allongée dans les meilleures conditions.</p>
+          <p>Nous possédons également une flotte de VSL (véhicules sanitaires légers) dédiée aux personnes voyageant en position assise - quand leur état de santé le permet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Ambulance</div>
+          <h2>Nos services de transport sanitaire et d'urgence en <em>ambulance</em>.</h2>
+          <p>Notre société prend en charge tous types de transports médicaux en ambulance : accident, hospitalisation, transfert, maternité, rendez-vous en centre de soins…</p>
+          <p>Profitez d'un voyage confortable en toute sécurité en compagnie d'une équipe d'ambulanciers diplômés DEA.</p>
+          <p>Notre société dispose également de véhicules ASSU (ambulances de secours et de soins d'urgence) pouvant intervenir à la demande du SAMU. Ces véhicules sont équipés de tout le matériel médical d'intervention nécessaire.</p>
+        </div>
+        <Figure src="/images/ambulance-patient.webp" alt="Ambulance de secours et de soins" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/vsl.webp" alt="Véhicule sanitaire léger pour transport assis" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">VSL</div>
+          <h2>Une prise en charge personnalisée en <em>véhicule sanitaire léger</em>.</h2>
+          <p>Les VSL sont adaptés au transport sanitaire de personnes en position assise qui ont besoin d'une assistance médicale et d'une surveillance de leur état de santé pendant le déplacement.</p>
+          <p>Comment bénéficier d'un transport sanitaire en VSL ? Votre médecin traitant doit établir une ordonnance à transmettre à votre caisse primaire d'assurance maladie pour un remboursement partiel ou total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Vous souhaitez plus de renseignements ?" text="Contactez notre équipe de professionnels." />
+</Base>

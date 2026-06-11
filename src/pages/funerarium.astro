@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// TODO_CLIENT : contenu provisoire (lorem) — en attente des textes du client.
+const title = "Funérarium — Espaces de recueillement | Pompes funèbres Doré";
+const description =
+  "Des salons funéraires dignes et apaisants pour accueillir les familles et permettre le recueillement auprès du défunt, dans le respect et l'intimité.";
+---
+<Base title={title} description={description} current="/funerarium" theme="theme-pf">
+  <PageHero
+    eyebrow="Pôle funéraire"
+    title="Un funérarium <em>digne et apaisant</em>."
+    lead="Des espaces de recueillement pensés pour accueillir les familles dans l'intimité et le respect."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Funérarium' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <Figure label="Visuel à venir" />
+        <div class="prose" data-reveal="right">
+          <h2>Recueillement, dans le <em>calme</em>.</h2>
+          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Nos salons sont accessibles aux familles dans le respect de votre intimité.</p>
+          <ul class="ticks">
+            <li>Salons privatifs et accueil personnalisé</li>
+            <li>Accès facilité, dans le respect de chacun</li>
+            <li>Une équipe disponible pour vous accompagner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Venez vous recueillir en toute sérénité." text="Contactez-nous pour connaître les modalités d'accueil au funérarium." phone="Permanence 24h/24" phoneHref={site.pf.phoneHref} />
+</Base>

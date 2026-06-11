@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+const title = 'Ambulances Doré à La Chaussée-Saint-Victor | Déplacements médicaux';
+const description =
+  "Ambulances Doré à La Chaussée-Saint-Victor : ambulances, VSL, taxi conventionné, taxi privé et missions SAMU. Dessert Blois, Oucques et les communes alentour, 24h/24.";
+---
+<Base title={title} description={description} current="/chaussee-saint-victor">
+  <PageHero
+    eyebrow="Nos agences"
+    title="Ambulances Doré à votre service à La Chaussée-Saint-Victor pour vos <em>déplacements médicaux</em>."
+    lead="Notre société d'ambulance, basée à La Chaussée-Saint-Victor, intervient aussi dans les communes alentour et dessert Blois, Oucques, Saint-Denis-sur-Loire, Villebarou, Vineuil, Saint-Gervais-la-Forêt."
+    crumbs={[{ label: 'Nos agences', href: '/nos-agences' }, { label: 'Chaussée-Saint-Victor / Les Montils' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Nous réalisons le transport de personnes dans le domaine privé, mais aussi pour les professionnels et pour des transferts gare et aéroport.</p>
+          <p>Besoin d'un transport sanitaire ? Notre flotte d'ambulances et de véhicules sanitaires légers nous permet de répondre à tous types de demandes, des rendez-vous médicaux aux interventions impliquant le SAMU.</p>
+          <h3>Coordonnées</h3>
+          <p>
+            {site.addressMain.street}<br />
+            {site.addressMain.zip} {site.addressMain.city}<br />
+            Téléphone : <a href={site.phoneMainHref} style="color:var(--blue-deep);font-weight:700">{site.phoneMain}</a><br />
+            E-mail : <a href={`mailto:${site.email}`} style="color:var(--blue-deep);font-weight:700">{site.email}</a><br />
+            Horaires : {site.hours}
+          </p>
+        </div>
+        <div class="media-frame" data-reveal="right" style="aspect-ratio:3/4">
+          <iframe title="Carte — La Chaussée-Saint-Victor" loading="lazy" style="width:100%;height:100%;border:0" src="https://maps.google.com/maps?q=4%20Rue%20Ren%C3%A9%20Descartes%2041260%20La%20Chauss%C3%A9e-Saint-Victor&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/taxi-prive.webp" alt="Taxi privé pour particuliers et professionnels" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Taxi privé</div>
+          <h2>Taxi privé pour les particuliers et les <em>professionnels</em>.</h2>
+          <p>Voyagez l'esprit tranquille à bord de nos taxis modernes et confortables. Nos chauffeurs vous emmènent de votre point de départ jusqu'à votre destination tout en vous écoutant vos besoins.</p>
+          <p>Un client important à récupérer à la gare ? Vous souhaitez un transport de groupe ? Vous devez vous rendre à la gare avec vos bagages ?</p>
+          <p>Que ce soit pour un voyage privé, pour un déplacement professionnel ou pour un circuit touristique de découverte de notre région, nous prenons le temps de nous occuper de toutes vos exigences pour vous fournir un service sur mesure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Ambulanciers qualifiés</div>
+          <h2>Des ambulanciers qualifiés à votre service pour un transport <em>confortable</em>.</h2>
+          <p>Vous devez effectuer un déplacement médical. Votre médecin vous a délivré un bon de transport pour bénéficier d'une ambulance, mais vous ne savez pas qui appeler ?</p>
+          <p>Contactez les Ambulances Doré à La Chaussée-Saint-Victor, près de Blois : nous disposons d'une flotte de 4 ambulances, 7 véhicules sanitaires légers et 3 taxis.</p>
+          <p>Peu importe le trajet à effectuer, nous veillons à prendre toutes les dispositions pour qu'il se déroule le mieux possible.</p>
+        </div>
+        <Figure src="/images/chaussee.webp" alt="Ambulanciers qualifiés à La Chaussée-Saint-Victor" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/samu.webp" alt="Partenaire du SAMU - Centre 15 du Loir-et-Cher" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">SAMU — Centre 15</div>
+          <h2>Ambulances Doré, partenaire du SAMU centre 15 du <em>Loir-et-Cher</em>.</h2>
+          <p>Pour répondre aux urgences préhospitalières, le SAMU - Centre 15 dispose de quatre moyens de réponse : le conseil médical, le médecin libéral, les transports sanitaires et le SMUR.</p>
+          <p>Les Ambulances Doré sont partenaires du SAMU - Centre 15 sur les transports sanitaires. Dans le cadre des missions du SAMU - Centre 15, nous mettons à disposition des moyens humains et matériels adaptés.</p>
+          <p>Pour répondre aux missions de transport sanitaire, les véhicules des Ambulances Doré sont équipés de matériel réglementaire d'urgence.</p>
+          <p>Les équipes sont composées d'un ambulancier titulaire du diplôme d'État d'ambulancier et d'un auxiliaire ambulancier. Ils sont tous deux formés aux gestes et soins d'urgence de niveau 2.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

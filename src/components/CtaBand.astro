@@ -1,0 +1,30 @@
+---
+import { site } from '../data/site.js';
+const {
+  title = 'Besoin d’un transport ? Nous sommes là, 24h/24.',
+  text = 'Une équipe formée, une flotte révisée et un seul interlocuteur pour tous vos déplacements médicaux et personnels.',
+  phone = site.phoneMain,
+  phoneHref = site.phoneMainHref,
+} = Astro.props;
+---
+<section class="cta-band">
+  <svg class="deco-watermark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+  <div class="container">
+    <div class="inner">
+      <div>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn-primary">
+          Demander un transport
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </a>
+        <a href={phoneHref} class="btn-call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+          {phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

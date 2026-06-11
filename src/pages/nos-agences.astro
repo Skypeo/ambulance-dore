@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+const title = 'Nos agences et points de stationnement | Ambulances Doré';
+const description =
+  "Ambulance et taxi : nos agences de La Chaussée-Saint-Victor et d'Oucques desservent les communes alentour. Une zone d'intervention autour de Blois, 24h/24 et 7j/7.";
+---
+<Base title={title} description={description} current="/nos-agences">
+  <PageHero
+    eyebrow="Nos agences"
+    title="Ambulance et taxi : nos agences et <em>points de stationnement</em>."
+    lead="Vous avez prévu un déplacement dans le cadre professionnel ? Vous souhaitez vous déplacer pour un rendez-vous médical avec une assistance professionnalisée ?"
+    crumbs={[{ label: 'Nos agences' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Cessez vos recherches ! Les Ambulances Doré disposent du personnel qualifié, dont des ambulanciers diplômés DEA (diplôme d'État d'ambulancier) et des auxiliaires ambulanciers titulaires d'une attestation de formation aux gestes et soins d'urgence (AFGSU).</p>
+          <p>Nos agences situées à La Chaussée-Saint-Victor et à Oucques nous permettent de vous transporter vers les communes alentour en toute sécurité.</p>
+        </div>
+        <Figure src="/images/agences.webp" alt="Nos agences et nos véhicules" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="agencies-grid">
+        <article class="agency">
+          <div class="info">
+            <h3>Chaussée-Saint-Victor / Les Montils</h3>
+            <p class="addr">{site.addressMain.street}<br />{site.addressMain.zip} {site.addressMain.city}</p>
+            <a href={site.phoneMainHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneMain}</a>
+            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
+            <p style="margin-top:18px"><a href="/chaussee-saint-victor" class="more" style="color:var(--blue-deep);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:inline-flex;gap:8px;align-items:center">Voir l'agence <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+          <div class="map-side">
+            <iframe title="Carte — La Chaussée-Saint-Victor" loading="lazy" src="https://maps.google.com/maps?q=4%20Rue%20Ren%C3%A9%20Descartes%2041260%20La%20Chauss%C3%A9e-Saint-Victor&output=embed"></iframe>
+          </div>
+        </article>
+
+        <article class="agency">
+          <div class="info">
+            <h3>Oucques</h3>
+            <p class="addr">{site.addressOucques.street}<br />{site.addressOucques.zip} {site.addressOucques.city}</p>
+            <a href={site.phoneOucquesHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneOucques}</a>
+            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
+            <p style="margin-top:18px"><a href="/oucques" class="more" style="color:var(--blue-deep);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:inline-flex;gap:8px;align-items:center">Voir l'agence <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+          <div class="map-side">
+            <iframe title="Carte — Oucques" loading="lazy" src="https://maps.google.com/maps?q=1%20rue%20Buisson%2041290%20Oucques&output=embed"></iframe>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Nos véhicules</div>
+          <h2>Laissez-vous transporter à bord de nos véhicules <em>confortables</em>.</h2>
+          <p>Afin de vous assurer un transport en toute sécurité, nous effectuons des trajets au moyen de véhicules sanitaires légers (VSL), d'ambulances ou de taxis conventionnés.</p>
+          <p>De ce fait, vous arrivez à l'heure à vos différents rendez-vous en toute sérénité, quel que soit votre état de santé.</p>
+          <p>Afin d'effectuer votre déplacement dans de bonnes conditions, nos véhicules sont dotés du matériel réglementaire pour assurer votre confort.</p>
+        </div>
+        <Figure src="/images/vehicules.webp" alt="Véhicules confortables et équipés" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/soin-patient.webp" alt="Équipes diplômées pour vos déplacements" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Équipes diplômées</div>
+          <h2>Des équipements à jour et des équipes diplômées pour vos déplacements <em>sécurisés</em>.</h2>
+          <p>L'état de santé d'une ou d'un proche requiert le transport en position couchée ? Notre équipe d'ambulanciers est là pour répondre à votre demande express.</p>
+          <p>Notre parc inclut des véhicules permettant le transport de patients en position allongée, assis ou semi-assis.</p>
+          <p>Depuis sa création, Ambulances Doré a toujours pris soin de ses patients tout en leur assurant leur sécurité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">À votre écoute</div>
+          <h2>Notre personnel est toujours à l'écoute de <em>vos besoins</em>.</h2>
+          <p>En plus de notre service de transport sanitaire, nous mettons tout en œuvre pour que vos trajets soient des plus agréables. Nous plaçons l'écoute et votre bien-être au centre de nos préoccupations.</p>
+          <p>Sécurité, proximité, humanité, bienveillance et dignité : ces valeurs sont au cœur de nos actions. Elles nous guident dans l'accomplissement de prestations toujours plus qualitatives.</p>
+          <p>En plus de venir vous chercher à l'heure, le personnel médical est à vos côtés pour vous donner de précieux conseils.</p>
+        </div>
+        <Figure src="/images/apropos-equipe.webp" alt="Un personnel à l'écoute de vos besoins" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Zone desservie</div><h2>Autour de <em>Blois</em>, et bien au-delà.</h2></div><p>Pour vos transports longue distance, nous intervenons partout en France.</p></div>
+      <div class="split-card light" data-reveal>
+        <div class="eyebrow">Communes principales</div>
+        <h3>Notre rayon d'intervention</h3>
+        <div class="places">
+          <span class="chip">La Chaussée-Saint-Victor</span><span class="chip">Blois</span><span class="chip">Oucques</span><span class="chip">Saint-Denis-sur-Loire</span><span class="chip">Villebarou</span><span class="chip">Vineuil</span><span class="chip">Saint-Gervais-la-Forêt</span><span class="chip">Les Montils</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

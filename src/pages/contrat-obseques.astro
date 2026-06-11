@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// TODO_CLIENT : contenu provisoire (lorem) — en attente des textes du client.
+const title = "Contrat obsèques — Prévoyance funéraire | Pompes funèbres Doré";
+const description =
+  "Anticipez sereinement vos obsèques avec un contrat de prévoyance funéraire : organisation et financement préparés à l'avance pour préserver vos proches.";
+---
+<Base title={title} description={description} current="/contrat-obseques" theme="theme-pf">
+  <PageHero
+    eyebrow="Pôle funéraire"
+    title="Contrat obsèques : <em>anticiper</em>, pour préserver vos proches."
+    lead="Organisez et financez vos obsèques à l'avance, selon vos volontés, en toute tranquillité d'esprit."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Contrat obsèques' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <h2>Une démarche <em>prévoyante et apaisante</em>.</h2>
+          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Vous définissez à l'avance vos souhaits et le financement, soulageant vos proches de toute charge.</p>
+          <ul class="ticks">
+            <li>Choix des prestations défini à l'avance</li>
+            <li>Financement anticipé et protégé</li>
+            <li>Volontés consignées et respectées</li>
+          </ul>
+        </div>
+        <Figure label="Visuel à venir" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Préparez l'avenir en toute sérénité." text="Nos conseillers vous présentent les formules de prévoyance adaptées à votre situation." phone="Permanence 24h/24" phoneHref={site.pf.phoneHref} />
+</Base>

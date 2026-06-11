@@ -1,0 +1,212 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+
+const {
+  title,
+  description,
+  current = '',
+  theme = '',          // '' = bleu (ambulances) ; 'theme-pf' = or (pompes funèbres)
+  image = '/og-image.jpg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.domain).href;
+const fullTitle = title;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class={theme}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script is:inline>
+    // Active le preloader dès le 1er rendu (sauf capture headless / no-JS le saute donc le contenu reste visible)
+    if (!(/HeadlessChrome|puppeteer/i.test(navigator.userAgent) || navigator.webdriver)) {
+      document.documentElement.classList.add('preloading');
+    }
+  </script>
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Ambulances Doré" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="theme-color" content="#001f4d" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Données structurées entreprise locale -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "EmergencyService",
+    "name": "Ambulances Doré",
+    "image": canonical + "og-image.jpg",
+    "url": site.domain,
+    "telephone": "+33254781555",
+    "email": site.email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": site.addressMain.street,
+      "postalCode": site.addressMain.zip,
+      "addressLocality": site.addressMain.city,
+      "addressCountry": "FR"
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "areaServed": "Loir-et-Cher",
+    "description": description
+  })} />
+</head>
+
+<body>
+  <div class="preloader" aria-hidden="true">
+    <div class="beacon">
+      <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
+      <svg class="beacon-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+    </div>
+    <span class="preloader-label">Chargement…</span>
+  </div>
+  <Header current={current} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+
+  <script is:inline>
+    // Détection headless (capture d'écran) — sinon on garde le contenu visible sans JS.
+    const isHeadless = /HeadlessChrome|puppeteer/i.test(navigator.userAgent) || navigator.webdriver;
+    if (!isHeadless) document.documentElement.classList.add('js');
+
+    // Preloader "beacon" : masqué après chargement (min ~700ms d'affichage), avec garde-fou
+    if (document.documentElement.classList.contains('preloading')) {
+      const hidePreloader = () => {
+        document.documentElement.classList.add('preloader-hidden');
+        setTimeout(() => document.documentElement.classList.remove('preloading'), 600);
+      };
+      const t0 = performance.now();
+      window.addEventListener('load', () => {
+        setTimeout(hidePreloader, Math.max(0, 700 - (performance.now() - t0)));
+      });
+      setTimeout(hidePreloader, 4000); // garde-fou si 'load' ne se déclenche pas
+    }
+
+    // Burger / menu mobile
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('mobile-open');
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    navLinks?.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-open');
+        burger?.classList.remove('is-open');
+      })
+    );
+
+    // Header solidifié au scroll
+    const navPill = document.querySelector('header.site .nav-pill');
+    window.addEventListener('scroll', () => {
+      if (!navPill) return;
+      navPill.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Reveal au scroll
+    const revealTargets = document.querySelectorAll(
+      '[data-reveal], .stat, .svc, .info-card, .avis-card, .agency, .split-card, .section-head, .media-frame, .prose, .pole, .faq details, .cta-band .inner'
+    );
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const delay = parseInt(e.target.dataset.revealDelay || '0', 10);
+          setTimeout(() => e.target.classList.add('is-visible'), delay);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach((t) => {
+      if (!t.hasAttribute('data-reveal') && !t.classList.contains('stat')) {
+        t.setAttribute('data-reveal', '');
+      }
+      io.observe(t);
+    });
+
+    // Décalages d'apparition pour les grilles
+    document.querySelectorAll('.services-grid .svc').forEach((el, i) => (el.dataset.revealDelay = i * 80));
+    document.querySelectorAll('.cards-grid .info-card').forEach((el, i) => (el.dataset.revealDelay = i * 80));
+    document.querySelectorAll('.avis-grid .avis-card').forEach((el, i) => (el.dataset.revealDelay = i * 120));
+    document.querySelectorAll('.agencies-grid .agency').forEach((el, i) => (el.dataset.revealDelay = i * 140));
+
+    // Sécurité : tout afficher après 1.2s si jamais un élément n'est pas observé
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]:not(.is-visible), .stat:not(.is-visible)').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight + 200) el.classList.add('is-visible');
+      });
+    }, 1200);
+
+    // Compteurs animés
+    const counters = document.querySelectorAll('[data-count]');
+    const cIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = el.dataset.count;
+        const suffix = el.dataset.suffix || '';
+        cIo.unobserve(el);
+        if (target.includes('/')) { el.textContent = target; return; }
+        const end = parseInt(target, 10);
+        const dur = 1400;
+        const start = performance.now();
+        const step = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(eased * end) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = end + suffix;
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach((c) => cIo.observe(c));
+
+    // CTA magnétiques (desktop)
+    if (matchMedia('(hover:hover)').matches) {
+      document.querySelectorAll('.btn-primary, .nav-cta, .form-submit, .btn-solid').forEach((btn) => {
+        btn.addEventListener('mousemove', (ev) => {
+          const r = btn.getBoundingClientRect();
+          const x = ev.clientX - r.left - r.width / 2;
+          const y = ev.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${x * 0.15}px, ${y * 0.25}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+      // Tilt 3D sur les cartes services
+      document.querySelectorAll('.svc').forEach((card) => {
+        card.addEventListener('mousemove', (ev) => {
+          const r = card.getBoundingClientRect();
+          const cx = (ev.clientX - r.left) / r.width - 0.5;
+          const cy = (ev.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `translateY(-8px) rotateX(${-cy * 4}deg) rotateY(${cx * 6}deg)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+  </script>
+</body>
+</html>

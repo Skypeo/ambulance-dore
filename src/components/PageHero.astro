@@ -1,0 +1,43 @@
+---
+import HeroMesh from './HeroMesh.astro';
+const {
+  eyebrow,
+  title,        // peut contenir du HTML (ex: <em>)
+  lead,
+  crumbs = [],  // [{label, href}] — dernier = page courante
+} = Astro.props;
+---
+<section class="page-hero">
+  <HeroMesh />
+  <div class="container">
+    <div class="page-hero-inner" data-reveal>
+      {crumbs.length > 0 && (
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="/">Accueil</a>
+          {crumbs.map((c, i) => (
+            <>
+              <span class="sep">/</span>
+              {c.href && i < crumbs.length - 1 ? (
+                <a href={c.href}>{c.label}</a>
+              ) : (
+                <span aria-current="page">{c.label}</span>
+              )}
+            </>
+          ))}
+        </nav>
+      )}
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+      <h1 set:html={title}></h1>
+      {lead && <p class="lead">{lead}</p>}
+      <div class="hero-cta-row">
+        <a href="/contact" class="btn-primary">
+          Réserver un transport
+          <span class="arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </span>
+        </a>
+        <slot name="cta" />
+      </div>
+    </div>
+  </div>
+</section>

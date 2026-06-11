@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Gardes préfectorales et missions SAMU | Ambulances Doré';
+const description =
+  "Ambulances Doré participe au planning départemental d'astreinte et aux missions SAMU. Véhicules ASSU équipés, ambulanciers DEA formés AFGSU 2 et PHTLS.";
+---
+<Base title={title} description={description} current="/mission-samu">
+  <PageHero
+    eyebrow="Autres services"
+    title="Ambulances Doré, disponibles dans le cadre des gardes préfectorales et des <em>missions SAMU</em>."
+    lead="Dans le cadre de la garde préfectorale, les Ambulances Doré participent au planning départemental d'astreinte."
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Mission SAMU' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Urgence médicale</div>
+          <h2>Une ambulance privée pour une <em>urgence médicale</em>.</h2>
+          <p>Pour répondre à ces missions, les ambulances de secours et de soins d'urgence (ASSU) sont équipées du matériel réglementaire d'urgence et de réanimation, comme le défibrillateur automatique externe.</p>
+          <p>Les équipages sont composés d'un ambulancier titulaire du diplôme d'État d'ambulancier (DEA) et d'un auxiliaire ambulancier (AA).</p>
+          <p>Ils sont tous deux formés aux gestes et soins d'urgence de niveau 2 (AFGSU 2) et ont suivi des formations spécifiques, comme le programme PHTLS (secours et soins préhospitaliers).</p>
+          <p>La prise en charge des urgences n'est pas seulement réservée au SAMU. En effet, lorsque vous appelez le 15, il est probable que le véhicule qui intervienne ne soit ni celui des pompiers ni celui du SAMU, mais une ambulance privée.</p>
+          <p>Même si c'est bien différent dans l'imaginaire collectif, les ambulancières et les ambulanciers ne sont pas uniquement des chauffeurs : ce sont de véritables professionnels de santé.</p>
+          <p>Pour une prise en charge plus rapide des personnes en détresse, le SAMU fait appel à des ambulances privées. Les Ambulances Doré disposent du matériel réglementaire pour remplir les missions SAMU.</p>
+        </div>
+        <Figure src="/images/samu.webp" alt="Ambulance ASSU pour les missions SAMU" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/urgence.webp" alt="Gestion des opérations d'urgence en temps réel" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">En temps réel</div>
+          <h2>Gestion des opérations en <em>temps réel</em>.</h2>
+          <p>Réactivité, rapidité et professionnalisme sont les maîtres mots des Ambulances Doré.</p>
+          <p>Pour répondre rapidement à vos demandes de transport sanitaire, notamment en cas d'urgence préhospitalière, nous avons du matériel performant et d'une équipe réactive pour y répondre.</p>
+          <p>Tous nos véhicules sont équipés d'un logiciel de planification en temps réel. Notre équipe peut donc affecter les missions directement aux ambulanciers et chauffeurs de taxi pour connaître leurs disponibilités.</p>
+          <p>Nous vous aidons ainsi à obtenir rapidement un véhicule au moment où vous le souhaitez, même en urgence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Notre expertise</div>
+          <h2>Embarquez à bord de nos ambulances et profitez de l'expertise de <em>nos équipes</em>.</h2>
+          <p>Nous mettons à disposition une équipe d'ambulanciers professionnelle, qualifiée et compétente pour intervenir et vous accompagner dans votre quotidien.</p>
+          <p>Notre service de transport de malades allongés vous garantit une prise en charge dans le respect de vos besoins. Nous sommes à vos côtés pour répondre à toutes vos demandes. Nos ambulanciers mettent leur expérience, leur savoir-faire et leurs compétences à votre service lors du transport de malades allongés.</p>
+        </div>
+        <Figure src="/images/ambulance-route.webp" alt="Équipe d'ambulanciers en intervention" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Une équipe mobilisable 7j/7." text="Garde préfectorale et missions SAMU : nous répondons présents." />
+</Base>

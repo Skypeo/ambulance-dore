@@ -1,0 +1,72 @@
+---
+import { nav } from '../data/site.js';
+import logo from '../assets/logo-440w.webp';
+const { current = '' } = Astro.props;
+
+// Marque un item actif si l'URL courante correspond à son href ou à un de ses sous-liens
+function isActive(item) {
+  if (item.href === '/' ) return current === '/';
+  if (current === item.href) return true;
+  if (item.groups) {
+    return item.groups.some((g) => g.links.some((l) => l.href === current));
+  }
+  return false;
+}
+---
+
+<header class="site">
+  <div class="container">
+    <div class="nav-pill">
+      <a href="/" class="nav-logo" aria-label="Ambulances Doré — accueil">
+        <img src={logo.src} width={logo.width} height={logo.height} alt="Ambulances Doré" />
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        {nav.map((item) =>
+          item.hasSub ? (
+            <div class="nav-item">
+              <a
+                href={item.href}
+                class="has-sub"
+                aria-current={isActive(item) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+              <div class={`nav-submenu${item.pf ? ' pf' : ''}`}>
+                {item.groups.map((g) => (
+                  <>
+                    <span class="sub-group">{g.title}</span>
+                    {g.links.map((l) => (
+                      <a href={l.href} aria-current={current === l.href ? 'page' : undefined}>
+                        {l.label}
+                      </a>
+                    ))}
+                  </>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          )
+        )}
+      </nav>
+
+      <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="burger-ico" aria-hidden="true">
+          <span class="bar top"></span>
+          <span class="bar middle"></span>
+          <span class="bar bottom"></span>
+        </span>
+      </button>
+
+      <a href="/contact" class="nav-cta">
+        Réserver
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

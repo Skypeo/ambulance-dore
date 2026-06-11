@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+const title = 'Ambulance, taxi et transport VSL à Oucques | Ambulances Doré';
+const description =
+  "Ambulance, taxi et transport VSL par Ambulances Doré à Oucques et alentour : intervention 7j/7 et 24h/24, courtes et longues distances, partout en France.";
+---
+<Base title={title} description={description} current="/oucques">
+  <PageHero
+    eyebrow="Nos agences"
+    title="Ambulance, taxi et transport VSL par Ambulances Doré à <em>Oucques et alentour</em>."
+    lead="Engagez une équipe comme Ambulances Doré, située à Oucques et à La Chaussée-Saint-Victor, pour vos demandes d'interventions. Nous prenons en charge les patients en toute sécurité et avec bienveillance."
+    crumbs={[{ label: 'Nos agences', href: '/nos-agences' }, { label: 'Oucques' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="media-frame" data-reveal="left" style="aspect-ratio:3/4">
+          <iframe title="Carte — Oucques" loading="lazy" style="width:100%;height:100%;border:0" src="https://maps.google.com/maps?q=1%20rue%20Buisson%2041290%20Oucques&output=embed"></iframe>
+        </div>
+        <div class="prose" data-reveal="right">
+          <p class="lead-p">Faire confiance à notre personnel, c'est s'assurer :</p>
+          <ul class="ticks">
+            <li>Une intervention 7j/7 et 24h24</li>
+            <li>Une équipe compétente, habile et formée</li>
+            <li>Une solide expérience dans le transport de patients assis ou allongés</li>
+            <li>Une flotte de véhicules récents et équipés de tout le matériel médical réglementaire</li>
+            <li>Un service de transport, courtes et longues distances, partout en France</li>
+          </ul>
+          <h3>Coordonnées</h3>
+          <p>
+            {site.addressOucques.street}<br />
+            {site.addressOucques.zip} {site.addressOucques.city}<br />
+            Téléphone : <a href={site.phoneOucquesHref} style="color:var(--blue-deep);font-weight:700">{site.phoneOucques}</a><br />
+            E-mail : <a href={`mailto:${site.email}`} style="color:var(--blue-deep);font-weight:700">{site.email}</a><br />
+            Horaires : {site.hours}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">VSL & taxis</div>
+          <h2>Transport de malades assis à bord de nos VSL et <em>taxis privés</em>.</h2>
+          <p>Pour assurer votre transport en toute sécurité, nous effectuons différents trajets à l'aide des véhicules sanitaires légers ou des taxis conventionnés.</p>
+          <p>Par conséquent, vous pouvez vous honorer vos différents rendez-vous en toute confiance, quelle que soit votre condition médicale. Nous avons les compétences et la réactivité nécessaires pour assurer le transport sécurisé des patients assis.</p>
+          <p>Pour vous permettre de réaliser vos trajets dans de bonnes conditions, nos véhicules sont équipés de tout le confort possible.</p>
+        </div>
+        <Figure src="/images/vsl.webp" alt="Transport de malades assis en VSL et taxi" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/oucques.webp" alt="Matériel de pointe et personnel qualifié à Oucques" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Matériel de pointe</div>
+          <h2>Du matériel de pointe et du personnel qualifié pour vos trajets <em>sécurisés</em>.</h2>
+          <p>Vous souhaitez vous déplacer en position allongée ? Nos ambulanciers sont présents pour répondre à vos demandes particulières.</p>
+          <p>Nous possédons des véhicules qui permettent le transport de patients en position assise ou en position allongée. Depuis la fondation de la société, le personnel des Ambulances Doré a toujours eu à cœur de prendre en soins les patients en veillant à leur sécurité.</p>
+          <p>Nos équipes déploient leurs compétences pour vous garantir des trajets sécurisés, et ce, avec bienveillance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">À votre écoute</div>
+          <h2>Nos ambulanciers sont toujours à l'écoute de <em>vos besoins</em>.</h2>
+          <p>En plus de nos prestations de transport sanitaire médicalisé, nous faisons le maximum pour vous écouter et vous accompagner tout au long de votre trajet.</p>
+          <p>Nous plaçons l'humain au cœur de nos valeurs lors de toute prise en charge. Cela nous permet de vous proposer des services d'une qualité irréprochable.</p>
+          <p>En plus de vous prendre en charge à l'heure, notre personnel médical vous assure un trajet sécurisé et partage ses précieux conseils.</p>
+        </div>
+        <Figure src="/images/soin-patient.webp" alt="Une équipe à l'écoute de vos besoins" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Besoin d'un transport pour vos rendez-vous médicaux ?" text="Faites confiance aux Ambulances Doré !" phone={site.phoneOucques} phoneHref={site.phoneOucquesHref} />
+</Base>

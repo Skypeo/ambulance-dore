@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// TODO_CLIENT : pôle Pompes Funèbres — contenu provisoire (lorem) en attente
+// des textes et de la fiche Google du client. Coordonnées = placeholder (site.pf).
+const title = 'Pompes funèbres — Accompagnement des familles | Ambulances Doré';
+const description =
+  "Notre pôle pompes funèbres accompagne les familles avec dignité : organisation des obsèques, contrat de prévoyance, funérarium et articles funéraires en Loir-et-Cher.";
+---
+<Base title={title} description={description} current="/pompes-funebres" theme="theme-pf">
+  <PageHero
+    eyebrow="Pôle funéraire"
+    title="Vous accompagner avec <em>dignité</em>, à chaque étape."
+    lead="Parce que chaque famille mérite écoute et respect, notre pôle pompes funèbres vous épaule dans l'organisation des obsèques et toutes les démarches."
+    crumbs={[{ label: 'Pompes funèbres' }]}
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call" style="border-color:rgba(255,255,255,.4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      Permanence 24h/24
+    </a>
+  </PageHero>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Notre approche</div>
+          <h2>Une présence <em>humaine et discrète</em>.</h2>
+          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nos conseillers funéraires vous accompagnent pour organiser des obsèques respectueuses de la volonté du défunt et de vos souhaits.</p>
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nous prenons en charge l'ensemble des démarches administratives afin de vous soulager dans ces moments difficiles.</p>
+          <ul class="ticks">
+            <li>Écoute et conseil personnalisés, 24h/24</li>
+            <li>Prise en charge des formalités administratives</li>
+            <li>Respect des volontés et des convictions de chacun</li>
+          </ul>
+        </div>
+        <Figure label="Visuel à venir" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Nos accompagnements</div><h2>Quatre services pour <em>vous épauler</em>.</h2></div>
+        <p>Un interlocuteur unique pour toutes les étapes, de l'organisation à la cérémonie.</p>
+      </div>
+      <div class="cards-grid">
+        <a class="info-card" href="/organisation-obseques"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM8 9h8M8 13h6"/></svg></div><h3>Organisation des obsèques</h3><p>Lorem ipsum dolor sit amet : nous coordonnons l'ensemble de la cérémonie, inhumation ou crémation.</p></a>
+        <a class="info-card" href="/contrat-obseques"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Contrat obsèques</h3><p>Consectetur adipiscing elit : anticipez sereinement et préservez vos proches des démarches.</p></a>
+        <a class="info-card" href="/funerarium"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg></div><h3>Funérarium</h3><p>Sed do eiusmod tempor : des espaces de recueillement dignes et apaisants.</p></a>
+        <a class="info-card" href="/articles-funeraires"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM5 14c2 4 5 6 7 6s5-2 7-6"/></svg></div><h3>Articles funéraires</h3><p>Ut labore et dolore : cercueils, urnes, fleurs et plaques personnalisables.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Nous sommes à vos côtés, jour et nuit."
+    text="Nos conseillers funéraires répondent à vos questions et vous accompagnent dans toutes les démarches."
+    phone="Permanence 24h/24"
+    phoneHref={site.pf.phoneHref}
+  />
+</Base>

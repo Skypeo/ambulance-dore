@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Transport en ambulance ou en VSL | Ambulances Doré';
+const description =
+  "Transport médicalisé en ambulance ou en VSL à La Chaussée-Saint-Victor et alentour : hospitalisations, sorties d'hôpital, consultations, rééducation, dialyses. Ambulanciers qualifiés.";
+---
+<Base title={title} description={description} current="/transport-ambulance">
+  <PageHero
+    eyebrow="Pôle santé"
+    title="Transport en ambulance ou en VSL : nous sommes au service de <em>nos patients</em>."
+    lead="Notre société est spécialisée dans le transport médicalisé à La Chaussée-Saint-Victor et alentour pour tout déplacement de malade en position allongée ou semi-assise."
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Transport en ambulance' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Hospitalisations, sorties d'hôpital, consultations chez un spécialiste, rééducation, dialyses et autres traitements vous sont accessibles sans effort. Nous nous occupons de tout !</p>
+          <p>Bénéficiez d'un accompagnement professionnel et d'une tranquillité d'esprit à toute épreuve grâce à nos experts qualifiés.</p>
+          <p>Nos ambulanciers et auxiliaires ambulanciers peuvent faire face à toutes les situations, même les plus délicates.</p>
+          <a href="/contact" class="btn-primary">Réserver votre transport sanitaire
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <Figure src="/images/ambulance-patient.webp" alt="Patient pris en charge en ambulance" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Transport assis</div>
+          <h2>Demandez un transport assis professionnel en VSL ou un <em>taxi conventionné</em>.</h2>
+          <p>Vous avez votre rendez-vous chez le kinésithérapeute la semaine prochaine. Ordonnance en mains, il ne vous reste plus qu'à contacter un service de transport en VSL pour vous y emmener.</p>
+          <p>Grâce aux Ambulances Doré, vous bénéficiez :</p>
+          <ul class="ticks">
+            <li>De vrais professionnels du milieu médical,</li>
+            <li>De véhicules récents, équipés et adaptés pour le transport assis,</li>
+            <li>D'une prise en charge sûre.</li>
+          </ul>
+          <a href="/contact" class="btn-primary">Réserver votre transport assis
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <Figure src="/images/vsl.webp" alt="Transport assis en véhicule sanitaire léger" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/ambulance-route.webp" alt="Ambulance sur la route vers l'hôpital" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Transport allongé</div>
+          <h2>Ambulance : transport de patient en position <em>allongée</em>.</h2>
+          <p>Grâce à notre flotte d'ambulances, nous sommes en mesure de transporter rapidement les patients en position allongée ou semi-assise.</p>
+          <p>Notre équipe assure leur déplacement et leur portage, ainsi que la surveillance des personnes enceintes, blessées ou malades durant le temps du transport.</p>
+          <p>Nous sommes formés aux premiers secours. Nous savons réagir aux situations les plus délicates et tout mettre en œuvre pour la sécurité et la santé des patients.</p>
+          <a href="/contact" class="btn-primary">Réserver votre ambulance
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Quelles sont les conditions de prise en charge ?</div><h2>Vos questions sur le <em>transport sanitaire</em>.</h2></div></div>
+      <div class="faq">
+        <details open><summary>Quelle est la différence entre un taxi et un VSL ?</summary>
+          <p>Le VSL peut transporter une à trois personnes. La prestation, en plus du transport, inclut les services d'aide à la personne.</p>
+          <p>Nous réalisons l'accompagnement du patient de A à Z : de son lieu de départ jusqu'au véhicule, et du véhicule jusqu'à l'établissement de destination. Le VSL dispose d'équipements de premiers secours et respecte des règles d'hygiène strictes.</p>
+          <p>Le taxi conventionné bénéficie d'une convention auprès de la CPAM, ce qui le différencie des taxis traditionnels. Ce conventionnement vous permet de bénéficier du remboursement de votre transport par l'assurance maladie.</p>
+          <p>La présentation d'une prescription médicale de transport est requise.</p>
+        </details>
+        <details><summary>Comment obtenir un transport en ambulance ?</summary>
+          <p>Vous pouvez bénéficier d'un transport sanitaire en ambulance, en véhicule sanitaire léger (VSL) ou en taxi conventionné pour les raisons suivantes :</p>
+          <ul class="ticks">
+            <li>Soins ou diagnostic dans un établissement de santé (hôpital, centre de dialyse, centre d'appareillage, ou d'imagerie médicale, etc.) ;</li>
+            <li>Si vous êtes malade ;</li>
+            <li>Si vous êtes blessé(e) ;</li>
+            <li>Si vous êtes enceinte.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Vos rendez-vous médicaux sont planifiés ?" text="Soyez serein en organisant dès maintenant vos déplacements." />
+</Base>

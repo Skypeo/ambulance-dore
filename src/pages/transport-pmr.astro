@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Transport PMR lors de vos déplacements médicaux | Ambulances Doré';
+const description =
+  "Transport de personnes à mobilité réduite et en fauteuil roulant : véhicules avec rampes d'accès, accompagnement personnalisé vers hôpitaux, cliniques et centres de soins.";
+---
+<Base title={title} description={description} current="/transport-pmr">
+  <PageHero
+    eyebrow="Transport sanitaire"
+    title="Transport en ambulance pour PMR lors de vos <em>déplacements médicaux</em>."
+    lead="Les Ambulances Doré proposent des véhicules et ambulances adaptés au transport des personnes à mobilité réduite (PMR) et en fauteuil roulant."
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Transport PMR' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">L'entreprise accompagne les patients à leurs rendez-vous médicaux planifiés à l'hôpital, dans une clinique ou dans un centre de soins.</p>
+          <p>Elle assure également les trajets vers les pharmacies ou les fournisseurs agréés d'appareils médicaux.</p>
+        </div>
+        <Figure src="/images/pmr.webp" alt="Transport de personne à mobilité réduite" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/vehicules.webp" alt="Véhicule adapté aux fauteuils roulants" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Fauteuil roulant</div>
+          <h2>Transport de personnes à mobilité réduite en <em>fauteuil roulant</em>.</h2>
+          <p>Grâce à la flotte de véhicules, l'entreprise aide toutes les personnes à mobilité réduite à se rendre à leurs rendez-vous médicaux :</p>
+          <ul class="ticks">
+            <li>Personnes non voyantes ou mal voyantes</li>
+            <li>Femmes enceintes</li>
+            <li>Personnes âgées</li>
+            <li>Personnes en fauteuil roulant</li>
+            <li>Personnes sourdes et malentendantes, etc.</li>
+          </ul>
+          <p>Les ambulances sont conçues pour recevoir un fauteuil roulant manuel ou électrique. Une rampe permet d'accéder à bord des véhicules. L'équipe assiste et répond à tous les besoins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Personnes âgées</div>
+          <h2>Accompagnement et transport de <em>personnes âgées</em> en ambulance.</h2>
+          <p>Les personnes âgées en perte d'autonomie ont souvent besoin d'aide pour se déplacer. L'équipe d'ambulanciers accompagne les patients dans les meilleures conditions de confort et de sécurité. En cas d'urgence médicale, les patients allongés ou semi-assis sont conduits à l'hôpital le plus proche.</p>
+        </div>
+        <Figure src="/images/soin-patient.webp" alt="Accompagnement des personnes âgées" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Confort & sécurité</div><h2>Confort, sécurité et convivialité sont au rendez-vous à <em>chacun de vos déplacements</em> !</h2></div></div>
+      <div class="prose" data-reveal>
+        <p>Les professionnels ont été formés aux premiers secours et aux mesures d'hygiène et de sécurité nécessaires à la prise en charge en cas d'urgence médicale. En établissant une relation de confiance avec les patients, l'équipe les accompagne dans les meilleures conditions possibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Organisons votre transport PMR." text="Un véhicule adapté et une équipe attentive, disponibles 24h/24." />
+</Base>

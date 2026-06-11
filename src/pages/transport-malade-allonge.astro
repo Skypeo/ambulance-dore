@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Transport de malades allongés par nos ambulanciers | Ambulances Doré';
+const description =
+  "Transport en ambulance de malades allongés : transferts hospitaliers, sorties d'hôpital, rééducation. Véhicules climatisés et suspension optimisée pour votre confort.";
+---
+<Base title={title} description={description} current="/transport-malade-allonge">
+  <PageHero
+    eyebrow="Transport en ambulance"
+    title="Transport en ambulance de malades allongés par nos <em>ambulanciers qualifiés</em>."
+    lead="Un patient nécessitant une surveillance constante, un brancardage ou se rendant à une séance de rééducation doit être transporté en position allongée ou semi-assise."
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Malades allongés' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <p class="lead-p">Les ambulances sont alors prioritaires pour le transport. Tout comme elles le sont dans le cadre de transports réguliers, d'une sortie après hospitalisation ou d'un transfert entre deux établissements médicaux.</p>
+          <p>Les Ambulances Doré mettent à votre disposition des véhicules parfaitement adaptés à vos spécificités. Ils sont aussi totalement équipés pour que l'on puisse vous prodiguer les premiers soins en cas d'urgence.</p>
+        </div>
+        <Figure src="/images/malade-allonge.webp" alt="Transport de malade allongé par ambulance" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/soin-patient.webp" alt="Écoute et accompagnement du patient" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Nos valeurs</div>
+          <h2>Écoute, proximité, respect : des valeurs qui <em>nous guident</em>.</h2>
+          <p>Notre métier ne se limite pas au simple transport de malades. Écouter et être proche des patients font vraiment partie de notre mission.</p>
+          <p>C'est pourquoi nous tenons à bâtir une relation de confiance avec les personnes que nous accompagnons, soutenons et soignons.</p>
+          <p>Professionnalisme et empathie sont les valeurs humaines qui habitent tout le personnel médical. Elles nous guident et nous permettent d'assurer le transport de personnes dans de bonnes conditions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Confort & sécurité</div>
+          <h2>Véhicules accessibles et <em>confortables</em> pour les patients.</h2>
+          <p>Nos ambulances s'adressent aux personnes à mobilité réduite qui ont besoin d'un encadrement ou d'une assistance.</p>
+          <p>Elles sont conçues pour que le voyage se déroule dans les conditions optimales. En été, la climatisation permet un transport confortable, tout comme le chauffage durant les périodes de froid.</p>
+          <p>Vitesse, chocs, vibrations et bruits sont réduits au minimum grâce à l'aménagement des véhicules. Ceux-ci sont spécialement pensés pour les malades et les blessés en situation de détresse.</p>
+        </div>
+        <Figure src="/images/ambulance-patient.webp" alt="Véhicule confortable et accessible" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/ambulance-route.webp" alt="Ambulance vers une destination médicale" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Toutes destinations</div>
+          <h2>Transport en ambulance vers <em>toutes les destinations médicales</em>.</h2>
+          <p>Les ambulanciers assurent vos trajets aller et retour aux alentours de La Chaussée-Saint-Victor, Oucques, Blois, etc.</p>
+          <p>Nous vous accompagnons vers toutes vos destinations médicales, que vous ayez besoin d'une ambulance pour sortir de l'hôpital ou que vous ayez rendez-vous pour un traitement lié à une affection de longue durée, pour une dialyse, une rééducation…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Un transport allongé à organiser ?" text="Nos ambulanciers qualifiés vous accompagnent avec respect et professionnalisme." />
+</Base>

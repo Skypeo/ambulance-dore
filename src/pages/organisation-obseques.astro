@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// TODO_CLIENT : contenu provisoire (lorem) — en attente des textes du client.
+const title = "Organisation des obsèques | Pompes funèbres Doré";
+const description =
+  "Organisation complète des obsèques (inhumation ou crémation) : démarches, cérémonie, transport du défunt. Un accompagnement digne et personnalisé en Loir-et-Cher.";
+---
+<Base title={title} description={description} current="/organisation-obseques" theme="theme-pf">
+  <PageHero
+    eyebrow="Pôle funéraire"
+    title="Organisation des obsèques, dans le <em>respect des volontés</em>."
+    lead="De la première démarche à la cérémonie, nous coordonnons chaque détail à vos côtés."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Organisation des obsèques' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <Figure label="Visuel à venir" />
+        <div class="prose" data-reveal="right">
+          <h2>Un accompagnement <em>de bout en bout</em>.</h2>
+          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+          <ul class="ticks">
+            <li>Inhumation ou crémation selon les volontés</li>
+            <li>Déclaration de décès et démarches administratives</li>
+            <li>Transport du défunt et organisation de la cérémonie</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Les étapes</div><h2>Nous gérons <em>chaque détail</em>.</h2></div><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p></div>
+      <div class="cards-grid">
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Première prise de contact</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM8 9h8M8 13h6"/></svg></div><h3>Démarches administratives</h3><p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12z"/></svg></div><h3>Cérémonie personnalisée</h3><p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Parlons-en, en toute sérénité." text="Nos conseillers vous reçoivent et vous accompagnent dans l'organisation des obsèques." phone="Permanence 24h/24" phoneHref={site.pf.phoneHref} />
+</Base>

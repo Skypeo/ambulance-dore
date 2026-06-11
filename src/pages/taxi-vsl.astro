@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Transport VSL toutes distances pour vos RDV médicaux | Ambulances Doré';
+const description =
+  "Véhicule Sanitaire Léger (VSL) pour patients en position assise : toutes distances, personnel formé AFGSU2, agrément ARS. Transport pris en charge sur prescription (TAP).";
+---
+<Base title={title} description={description} current="/taxi-vsl">
+  <PageHero
+    eyebrow="Transport sanitaire"
+    title="Transports VSL : déplacements toutes distances pour vos <em>RDV médicaux</em>."
+    lead="Vous disposez d'une ordonnance pour le transport en position assise afin de vous rendre dans un établissement de santé ou pour rentrer chez vous ?"
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'VSL' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <Figure src="/images/vsl.webp" alt="Transport en véhicule sanitaire léger" />
+        <div class="prose" data-reveal="right">
+          <p class="lead-p">Les Ambulances Doré effectuent votre transport sanitaire en VSL (véhicule sanitaire léger) afin de vous amener là où vous avez besoin.</p>
+          <p>Faites appel à nos services pour des raisons de soins, de diagnostic ou pour des trajets d'entrée ou de sortie après hospitalisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Une équipe qualifiée</div>
+          <h2>Des ambulanciers qualifiés pour <em>veiller sur vous</em>.</h2>
+          <p>Nos professionnels de santé sont formés à toute situation. Ils sont là pour veiller sur votre état de santé et sur votre sécurité tout au long du transport en VSL.</p>
+          <p>les collaborateurs des Ambulances Doré disposent de l'AFGSU2 (attestation de formation aux gestes et soins d'urgence de niveau 2).</p>
+        </div>
+        <Figure src="/images/soin-patient.webp" alt="Ambulanciers qualifiés veillant sur le patient" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/taxi-route.webp" alt="Différence entre VSL et taxi conventionné" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">VSL ou taxi ?</div>
+          <h2>Quelle est la différence entre un VSL et un <em>taxi</em> ?</h2>
+          <p>À l'instar des taxis conventionnés, les véhicules sanitaires légers (VSL) prennent en charge les patients qui doivent se déplacer en position assise avec une assistance.</p>
+          <p>Le VSL, contrairement aux taxis, est agréé par l'ARS. Il est conduit par un ambulancier ou un auxiliaire ambulancier qui est formé pour prodiguer les premiers soins si nécessaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Remboursement</div><h2>Les modalités de remboursement et de <em>prise en charge</em>.</h2></div></div>
+      <div class="split-grid">
+        <div class="split-card light" data-reveal="left">
+          <h3>Remboursement</h3>
+          <p>Pour prétendre au remboursement de votre transport sanitaire en VSL, votre médecin doit vous délivrer une prescription médicale avec la mention du TAP (transport assis professionnalisé) nécessaire.</p>
+        </div>
+        <div class="split-card light" data-reveal="right">
+          <h3>Prise en charge</h3>
+          <p>Vous devez au préalable être en possession d'une prescription médicale de transport, délivrée par votre médecin. Ce dernier vous prescrit alors le mode de transport le plus adapté à votre état de santé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Réservez votre transport en VSL." text="Pour vos consultations, dialyses, chimiothérapies ou séances programmées." />
+</Base>

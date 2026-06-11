@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ReserveForm from '../components/ReserveForm.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+const title = 'Contact — Ambulances Doré | Ambulance et taxi conventionné';
+const description =
+  "Contactez Ambulances Doré pour toute demande de renseignements ou pour réserver un transport. Disponibles 24h/24, 7j/7 à La Chaussée-Saint-Victor et Oucques.";
+---
+<Base title={title} description={description} current="/contact">
+  <PageHero
+    eyebrow="Contact"
+    title="Contactez les Ambulances Doré pour toute demande de renseignements concernant <em>nos services</em>."
+    lead="Notre société d'ambulances, de taxis et d'infirmiers s'est spécialisée depuis de nombreuses années dans le secteur du transport sanitaire et le domaine des urgences."
+    crumbs={[{ label: 'Contact' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Notre personnel est prêt à vous accompagner</div>
+          <p class="lead-p">Retrouvez une équipe paramédicale attentionnée, à votre écoute et prête, au besoin, à vous prodiguer tous les premiers soins nécessaires.</p>
+          <p>Agréée par les caisses d'assurances maladies, notre société d'ambulanciers et de taxis s'occupe de ses patients dans les meilleures conditions qui soient. Implantés au cœur du département du Loir-et-Cher, dans la commune de La Chaussée-Saint-Victor, nos chauffeurs interviennent dans un rayon de 40 kilomètres aux alentours de Blois, Sambin et Mont-prés-Chambord.</p>
+          <p>Pour les plus longs trajets, nous vous invitons à prendre contact directement avec notre entreprise afin que l'on vous propose un devis pour votre trajet.</p>
+        </div>
+        <Figure src="/images/contact.webp" alt="Contactez les Ambulances Doré" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Retrouvez-nous</div><h2>Nos coordonnées et <em>informations pratiques</em>.</h2></div></div>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <h3>Ambulances — Chaussée-St-Victor</h3>
+          <p><a href={site.phoneMainHref} style="color:var(--blue-deep);font-weight:700;font-size:18px">{site.phoneMain}</a><br />{site.addressMain.street}, {site.addressMain.zip} {site.addressMain.city}</p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <h3>Ambulances — Oucques</h3>
+          <p><a href={site.phoneOucquesHref} style="color:var(--blue-deep);font-weight:700;font-size:18px">{site.phoneOucques}</a><br />{site.addressOucques.street}, {site.addressOucques.zip} {site.addressOucques.city}</p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <h3>E-mail</h3>
+          <p><a href={`mailto:${site.email}`} style="color:var(--blue-deep);font-weight:700">{site.email}</a><br />{site.hours}</p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg></div>
+          <h3>Pôle pompes funèbres</h3>
+          <p><a href={site.pf.phoneHref} style="color:var(--gold-deep);font-weight:700;font-size:18px">Permanence 24h/24</a><br /><span style="color:var(--ink-soft)">Coordonnées détaillées à venir.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ReserveForm id="reserver" />
+</Base>

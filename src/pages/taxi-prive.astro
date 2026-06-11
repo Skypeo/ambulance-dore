@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+
+const title = 'Taxi privé pour tous vos trajets et déplacements | Ambulances Doré';
+const description =
+  "Service de taxi privé pour vos déplacements professionnels, personnels et touristiques. Trajets toutes distances, disponibilité 7j/7, chauffeur attentif près de Blois.";
+---
+<Base title={title} description={description} current="/taxi-prive">
+  <PageHero
+    eyebrow="Autres services"
+    title="Taxi privé : pour tous vos trajets et <em>déplacements personnels</em>."
+    lead="Afin de vous offrir une multitude de services, notre société Ambulances Doré est aussi une compagnie de taxi. Comptez donc aussi sur notre savoir-faire en matière de transport pour tous vos déplacements !"
+    crumbs={[{ label: 'Ambulances', href: '/transport-ambulance' }, { label: 'Taxi privé' }]}
+  />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Pro & perso</div>
+          <h2>Assurez vos déplacements professionnels et personnels en <em>taxi privé</em>.</h2>
+          <p class="lead-p">Nous vous proposons des trajets toutes distances. Nous nous engageons à respecter toutes vos contraintes horaires en assurant un service de transport 7j/7. Toute l'équipe est ponctuelle !</p>
+          <p>Que vous ayez besoin de vous rendre à l'aéroport, à la gare, à l'hôtel ou encore sur votre lieu de travail, comptez sur notre savoir-faire professionnel.</p>
+          <a href="/contact" class="btn-primary">Réserver un taxi privé
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <Figure src="/images/taxi-prive.webp" alt="Taxi privé pour tous vos trajets" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/taxi-route.webp" alt="Trajet en taxi privé en toute sécurité" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Chauffeur privé</div>
+          <h2>Profitez des services d'un chauffeur privé pour <em>vos trajets</em>.</h2>
+          <p>Pour des trajets en toute sécurité, choisissez nos taxis privés.</p>
+          <p>Parmi tous les trajets que nous effectuons dans notre vie, un jour, nous avons besoin d'un taxi privé. Vous êtes face à une correspondance complexe ou à un déplacement de dernière minute ? Nous vous facilitons les choses !</p>
+          <p>Notre chauffeur de taxi privé met tout en œuvre pour que votre trajet soit des plus confortables et sécurisés. Nous vous assurons un trajet agréable de votre point de départ à votre lieu d'arrivée.</p>
+          <p>Contactez-nous aussi pour vos transports touristiques. Lorsque l'on visite une région, on n'a pas toujours un moyen de transport adapté sous la main… et les trajets touristiques deviennent alors vite compliqués.</p>
+          <p>Faites appel à notre taxi privé : nous simplifions vos déplacements !</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Déplacements pro</div>
+          <h2>Nous assurons vos déplacements professionnels avec <em>fiabilité</em>.</h2>
+          <p>Forts de notre expérience, nous disposons de véhicules confortables et optimisés pour tous vos déplacements professionnels. Nous nous adaptons à votre emploi du temps professionnel afin de vous éviter tout retard.</p>
+          <p>Nous respectons chaque client. Nous nous engageons à la discrétion lors de chaque déplacement. Faites confiance à nos conducteurs !</p>
+          <p>Vous l'aurez compris, notre société s'engage à vous fournir un service personnalisé et flexible. Nous effectuons tous vos déplacements professionnels, quels qu'ils soient.</p>
+        </div>
+        <Figure src="/images/vehicules.webp" alt="Déplacements professionnels en taxi" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/agences.webp" alt="Véhicules à votre service pour vos événements" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Événements</div>
+          <h2>Transports personnalisés dans le cadre d'événements : fini, <em>les empêchements</em> !</h2>
+          <p>Nous répondons également à tous vos besoins en matière de transports privés.</p>
+          <p>Comptez donc sur notre expertise pour vous emmener sur le lieu ou à l'événement de votre choix. Grâce à notre disponibilité sans pareille, nous vous transportons à tout moment. Avec nos taxis, soyez assuré d'arriver à l'heure à tous vos rendez-vous personnels !</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Particuliers, professionnels : commandez votre taxi pour un déplacement en toute sécurité." text="Disponible 7j/7 pour vos trajets professionnels, personnels et touristiques." />
+</Base>
