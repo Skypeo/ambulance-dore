@@ -52,8 +52,8 @@ const description =
         </div>
         <div class="info-card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg></div>
-          <h3>Pôle pompes funèbres</h3>
-          <p><a href={site.pf.phoneHref} style="color:var(--gold-deep);font-weight:700;font-size:18px">Permanence 24h/24</a><br /><span style="color:var(--ink-soft)">Coordonnées détaillées à venir.</span></p>
+          <h3>{site.pf.name}</h3>
+          <p><a href={site.pf.phoneHref} style="color:var(--gold-deep);font-weight:700;font-size:18px">{site.pf.phone}</a><br />{site.pf.address.street}, {site.pf.address.zip} {site.pf.address.city}</p>
         </div>
       </div>
     </div>

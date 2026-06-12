@@ -27,6 +27,8 @@ const year = 2026;
 
       <div class="footer-col">
         <h4>Ambulances</h4>
+        <p class="footer-addr-name">Ambulances Doré</p>
+        <p class="footer-addr">{site.addressMain.street}, {site.addressMain.zip} {site.addressMain.city}<br /><a href={site.phoneMainHref}>{site.phoneMain}</a></p>
         <ul>
           <li><a href="/transport-ambulance">Transport en ambulance</a></li>
           <li><a href="/taxi-conventionne">Taxi conventionné</a></li>
@@ -39,6 +41,8 @@ const year = 2026;
 
       <div class="footer-col">
         <h4>Pompes Funèbres</h4>
+        <p class="footer-pf-name">{site.pf.name}</p>
+        <p class="footer-pf-addr">{site.pf.address.street}, {site.pf.address.zip} {site.pf.address.city}<br /><a href={site.pf.phoneHref}>{site.pf.phone}</a></p>
         <ul>
           <li><a href="/pompes-funebres">Le pôle funéraire</a></li>
           <li><a href="/organisation-obseques">Organisation des obsèques</a></li>
@@ -54,6 +58,7 @@ const year = 2026;
           <li><a href="/nos-agences">Nos agences</a></li>
           <li><a href={site.phoneMainHref}>Chaussée-St-Victor — {site.phoneMain}</a></li>
           <li><a href={site.phoneOucquesHref}>Oucques — {site.phoneOucques}</a></li>
+          <li><a href={site.pf.phoneHref}>{site.pf.name} (Blois) — {site.pf.phone}</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/mentions-legales">Mentions légales</a></li>
           <li><a href="/vie-privee">Vie privée</a></li>

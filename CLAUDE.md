@@ -63,13 +63,13 @@ npm run preview   # prévisualise dist/
 - Textes **ambulances** = repris fidèlement de l'ancien site (rien inventé)
 - Textes **pompes funèbres** = **lorem provisoire** (le client n'a pas encore fourni le contenu) — balisé `TODO_CLIENT`
 - **Photos** : remplacées par un placeholder thématisé `Figure.astro` (« Visuel à venir ») pour éviter tout visuel hors sujet. Les IDs Unsplash devinés tombaient sur des images inappropriées (ex. ballons sur une page funéraire) → écartés.
-- Coordonnées **pompes funèbres** = placeholder dans `src/data/site.js` (`site.pf`) — `TODO_CLIENT` : fiche Google non récupérable (lien protégé)
+- Coordonnées **pompes funèbres** = **Pompes Funèbres Jenna (Philae Services Funéraires)**, 76 Av. de Vendôme 41000 Blois, tél **02 79 40 02 72** (fournies par le client le 2026-06-12, dans `site.pf`). Nom + coordonnées affichés accueil/footer/nos-agences/pompes-funebres/contact. E-mail PF encore inconnu (placeholder).
 - Cartes agences : iframes Google Maps (sans clé API)
 - Formulaire : `action="mailto:"` en fallback — à brancher sur un backend/Formspree au déploiement
 
 ## TODO_CLIENT (à compléter quand le client fournit les infos)
 1. Contenu réel du pôle pompes funèbres (remplacer le lorem)
-2. Coordonnées PF (`site.pf` dans `src/data/site.js`) depuis la fiche Google
-3. Photos réelles (remplacer les `<Figure />` par des `<img>`)
+2. ~~Coordonnées PF~~ ✅ FAIT (Pompes Funèbres Jenna, cf. ci-dessus). Reste : **e-mail PF** (placeholder dans `site.pf.email`).
+3. Photos réelles (remplacer les `<Figure />` par des `<img>`) — notamment **photos du pôle pompes funèbres** (aucune dispo : pas de visuel funéraire intégré, contrairement aux ambulances)
 4. Brancher le formulaire sur un service d'envoi d'e-mails
 5. Valider raison sociale exacte + gérant (Tarik Zemali) dans les mentions légales

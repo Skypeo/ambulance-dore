@@ -7,6 +7,25 @@ import { site } from '../data/site.js';
 const title = 'Ambulances Doré - Vos transports en ambulance, VSL et taxi conventionné';
 const description =
   "Les Ambulances Doré, entreprise de transport sanitaire près de Blois : ambulance, VSL, taxi conventionné et transport PMR. Disponibles 24h/24, 7j/7. L'humain au cœur de nos priorités.";
+
+const stars = Array(5).fill(0);
+const avis = [
+  {
+    name: 'Christine',
+    meta: 'Cliente · Novembre 2021',
+    text: "Ayant eu recours ce vendredi 5 novembre 2021 aux services des Taxis DORÉ, je tenais à remercier toute l'équipe. À l'accueil, j'ai eu une personne à l'écoute, réactive et très arrangeante. Grâce à eux, j'étais rassurée et détendue, ce qui est important dans un cadre médical. Merci encore à cette belle équipe !",
+  },
+  {
+    name: 'Cassandre Georget',
+    meta: 'Cliente',
+    text: "Très performants. Ils ont toujours été très gentils et corrects 😊",
+  },
+  {
+    name: 'Sandrine Dantin',
+    meta: 'Cliente',
+    text: "Très compétents et très courtois.",
+  },
+];
 ---
 
 <Base title={title} description={description} current="/">
@@ -29,6 +48,7 @@ const description =
       <div class="hero-split">
         <!-- PÔLE AMBULANCES -->
         <div class="pole pole-amb" data-reveal="left">
+          <span class="pole-photo" style="background-image:url('/images/ambulance-route.webp')" aria-hidden="true"></span>
           <span class="pole-art"></span>
           <span class="pole-eyebrow">Pôle santé</span>
           <h2>Vos transports en ambulance, VSL et taxi conventionné</h2>
@@ -55,11 +75,12 @@ const description =
         <!-- PÔLE POMPES FUNÈBRES (contenu provisoire — lorem en attente du client) -->
         <div class="pole pole-pf" data-reveal="right">
           <span class="pole-art"></span>
-          <span class="pole-eyebrow">Pôle funéraire</span>
+          <span class="pole-eyebrow">Pôle funéraire — {site.pf.name}</span>
           <h2>Pompes funèbres &amp; accompagnement des familles</h2>
           <p>
-            Organisation complète des obsèques, contrat de prévoyance, funérarium et articles
-            funéraires. Une présence digne et bienveillante pour vous épauler à chaque étape.
+            <strong style="color:#fff">{site.pf.name}</strong> ({site.pf.legalName.split('— ')[1]}) vous accompagne à Blois :
+            organisation complète des obsèques, contrat de prévoyance, funérarium et articles
+            funéraires. Une présence digne et bienveillante à chaque étape.
           </p>
           <ul class="pole-list">
             <li>Organisation d'obsèques</li><li>Contrat obsèques</li><li>Funérarium</li><li>Articles funéraires</li>
@@ -71,7 +92,7 @@ const description =
             </a>
             <a href={site.pf.phoneHref} class="pole-call">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
-              Permanence 24h/24
+              {site.pf.phone}
             </a>
           </div>
         </div>
@@ -192,15 +213,45 @@ const description =
     </div>
   </section>
 
+  <!-- AVIS CLIENTS (repris de la maquette validée) -->
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Ils nous font confiance</div>
+          <h2>Nos clients nous font confiance<br />et le <em>disent !</em></h2>
+        </div>
+        <p>Les retours authentiques de personnes que nous avons accompagnées dans leurs parcours de soins.</p>
+      </div>
+      <div class="avis-grid">
+        {avis.map((a) => (
+          <article class="avis-card" data-reveal>
+            <div class="q">”</div>
+            <div class="stars">
+              {stars.map(() => (
+                <svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></svg>
+              ))}
+            </div>
+            <p>{a.text}</p>
+            <div class="avis-foot">
+              <div class="av">{a.name.charAt(0)}</div>
+              <div><strong>{a.name}</strong><span>{a.meta}</span></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- AGENCES -->
   <section class="section warm" id="agences">
     <div class="container">
       <div class="section-head">
         <div>
           <div class="eyebrow">Nos agences</div>
-          <h2>Deux implantations<br />au service du <em>Loir-et-Cher</em>.</h2>
+          <h2>Trois agences<br />au service du <em>Loir-et-Cher</em>.</h2>
         </div>
-        <p>4 Rue René Descartes, 41260 La Chaussée-Saint-Victor. Ouvert 24 heures sur 24, du lundi au dimanche.</p>
+        <p>Deux agences d'ambulances (La Chaussée-Saint-Victor et Oucques) et notre pôle funéraire <strong>{site.pf.name}</strong> à Blois. Disponibles 24h/24, 7j/7.</p>
       </div>
       <div class="agencies-grid">
         <article class="agency">
@@ -218,6 +269,16 @@ const description =
             <p class="addr">{site.addressOucques.street}<br />{site.addressOucques.zip} {site.addressOucques.city}</p>
             <a href={site.phoneOucquesHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneOucques}</a>
             <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
+          </div>
+          <div class="map-side"><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
+        </article>
+        <article class="agency agency-pf">
+          <div class="info">
+            <span class="agency-tag">Pôle funéraire</span>
+            <h3>{site.pf.name}</h3>
+            <p class="addr">{site.pf.legalName}<br />{site.pf.address.street}<br />{site.pf.address.zip} {site.pf.address.city}</p>
+            <a href={site.pf.phoneHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.pf.phone}</a>
+            <div class="hours"><strong>Permanence :</strong> 24h/24, 7j/7</div>
           </div>
           <div class="map-side"><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
         </article>

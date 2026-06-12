@@ -17,7 +17,7 @@ export const site = {
   hours: 'Ouvert 24h/24, 7j/7',
   addressMain: {
     label: 'La Chaussée-Saint-Victor / Les Montils',
-    street: '4 Rue René Descartes',
+    street: 'ZA, 4 rue René Descartes, Les Gailletrous II',
     zip: '41260',
     city: 'La Chaussée-Saint-Victor',
   },
@@ -27,17 +27,20 @@ export const site = {
     zip: '41290',
     city: 'Oucques',
   },
-  // Pôle pompes funèbres — EN ATTENTE des infos client (fiche Google)
+  // Pôle pompes funèbres — Pompes Funèbres Jenna (Philae Services Funéraires)
   pf: {
-    // TODO_CLIENT : remplacer par les coordonnées réelles de la fiche Google PF
-    phone: '02 54 00 00 00',
-    phoneHref: 'tel:0254000000',
+    name: 'Pompes Funèbres Jenna',
+    legalName: 'Pompes Funèbres Jenna — Philae Services Funéraires',
+    tagline: 'Entreprise de pompes funèbres à Blois',
+    phone: '02 79 40 02 72',
+    phoneHref: 'tel:0279400272',
+    // TODO_CLIENT : e-mail PF non communiqué (placeholder)
     email: 'contact@pompes-funebres-dore.fr',
     hours: 'Permanence téléphonique 24h/24, 7j/7',
     address: {
-      street: 'Adresse à confirmer',
-      zip: '41260',
-      city: 'La Chaussée-Saint-Victor',
+      street: '76 Av. de Vendôme',
+      zip: '41000',
+      city: 'Blois',
     },
   },
   legal: {

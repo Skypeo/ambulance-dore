@@ -452,6 +452,17 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 }
 .pole-amb .pole-art { background: linear-gradient(135deg, rgba(168,200,255,.3), transparent); }
 .pole-pf .pole-art { background: linear-gradient(135deg, rgba(221,199,154,.3), transparent); }
+/* Photo de fond du pôle ambulances (texte préservé via dégradé sombre par-dessus) */
+.pole-photo {
+  position: absolute; inset: 0; z-index: -2;
+  background-size: cover; background-position: center;
+  opacity: .9;
+}
+.pole-amb { background: linear-gradient(160deg, rgba(0,31,77,.74) 0%, rgba(0,31,77,.9) 100%); }
+.pole-amb .pole-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(12,118,244,.28) 0%, rgba(0,31,77,.82) 100%);
+}
 
 .hero-tag {
   display: inline-flex; align-items: center; gap: 10px;
@@ -859,6 +870,21 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 .agency .hours { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--ink-soft); }
 .agency .hours strong { color: var(--blue-deep); font-family: 'Montserrat', sans-serif; font-weight: 700 }
 
+/* Agence pôle funéraire (accent or) — repère visuel distinct des agences ambulances */
+.agency-tag {
+  display: inline-flex; align-self: flex-start; margin-bottom: 14px;
+  padding: 6px 14px; border-radius: var(--r-pill);
+  background: rgba(184,137,61,.14); color: var(--gold-deep);
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.agency-pf { background: linear-gradient(180deg, #faf6ee 0%, #f1e7d4 100%); border-color: rgba(184,137,61,.25); }
+.agency-pf .map-side { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 100%); }
+.agency-pf a.tel-big { color: var(--gold-deep); background: rgba(184,137,61,.12); }
+.agency-pf a.tel-big:hover { background: rgba(184,137,61,.2); }
+.agency-pf .hours strong { color: var(--gold-deep); }
+.agency-pf .pin { color: var(--gold-deep); }
+
 /* ─────────────────────── AVIS ─────────────────────── */
 .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .avis-card {
@@ -904,6 +930,12 @@ footer.site { background: linear-gradient(180deg, var(--blue-night) 0%, #000d26 
 .footer-brand .foot-contact a:hover { color: #fff; }
 .footer-brand .foot-contact svg { width: 16px; height: 16px; color: var(--blue-200); }
 .footer-col h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 20px; color: #a8c8ff; }
+.footer-addr-name, .footer-pf-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 4px; }
+.footer-addr-name { color: #fff; }
+.footer-pf-name { color: #e6c88a; }
+.footer-addr, .footer-pf-addr { color: rgba(255,255,255,.65); font-size: 13px; line-height: 1.6; margin-bottom: 18px; }
+.footer-addr a, .footer-pf-addr a { color: rgba(255,255,255,.8); }
+.footer-addr a:hover, .footer-pf-addr a:hover { color: #fff; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px }
 .footer-col a { color: rgba(255, 255, 255, .75); font-size: 14px; transition: color .2s }
 .footer-col a:hover { color: #fff }

@@ -1,4 +1,4 @@
----
+﻿---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -43,5 +43,5 @@ const description =
     </div>
   </section>
 
-  <CtaBand title="Un conseil pour choisir avec soin." text="Nos conseillers vous présentent nos articles funéraires et vous guident sans précipitation." phone="Permanence 24h/24" phoneHref={site.pf.phoneHref} />
+  <CtaBand title="Un conseil pour choisir avec soin." text="Nos conseillers vous présentent nos articles funéraires et vous guident sans précipitation." phone={site.pf.phone} phoneHref={site.pf.phoneHref} />
 </Base>
