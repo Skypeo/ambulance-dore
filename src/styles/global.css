@@ -781,11 +781,74 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   background: rgba(255, 255, 255, .18); border-radius: var(--r-pill);
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
 }
+/* Photo en fond PLEIN de la carte service (texte blanc par-dessus via overlay) */
+.svc.photo { color: #fff; border-color: rgba(255,255,255,.18); min-height: 320px; }
+.svc.photo .svc-media {
+  position: absolute; inset: 0; z-index: -1;
+  background-size: cover; background-position: center;
+  transition: transform .6s ease;
+}
+.svc.photo:hover .svc-media { transform: scale(1.06); }
+.svc.photo .svc-media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,31,77,.35) 0%, rgba(0,31,77,.62) 55%, rgba(0,31,77,.9) 100%);
+}
+.svc.photo h3 { color: #fff; }
+.svc.photo p { color: rgba(255,255,255,.9); }
+.svc.photo p strong { color: #fff; }
+.svc.photo .more { color: #fff; }
+.svc.photo .ico {
+  background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.3); color: #fff;
+  backdrop-filter: blur(4px);
+}
+.svc.photo .ico::before { border-color: rgba(255,255,255,.4); }
+/* En thème funéraire : overlay or (au cas où réutilisé) */
+.theme-pf .svc.photo .svc-media::after { background: linear-gradient(180deg, rgba(60,42,12,.35) 0%, rgba(60,42,12,.62) 55%, rgba(60,42,12,.9) 100%); }
+
+/* ─────────────────────── BANDE IMMERSIVE PLEINE LARGEUR ─────────────────────── */
+.fullshot {
+  position: relative; isolation: isolate;
+  min-height: 78vh; display: flex; align-items: center;
+  background-size: cover; background-position: center;
+  background-attachment: fixed; /* parallax */
+  overflow: hidden;
+}
+.fullshot::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(120deg, rgba(0,31,77,.88) 0%, rgba(0,31,77,.6) 45%, rgba(0,57,140,.4) 100%);
+}
+.fullshot .container { width: 100%; }
+.fullshot .fullshot-inner { max-width: 640px; color: #fff; }
+.fullshot .eyebrow { color: #a8c8ff; }
+.fullshot h2 {
+  font-size: clamp(34px, 5vw, 60px); line-height: 1.05; color: #fff;
+  margin: 14px 0 20px; letter-spacing: -.02em;
+}
+.fullshot h2 em { color: #6fb0ff; font-style: normal; }
+.fullshot p { font-size: clamp(16px, 1.6vw, 20px); line-height: 1.6; color: rgba(255,255,255,.9); margin-bottom: 32px; max-width: 540px; }
+.fullshot .fs-cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.fullshot .fs-call {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; color: #fff;
+}
+.fullshot .fs-call svg { width: 22px; height: 22px; }
+.theme-pf .fullshot::before { background: linear-gradient(120deg, rgba(60,42,12,.88) 0%, rgba(60,42,12,.6) 45%, rgba(138,99,34,.4) 100%); }
+.theme-pf .fullshot h2 em { color: var(--gold); }
+.theme-pf .fullshot .eyebrow { color: #e8d3a8; }
+@media (max-width: 880px) {
+  .fullshot { background-attachment: scroll; min-height: 64vh; } /* fixed buggé sur mobile */
+}
 
 /* ─────────────────────── SPLIT CARDS ─────────────────────── */
 .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px }
 .split-card { position: relative; border-radius: var(--r-lg); padding: 50px 44px; overflow: hidden; isolation: isolate; min-height: 360px; }
 .split-card.dark { background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-night) 100%); color: #fff; }
+/* Photo de fond optionnelle sur carte sombre (texte préservé par overlay dégradé) */
+.split-card .card-photo { position: absolute; inset: 0; z-index: -1; background-size: cover; background-position: center; }
+.split-card .card-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,57,140,.82) 0%, rgba(0,31,77,.92) 100%);
+}
 .split-card.light { background: linear-gradient(180deg, #f1f5fb 0%, #e3ebf8 100%); border: 1px solid var(--line); }
 .split-card.light h3 { color: var(--ink) }
 .split-card.dark h3 { color: #fff }
@@ -850,6 +913,9 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 }
 .agency .info { padding: 40px 36px; display: flex; flex-direction: column; justify-content: center }
 .agency .map-side { position: relative; background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%); overflow: hidden; }
+/* Photo de l'agence derrière le repère (pin) */
+.agency .map-side .agency-photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.agency .map-side .agency-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,57,140,.45) 0%, rgba(0,31,77,.55) 100%); }
 .agency .map-side iframe { width: 100%; height: 100%; border: 0; display: block; min-height: 220px; filter: saturate(1.05); }
 .agency .pin {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
