@@ -5,10 +5,20 @@ const {
   text = 'Une équipe formée, une flotte révisée et un seul interlocuteur pour tous vos déplacements médicaux et personnels.',
   phone = site.phoneMain,
   phoneHref = site.phoneMainHref,
+  ctaLabel = 'Demander un transport',
+  ctaHref = '/contact',
+  motif = 'star',            // 'star' (ambulances) | 'tree' (arbre de vie, pompes funèbres)
 } = Astro.props;
 ---
 <section class="cta-band">
-  <svg class="deco-watermark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+  {motif === 'tree' ? (
+    <svg class="deco-watermark tree" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="40" r="31" />
+      <path d="M50 9 V93 M50 30 Q37 22 28 27 M50 30 Q63 22 72 27 M50 46 Q33 41 23 48 M50 46 Q67 41 77 48 M50 63 Q39 59 31 66 M50 63 Q61 59 69 66 M50 79 Q42 83 36 92 M50 79 Q58 83 64 92" />
+    </svg>
+  ) : (
+    <svg class="deco-watermark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+  )}
   <div class="container">
     <div class="inner">
       <div>
@@ -16,8 +26,8 @@ const {
         <p>{text}</p>
       </div>
       <div class="cta-actions">
-        <a href="/contact" class="btn-primary">
-          Demander un transport
+        <a href={ctaHref} class="btn-primary">
+          {ctaLabel}
           <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
         <a href={phoneHref} class="btn-call">

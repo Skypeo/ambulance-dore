@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// Contenu repris du flyer Jenna « Le retour à domicile ».
+const title = "Le retour à domicile du défunt | Pompes Funèbres Jenna, Blois";
+const description =
+  "Le retour à domicile : une alternative souvent méconnue qui permet de présenter le défunt chez lui, dans un environnement familier et intime. PF Jenna vous accompagne.";
+---
+<Base title={title} description={description} current="/retour-a-domicile" theme="theme-pf">
+  <PageHero
+    eyebrow="Pompes Funèbres Jenna — Blois"
+    title="Le retour à <em>domicile</em>"
+    slogan="Une alternative souvent méconnue."
+    lead="Après un décès, le défunt peut parfois être présenté à son domicile. Nous vous expliquons les possibilités selon chaque situation."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Retour à domicile' }]}
+    ctaLabel="Être accompagné·e"
+    ctaHref="/contact"
+    brandLogo="/images/pf/logo-jenna.webp"
+    brandAlt="Pompes Funèbres Jenna"
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call" style="border-color:rgba(255,255,255,.4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      {site.pf.phone}
+    </a>
+  </PageHero>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <Figure src="/images/pf/retour.webp" alt="Intérieur chaleureux et apaisant : tableau d'un chemin fleuri au coucher du soleil, coussin et bougie" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Une présentation intime</div>
+          <h2>Veiller un proche <em>chez lui</em>.</h2>
+          <p class="lead-p">Après un décès, le défunt peut, dans certaines situations, être présenté à son domicile plutôt qu'en chambre funéraire.</p>
+          <p>C'est une possibilité souvent méconnue des familles. Nous vous expliquons les conditions et les démarches, selon chaque situation, pour que vous puissiez choisir en toute connaissance.</p>
+          <p class="prose-note"><strong>Cette solution permet :</strong></p>
+          <ul class="ticks">
+            <li>Un environnement familier</li>
+            <li>Des moments plus intimes</li>
+            <li>Une diminution de certains frais</li>
+            <li>Un accompagnement personnalisé</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    motif="tree"
+    title="Une question sur le retour à domicile ?"
+    text="Nous prenons le temps de vous expliquer les possibilités, avec écoute et sans précipitation."
+    phone={site.pf.phone}
+    phoneHref={site.pf.phoneHref}
+    ctaLabel="Nous contacter"
+  />
+</Base>

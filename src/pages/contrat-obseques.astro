@@ -1,40 +1,63 @@
-﻿---
+---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Figure from '../components/Figure.astro';
 import { site } from '../data/site.js';
 
-// TODO_CLIENT : contenu provisoire (lorem) — en attente des textes du client.
-const title = "Contrat obsèques — Prévoyance funéraire | Pompes funèbres Doré";
+// Contenu repris du flyer Jenna « Prévoir, c'est protéger ».
+const title = "Contrat obsèques & prévoyance funéraire à Blois | Pompes Funèbres Jenna";
 const description =
-  "Anticipez sereinement vos obsèques avec un contrat de prévoyance funéraire : organisation et financement préparés à l'avance pour préserver vos proches.";
+  "Prévoir, c'est protéger : le contrat obsèques permet d'organiser et de financer vos funérailles à l'avance, en toute sérénité, pour faire respecter vos volontés et soulager vos proches.";
+
+const permet = [
+  'De faire respecter vos volontés',
+  'De soulager vos proches dans un moment difficile',
+  'De maîtriser votre budget',
+  'De bénéficier d\'un contrat adapté à votre situation',
+];
 ---
 <Base title={title} description={description} current="/contrat-obseques" theme="theme-pf">
   <PageHero
-    eyebrow="Pôle funéraire"
-    title="Contrat obsèques : <em>anticiper</em>, pour préserver vos proches."
-    lead="Organisez et financez vos obsèques à l'avance, selon vos volontés, en toute tranquillité d'esprit."
+    eyebrow="Pompes Funèbres Jenna — Blois"
+    title="Contrat obsèques : <em>prévoir, c'est protéger</em>."
+    slogan="Anticiper pour alléger la charge de vos proches."
+    lead="Le contrat obsèques est une solution pour organiser et financer vos funérailles à l'avance, en toute sérénité."
     crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Contrat obsèques' }]}
-  />
+    ctaLabel="Être accompagné·e"
+    ctaHref="/contact"
+    brandLogo="/images/pf/logo-jenna.webp"
+    brandAlt="Pompes Funèbres Jenna"
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call" style="border-color:rgba(255,255,255,.4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      {site.pf.phone}
+    </a>
+  </PageHero>
 
   <section class="section plain">
     <div class="container">
       <div class="prose-grid">
         <div class="prose" data-reveal="left">
-          <h2>Une démarche <em>prévoyante et apaisante</em>.</h2>
-          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Vous définissez à l'avance vos souhaits et le financement, soulageant vos proches de toute charge.</p>
+          <div class="eyebrow">Anticiper, c'est protéger</div>
+          <h2>Organiser et financer ses funérailles <em>à l'avance</em>.</h2>
+          <p class="lead-p">Le contrat obsèques est une solution pour organiser et financer vos funérailles à l'avance, en toute sérénité.</p>
+          <p class="prose-note"><strong>Il vous permet :</strong></p>
           <ul class="ticks">
-            <li>Choix des prestations défini à l'avance</li>
-            <li>Financement anticipé et protégé</li>
-            <li>Volontés consignées et respectées</li>
+            {permet.map((p) => <li>{p}</li>)}
           </ul>
         </div>
-        <Figure label="Visuel à venir" />
+        <Figure src="/images/pf/contrat.webp" alt="Bougie allumée et bouquet de fleurs séchées, ambiance apaisante" />
       </div>
     </div>
   </section>
 
-  <CtaBand title="Préparez l'avenir en toute sérénité." text="Nos conseillers vous présentent les formules de prévoyance adaptées à votre situation." phone={site.pf.phone} phoneHref={site.pf.phoneHref} />
+  <CtaBand
+    motif="tree"
+    title="Préparez l'avenir en toute sérénité."
+    text="Nos conseillers vous présentent les formules de prévoyance adaptées à votre situation, sans engagement."
+    phone={site.pf.phone}
+    phoneHref={site.pf.phoneHref}
+    ctaLabel="Nous contacter"
+  />
 </Base>

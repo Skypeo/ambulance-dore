@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Figure from '../components/Figure.astro';
+import { site } from '../data/site.js';
+
+// Contenu repris du flyer Jenna « Travaux de marbrerie » + retours cliente (artisans locaux).
+const title = "Travaux de marbrerie funéraire à Blois | Pompes Funèbres Jenna";
+const description =
+  "Conception, fabrication artisanale, rénovation et pose de monuments funéraires en granit, pierre naturelle et bronze. Un savoir-faire au service du souvenir, à Blois.";
+---
+<Base title={title} description={description} current="/marbrerie" theme="theme-pf">
+  <PageHero
+    eyebrow="Pompes Funèbres Jenna — Blois"
+    title="Travaux de <em>marbrerie</em>"
+    slogan="Un savoir-faire au service du souvenir."
+    lead="PF Jenna vous accompagne dans la création et la rénovation de monuments funéraires, avec exigence et respect."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Marbrerie' }]}
+    ctaLabel="Être accompagné·e"
+    ctaHref="/contact"
+    brandLogo="/images/pf/logo-jenna.webp"
+    brandAlt="Pompes Funèbres Jenna"
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call" style="border-color:rgba(255,255,255,.4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      {site.pf.phone}
+    </a>
+  </PageHero>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">Monuments funéraires</div>
+          <h2>Un monument à <em>l'image</em> de votre proche.</h2>
+          <p class="lead-p">Le monument est unique, conçu selon vos souhaits et dans le respect de la mémoire de votre proche. Nous mettons notre savoir-faire au service du souvenir, avec soin et expertise.</p>
+          <p><strong>Granit · pierre naturelle · bronze</strong> — un large choix de matériaux pour un hommage durable.</p>
+        </div>
+        <Figure src="/images/pf/marbrerie.webp" alt="Monument funéraire en granit noir avec gravure feuillage doré et bouquet de lys blancs" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Notre savoir-faire</div><h2>De la conception à la <em>pose</em>.</h2></div>
+        <p>Chaque étape réalisée avec exigence, dans le respect des lieux et des normes en vigueur.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/></svg></div><h3>Conception personnalisée</h3><p>Un monument unique, conçu selon vos souhaits et à l'image de votre proche.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l-9 9 3 3 9-9"/><path d="M13 8l3-3 4 4-3 3"/></svg></div><h3>Fabrication artisanale</h3><p>Des matériaux de qualité, travaillés avec soin et expertise.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Rénovation et entretien</h3><p>Nous redonnons éclat et durabilité à vos monuments pour préserver leur beauté dans le temps.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>Pose et installation</h3><p>Une installation réalisée dans le respect des lieux et des normes en vigueur.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Le détail qui fait la différence</div><h2>Nos <em>artisans locaux</em>.</h2></div>
+        <p>Parce que l'art du funéraire, c'est l'art du détail, nous travaillons avec des artisans de la région.</p>
+      </div>
+      <div class="pf-artisans">
+        <div class="pf-artisan"><span class="dot"></span><h3>Graveur</h3><p>Gravure de stèles et plaques, lettrage et motifs personnalisés.</p></div>
+        <div class="pf-artisan"><span class="dot"></span><h3>Sablage</h3><p>Décors et inscriptions réalisés au sable, à la main ou à la machine.</p></div>
+        <div class="pf-artisan"><span class="dot"></span><h3>Fleuriste</h3><p>Compositions, gerbes et couronnes pour un dernier hommage fleuri.</p></div>
+        <div class="pf-artisan"><span class="dot"></span><h3>Housses de cercueil</h3><p>Habillage soigné du cercueil, dans le respect des volontés.</p></div>
+        <div class="pf-artisan"><span class="dot"></span><h3>Nappes de fleurs</h3><p>Réalisation de nappes et décors floraux sur mesure.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    motif="tree"
+    title="Parlons de votre projet de monument."
+    text="Nos conseillers vous reçoivent pour étudier ensemble la création ou la rénovation, en toute sérénité."
+    phone={site.pf.phone}
+    phoneHref={site.pf.phoneHref}
+    ctaLabel="Nous contacter"
+  />
+</Base>

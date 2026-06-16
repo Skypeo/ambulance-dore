@@ -31,12 +31,19 @@ export const site = {
   pf: {
     name: 'Pompes Funèbres Jenna',
     legalName: 'Pompes Funèbres Jenna — Philae Services Funéraires',
-    tagline: 'Entreprise de pompes funèbres à Blois',
+    tagline: 'Agence funéraire de proximité à Blois',
+    slogan: "L'art du funéraire, c'est l'art du détail",
     phone: '02 79 40 02 72',
     phoneHref: 'tel:0279400272',
-    // TODO_CLIENT : e-mail PF non communiqué (placeholder)
-    email: 'contact@pompes-funebres-dore.fr',
-    hours: 'Permanence téléphonique 24h/24, 7j/7',
+    // E-mail PF fourni par la cliente le 2026-06-16 (flyers Jenna)
+    email: 'pfjenna@philaeservicesfuneraires.fr',
+    emailHref: 'mailto:pfjenna@philaeservicesfuneraires.fr',
+    onCall: 'Astreinte décès 24h/24 — 7j/7',
+    hours: [
+      { d: 'Lundi – Vendredi', h: '9h00 – 12h30  /  13h30 – 17h00' },
+      { d: 'Samedi – Dimanche', h: 'Sur rendez-vous' },
+    ],
+    values: ['Écoute', 'Respect', 'Proximité', 'Professionnalisme'],
     address: {
       street: '76 Av. de Vendôme',
       zip: '41000',
@@ -98,7 +105,13 @@ export const nav = [
           { label: 'Pôle pompes funèbres', href: '/pompes-funebres' },
           { label: 'Organisation des obsèques', href: '/organisation-obseques' },
           { label: 'Contrat obsèques', href: '/contrat-obseques' },
-          { label: 'Funérarium', href: '/funerarium' },
+          { label: 'Retour à domicile', href: '/retour-a-domicile' },
+        ],
+      },
+      {
+        title: 'Nos savoir-faire',
+        links: [
+          { label: 'Marbrerie', href: '/marbrerie' },
           { label: 'Articles funéraires', href: '/articles-funeraires' },
         ],
       },

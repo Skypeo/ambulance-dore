@@ -49,7 +49,8 @@ Ambulances : `/`, `/a-propos`, `/transport-ambulance`, `/transport-malade-assis`
 `/taxi-prive`, `/mission-samu`, `/nos-agences`, `/chaussee-saint-victor`, `/oucques`,
 `/contact`, `/mentions-legales`, `/vie-privee`
 Pompes funèbres (NOUVELLES URLs) : `/pompes-funebres`, `/organisation-obseques`,
-`/contrat-obseques`, `/funerarium`, `/articles-funeraires`
+`/contrat-obseques`, `/marbrerie`, `/retour-a-domicile`, `/articles-funeraires`
+(⚠️ `/funerarium` SUPPRIMÉ le 2026-06-16 — la cliente n'en propose pas)
 
 ## Commandes
 ```bash
@@ -61,15 +62,26 @@ npm run preview   # prévisualise dist/
 
 ## Décisions importantes
 - Textes **ambulances** = repris fidèlement de l'ancien site (rien inventé)
-- Textes **pompes funèbres** = **lorem provisoire** (le client n'a pas encore fourni le contenu) — balisé `TODO_CLIENT`
+- Textes **pompes funèbres** = **contenu réel intégré le 2026-06-16** d'après les flyers fournis par la
+  cliente (dossier `retour_Lea/`). Plus de lorem. Charte **Jenna : violet aubergine + or sur ivoire**,
+  thème **arbre de vie**, slogan **« L'art du funéraire, c'est l'art du détail »**, titres en serif
+  **Cormorant Garamond**. Logo Jenna co-marqué dans les heros PF (`/images/pf/logo-jenna.webp`).
+- **Décision SEO (2026-06-16)** : un **seul site** pour les 2 pôles (validé par la cliente), bien que
+  ce soient **2 sociétés distinctes** du même groupe (Holding B.I.A / Tarik Zemali → Ambulances Doré +
+  Pompes Funèbres Jenna). Cloisonner les pages PF (titles/meta 100% funéraire), fiche Google Business
+  distincte pour Jenna.
+- **CMS « la cliente édite texte + photos »** : prévu en DERNIER (CMS git-based type Sveltia/Decap,
+  léger, pas de base de données). Nécessite repo GitHub + déploiement auto Vercel (à valider Timothée).
 - **Photos** : remplacées par un placeholder thématisé `Figure.astro` (« Visuel à venir ») pour éviter tout visuel hors sujet. Les IDs Unsplash devinés tombaient sur des images inappropriées (ex. ballons sur une page funéraire) → écartés.
 - Coordonnées **pompes funèbres** = **Pompes Funèbres Jenna (Philae Services Funéraires)**, 76 Av. de Vendôme 41000 Blois, tél **02 79 40 02 72** (fournies par le client le 2026-06-12, dans `site.pf`). Nom + coordonnées affichés accueil/footer/nos-agences/pompes-funebres/contact. E-mail PF encore inconnu (placeholder).
 - Cartes agences : iframes Google Maps (sans clé API)
 - Formulaire : `action="mailto:"` en fallback — à brancher sur un backend/Formspree au déploiement
 
 ## TODO_CLIENT (à compléter quand le client fournit les infos)
-1. Contenu réel du pôle pompes funèbres (remplacer le lorem)
-2. ~~Coordonnées PF~~ ✅ FAIT (Pompes Funèbres Jenna, cf. ci-dessus). Reste : **e-mail PF** (placeholder dans `site.pf.email`).
-3. Photos réelles (remplacer les `<Figure />` par des `<img>`) — notamment **photos du pôle pompes funèbres** (aucune dispo : pas de visuel funéraire intégré, contrairement aux ambulances)
-4. Brancher le formulaire sur un service d'envoi d'e-mails
-5. Valider raison sociale exacte + gérant (Tarik Zemali) dans les mentions légales
+1. ~~Contenu réel pompes funèbres~~ ✅ FAIT (2026-06-16, d'après flyers `retour_Lea/`).
+2. ~~Coordonnées PF~~ ✅ FAIT. ~~E-mail PF~~ ✅ **pfjenna@philaeservicesfuneraires.fr** (flyers).
+3. ~~Photos PF~~ ✅ FAIT : 6 visuels recadrés depuis les flyers → `public/images/pf/` + logo Jenna.
+4. **Noms + parcours des intervenants** (section « Notre équipe » sur `/pompes-funebres`, placeholder `TODO_CLIENT`).
+5. Articles funéraires : détailler la sélection réelle si la cliente fournit un catalogue.
+6. Brancher le formulaire sur un service d'envoi d'e-mails + **CMS** (cf. décisions).
+7. Valider raison sociale exacte + gérant (Tarik Zemali) dans les mentions légales.

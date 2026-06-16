@@ -1,47 +1,66 @@
-﻿---
+---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Figure from '../components/Figure.astro';
 import { site } from '../data/site.js';
 
-// TODO_CLIENT : contenu provisoire (lorem) — en attente des textes du client.
-const title = "Articles funéraires — Cercueils, urnes, fleurs | Pompes funèbres Doré";
+// Base : flyer Jenna (« vente d'articles funéraires personnalisés »).
+// TODO_CLIENT : détailler la sélection réelle si la cliente fournit un catalogue.
+const title = "Articles funéraires personnalisés à Blois | Pompes Funèbres Jenna";
 const description =
-  "Un large choix d'articles funéraires personnalisables : cercueils, urnes, plaques, fleurs et capitons. Un conseil attentif pour rendre un dernier hommage fidèle.";
+  "Cercueils, urnes, fleurs et plaques : une sélection d'articles funéraires personnalisés pour un dernier hommage fidèle. Conseil attentif et sans précipitation, à Blois.";
 ---
 <Base title={title} description={description} current="/articles-funeraires" theme="theme-pf">
   <PageHero
-    eyebrow="Pôle funéraire"
-    title="Des articles funéraires <em>personnalisables</em>."
-    lead="Cercueils, urnes, plaques, fleurs : un choix soigné pour un hommage fidèle à l'être cher."
+    eyebrow="Pompes Funèbres Jenna — Blois"
+    title="Des articles funéraires <em>personnalisés</em>."
+    slogan="Pour un dernier hommage fidèle."
+    lead="Cercueils, urnes, plaques, fleurs : une sélection soignée pour rendre un hommage fidèle à l'être cher, dans le respect de vos volontés."
     crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Articles funéraires' }]}
-  />
+    ctaLabel="Être accompagné·e"
+    ctaHref="/contact"
+    brandLogo="/images/pf/logo-jenna.webp"
+    brandAlt="Pompes Funèbres Jenna"
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call" style="border-color:rgba(255,255,255,.4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      {site.pf.phone}
+    </a>
+  </PageHero>
 
   <section class="section plain">
     <div class="container">
       <div class="prose-grid">
         <div class="prose" data-reveal="left">
-          <h2>Un hommage <em>à votre image</em>.</h2>
-          <p class="lead-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-          <p>Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nous vous présentons l'ensemble de nos articles et vous conseillons sans précipitation.</p>
+          <div class="eyebrow">Un hommage à votre image</div>
+          <h2>Un choix soigné, <em>sans précipitation</em>.</h2>
+          <p class="lead-p">Nous vous présentons l'ensemble de nos articles et vous conseillons avec attention, en accord avec les volontés du défunt et les souhaits de votre famille.</p>
+          <p>Chaque détail compte : c'est l'esprit même de notre métier. Nous prenons le temps qu'il faut pour vous accompagner dans vos choix.</p>
         </div>
-        <Figure label="Visuel à venir" />
+        <Figure src="/images/pf/obseques.webp" alt="Bouquet de lys et roses blanches avec bougie, hommage fleuri" />
       </div>
     </div>
   </section>
 
   <section class="section warm">
     <div class="container">
-      <div class="section-head"><div><div class="eyebrow">Notre sélection</div><h2>Tout pour un <em>dernier hommage</em>.</h2></div><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p></div>
+      <div class="section-head"><div><div class="eyebrow">Notre sélection</div><h2>Tout pour un <em>dernier hommage</em>.</h2></div><p>Cercueils, urnes, fleurs et plaques personnalisables.</p></div>
       <div class="cards-grid">
-        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h6"/></svg></div><h3>Cercueils</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 21h8M9 3h6l-1 6a3 3 0 0 1-4 0z"/><path d="M7 9a5 5 0 0 0 10 0"/></svg></div><h3>Urnes</h3><p>Sed do eiusmod tempor incididunt ut labore et dolore.</p></div>
-        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM5 14c2 4 5 6 7 6s5-2 7-6"/></svg></div><h3>Fleurs & couronnes</h3><p>Magna aliqua ut enim ad minim veniam quis nostrud.</p></div>
-        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div><h3>Plaques & gravures</h3><p>Exercitation ullamco laboris nisi ut aliquip ex ea.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h6"/></svg></div><h3>Cercueils</h3><p>Différentes essences et finitions, dans le respect de vos volontés et de votre budget.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M9 3h6l-1 6a3 3 0 0 1-4 0z"/><path d="M7 9a5 5 0 0 0 10 0"/></svg></div><h3>Urnes</h3><p>Un large choix de modèles et de matières pour la crémation.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM5 14c2 4 5 6 7 6s5-2 7-6"/></svg></div><h3>Fleurs &amp; couronnes</h3><p>Compositions, gerbes et couronnes réalisées par nos fleuristes partenaires.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div><h3>Plaques &amp; gravures</h3><p>Plaques personnalisées, lettrage et motifs gravés ou sablés par nos artisans.</p></div>
       </div>
     </div>
   </section>
 
-  <CtaBand title="Un conseil pour choisir avec soin." text="Nos conseillers vous présentent nos articles funéraires et vous guident sans précipitation." phone={site.pf.phone} phoneHref={site.pf.phoneHref} />
+  <CtaBand
+    motif="tree"
+    title="Un conseil pour choisir avec soin."
+    text="Nos conseillers vous présentent nos articles funéraires et vous guident sans précipitation."
+    phone={site.pf.phone}
+    phoneHref={site.pf.phoneHref}
+    ctaLabel="Nous contacter"
+  />
 </Base>

@@ -46,14 +46,26 @@
   --maxw: 1320px;
 }
 
-/* Le pôle pompes funèbres remappe l'accent vers l'or */
+/* ── Pôle Pompes Funèbres — charte Jenna : violet aubergine + or sur ivoire ── */
 .theme-pf {
+  /* Accent or */
   --accent: var(--gold);
   --accent-deep: var(--gold-deep);
   --accent-50: var(--gold-50);
   --accent-100: var(--gold-100);
   --accent-200: var(--gold-200);
-  --line: rgba(138, 99, 34, .2);
+  /* Violet aubergine (signature Jenna) */
+  --plum: #3a2150;
+  --plum-deep: #2a1638;
+  --plum-night: #1b0e29;
+  --plum-soft: #6a5a6e;
+  /* Surfaces ivoire chaud + encre prune */
+  --bg: #f3ede2;
+  --bg-warm: #efe6d7;
+  --bg-card: #faf5ec;
+  --ink: #2a1638;
+  --ink-soft: #6a5a6e;
+  --line: rgba(58, 33, 80, .16);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0 }
@@ -517,9 +529,11 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 }
 .theme-pf .page-hero {
   background:
-    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(184,137,61,.32) 0%, transparent 60%),
-    linear-gradient(180deg, #14100a 0%, #2a2113 55%, #463413 100%);
+    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(184,137,61,.30) 0%, transparent 60%),
+    linear-gradient(180deg, #1b0e29 0%, #2e1a40 55%, #432a5b 100%);
 }
+/* Mesh moléculaire bleu → teinté violet sur le pôle funéraire */
+.theme-pf .page-hero .hero-mesh { filter: hue-rotate(58deg) saturate(.8); opacity: .85; }
 .page-hero .hero-mesh svg { width: 100%; height: 100% }
 .page-hero-inner { position: relative; z-index: 2; max-width: 820px; }
 .breadcrumb {
@@ -579,8 +593,8 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   background: no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z' fill='none' stroke='%2300398c' stroke-width='6' stroke-linejoin='round'/></svg>");
 }
 .theme-pf .section.plain::after {
-  opacity: .06;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z' fill='none' stroke='%238a6322' stroke-width='6' stroke-linejoin='round'/></svg>");
+  opacity: .07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='%238a6322' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><circle cx='50' cy='40' r='31'/><path d='M50 9 V93 M50 30 Q37 22 28 27 M50 30 Q63 22 72 27 M50 46 Q33 41 23 48 M50 46 Q67 41 77 48 M50 63 Q39 59 31 66 M50 63 Q61 59 69 66 M50 79 Q42 83 36 92 M50 79 Q58 83 64 92'/></g></svg>");
 }
 
 /* Séparateur ECG animé en haut (sections .warm) */
@@ -979,7 +993,7 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   background: radial-gradient(ellipse at 80% 20%, rgba(12,118,244,.3) 0%, transparent 55%), linear-gradient(135deg, var(--blue-night) 0%, var(--blue-deep) 100%);
   color: #fff;
 }
-.theme-pf .cta-band { background: radial-gradient(ellipse at 80% 20%, rgba(184,137,61,.32) 0%, transparent 55%), linear-gradient(135deg, #14100a 0%, #463413 100%); }
+.theme-pf .cta-band { background: radial-gradient(ellipse at 80% 20%, rgba(184,137,61,.30) 0%, transparent 55%), linear-gradient(135deg, #1b0e29 0%, #432a5b 100%); }
 .cta-band .inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .cta-band h2 { color: #fff; font-size: clamp(28px, 3.4vw, 44px); max-width: 620px; line-height: 1.05; }
 .cta-band p { color: rgba(255,255,255,.8); margin-top: 12px; max-width: 540px; font-size: 16px; }
@@ -1141,4 +1155,177 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important }
   [data-reveal] { opacity: 1; transform: none !important }
   .stat { opacity: 1; transform: none }
+}
+
+/* ============================================================
+   POMPES FUNÈBRES — CHARTE JENNA (violet aubergine + or, arbre de vie)
+   D'après les flyers fournis par la cliente le 2026-06-16.
+   ============================================================ */
+
+/* Logo Jenna dans la navbar (pages funéraires) — lockup carré, un peu plus haut */
+.theme-pf .nav-logo img { height: 48px; }
+/* Logo Jenna dans le footer (pas d'inversion : il est déjà détouré gold/gris) */
+.footer-logo.is-jenna { height: 66px; filter: none; }
+
+/* Logo co-marque Jenna dans le hero — pastille ivoire pour le faire ressortir sur le violet */
+.hero-brand {
+  display: inline-flex; margin-bottom: 18px; border-radius: 16px; padding: 12px 22px;
+  background: linear-gradient(180deg, #faf6ee 0%, #f1e8d8 100%);
+  border: 1px solid rgba(221, 199, 154, .6);
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, .55);
+}
+.hero-brand img { display: block; height: 66px; width: auto; }
+
+/* Slogan élégant sous le titre (serif italique or) */
+.page-hero .hero-slogan {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 29px);
+  color: var(--gold-200); margin-bottom: 16px; line-height: 1.25;
+}
+
+/* Titres du pôle funéraire en serif (élégance Jenna) */
+.theme-pf .page-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600; letter-spacing: 0; line-height: 1.02;
+  font-size: clamp(42px, 5.6vw, 68px);
+}
+.theme-pf .prose h2, .theme-pf .section-head h2, .theme-pf .pf-faiths-text h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600; letter-spacing: 0; line-height: 1.05;
+}
+.theme-pf .prose h2 { font-size: clamp(34px, 3.8vw, 52px); }
+.theme-pf .section-head h2 { font-size: clamp(38px, 4.2vw, 60px); }
+.prose .prose-note { font-size: 16px; color: var(--ink); margin: 4px 0 2px; }
+
+/* Bandeau de valeurs (Écoute · Respect · Proximité · Professionnalisme) */
+.pf-values-band {
+  background: var(--bg-card, #faf5ec);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 42px 0;
+}
+.pf-values { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.pf-values li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.pf-v-ico {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(135deg, #3a2150 0%, #2a1638 100%); color: var(--gold-200);
+  box-shadow: 0 10px 24px -12px rgba(42, 22, 56, .7);
+}
+.pf-v-ico svg { width: 24px; height: 24px; }
+.pf-values strong { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.pf-values li span { font-size: 13px; color: var(--ink-soft); max-width: 210px; line-height: 1.5; }
+
+/* Artisans locaux (marbrerie) */
+.pf-artisans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pf-artisan { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 24px 26px; }
+.pf-artisan .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-deep)); margin-bottom: 13px; }
+.pf-artisan h3 { font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+.pf-artisan p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
+/* Notre équipe (côté humain) */
+.pf-team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.pf-member { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 36px 30px; text-align: center; }
+.pf-avatar {
+  width: 74px; height: 74px; border-radius: 50%; display: inline-grid; place-items: center;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 28px;
+  color: var(--gold-200); background: linear-gradient(135deg, #3a2150 0%, #2a1638 100%); margin-bottom: 16px;
+}
+.pf-member h3 { font-size: 21px; color: var(--ink); margin-bottom: 4px; }
+.pf-role { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--gold-deep); margin-bottom: 12px; }
+.pf-member p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; }
+.pf-member.is-pending { border-style: dashed; opacity: .9; }
+.pf-member.is-pending .pf-avatar { background: var(--bg-warm); color: var(--gold-deep); }
+
+/* Respect de toutes les confessions */
+.pf-faiths { display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; align-items: center; }
+.pf-faiths-text h2 em { font-style: normal; color: var(--accent); }
+.pf-faiths-text p { color: var(--ink-soft); font-size: 16px; line-height: 1.75; margin-top: 14px; }
+.pf-faiths-icons { list-style: none; display: flex; gap: 18px; justify-content: flex-end; flex-wrap: wrap; }
+.pf-faiths-icons li { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-card); border: 1px solid var(--line); color: #3a2150; }
+.pf-faiths-icons svg { width: 32px; height: 32px; }
+
+/* Encart recrutement (vacataires) */
+.pf-recruit {
+  display: flex; align-items: center; gap: 28px;
+  background: linear-gradient(135deg, #2a1638 0%, #3a2150 100%); color: #fff;
+  border-radius: var(--r-lg); padding: 38px 44px;
+}
+.pf-recruit-ico { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .08); color: var(--gold-200); }
+.pf-recruit-ico svg { width: 30px; height: 30px; }
+.pf-recruit-text { flex: 1; }
+.pf-recruit .eyebrow { color: var(--gold-200); }
+.pf-recruit .eyebrow::before { background: var(--gold-200); }
+.pf-recruit h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: clamp(26px, 2.6vw, 36px); color: #fff; margin: 6px 0 10px; line-height: 1.08; }
+.pf-recruit h2 em { font-style: normal; color: var(--gold-200); }
+.pf-recruit p { color: rgba(255, 255, 255, .82); font-size: 15px; line-height: 1.6; max-width: 640px; }
+.pf-recruit .btn-ghost { flex-shrink: 0; white-space: nowrap; background: #fff; border-color: #fff; color: #2a1638; }
+.pf-recruit .btn-ghost:hover { background: var(--gold-50); border-color: var(--gold-50); }
+
+/* Horaires détaillés + e-mail dans la carte agence */
+.agency-mail { display: inline-block; margin-top: 12px; font-size: 14px; color: var(--gold-deep); word-break: break-all; }
+.agency-mail:hover { text-decoration: underline; }
+.hours-table { margin-top: 18px; border-top: 1px dashed var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+.hours-table .hr { display: flex; justify-content: space-between; gap: 16px; font-size: 13.5px; color: var(--ink-soft); }
+.hours-table .hr b { color: var(--ink); font-family: 'Montserrat', sans-serif; font-weight: 600; text-align: right; }
+.hours-table .hr.oncall { margin-top: 4px; justify-content: flex-start; }
+.hours-table .hr.oncall span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--gold-deep); display: inline-flex; align-items: center; gap: 9px; }
+.hours-table .hr.oncall span::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); animation: pulse-dot 2.2s infinite; }
+@keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(184, 137, 61, .55) } 70% { box-shadow: 0 0 0 9px rgba(184, 137, 61, 0) } 100% { box-shadow: 0 0 0 0 rgba(184, 137, 61, 0) } }
+
+/* Astreinte 24/7 mise en avant dans le footer (colonne Pompes Funèbres) */
+.footer-pf-oncall { display: flex; align-items: center; gap: 9px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: #e9d9bc; margin: 12px 0 16px; }
+.footer-pf-oncall .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); flex-shrink: 0; animation: pulse-dot 2.2s infinite; }
+
+/* Filigrane arbre de vie (bande CTA du pôle funéraire) */
+.deco-watermark.tree circle, .deco-watermark.tree path { fill: none; stroke: var(--blue-deep); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.cta-band .deco-watermark.tree circle, .cta-band .deco-watermark.tree path { stroke: #fff; }
+.theme-pf .cta-band .deco-watermark.tree circle, .theme-pf .cta-band .deco-watermark.tree path { stroke: var(--gold); }
+
+/* Bulle de contact flottante (option contact anonyme) */
+.contact-bubble { position: fixed; right: 22px; bottom: 22px; z-index: 9000; }
+.contact-bubble .cb-toggle {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: none;
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #fff;
+  padding: 14px 20px; border-radius: var(--r-pill);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  box-shadow: 0 16px 38px -14px rgba(0, 31, 77, .6); transition: transform .2s ease, box-shadow .2s;
+}
+.theme-pf .contact-bubble .cb-toggle { box-shadow: 0 16px 38px -14px rgba(42, 22, 56, .7); }
+.contact-bubble .cb-toggle:hover { transform: translateY(-2px); }
+.contact-bubble .cb-toggle svg { width: 20px; height: 20px; }
+.contact-bubble .cb-panel {
+  position: absolute; right: 0; bottom: 64px; width: 290px; max-width: calc(100vw - 44px);
+  background: #fff; border-radius: var(--r-md); padding: 22px; opacity: 0; visibility: hidden;
+  transform: translateY(10px) scale(.97); transform-origin: bottom right; transition: .22s ease;
+  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, .45); border: 1px solid var(--line);
+}
+.contact-bubble.open .cb-panel { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.contact-bubble .cb-panel h4 { font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+.contact-bubble .cb-panel p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 14px; }
+.contact-bubble .cb-row { display: flex; flex-direction: column; gap: 9px; }
+.contact-bubble .cb-row a {
+  display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--ink);
+  padding: 11px 14px; border-radius: var(--r-sm); background: var(--bg-card); border: 1px solid var(--line); transition: .18s;
+}
+.contact-bubble .cb-row a:hover { border-color: var(--accent); color: var(--accent-deep); }
+.contact-bubble .cb-row a svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
+.contact-bubble .cb-anon { font-size: 11.5px; color: var(--ink-soft); margin-top: 12px; text-align: center; }
+
+@media (max-width: 1080px) {
+  .pf-values { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
+  .pf-artisans { grid-template-columns: 1fr 1fr; }
+  .pf-faiths { grid-template-columns: 1fr; gap: 30px; }
+  .pf-faiths-icons { justify-content: flex-start; }
+  .pf-recruit { flex-direction: column; align-items: flex-start; gap: 22px; }
+}
+@media (max-width: 680px) {
+  .pf-values { grid-template-columns: 1fr 1fr; }
+  .pf-artisans, .pf-team { grid-template-columns: 1fr; }
+  .theme-pf .nav-logo img { height: 38px; }
+  .hero-brand { padding: 10px 16px; }
+  .hero-brand img { height: 52px; }
+  .footer-logo.is-jenna { height: 58px; }
+  .contact-bubble { right: 14px; bottom: 14px; }
+  .contact-bubble .cb-toggle span { display: none; }
+  .contact-bubble .cb-toggle { padding: 14px; }
 }
