@@ -3,10 +3,17 @@ import { nav } from '../data/site.js';
 import logo from '../assets/logo-440w.webp';
 const { current = '', theme = '' } = Astro.props;
 const isPf = theme === 'theme-pf';
+// Le logo ramène à la home du pôle courant (pas au portail "/").
+const homeHref = isPf ? '/pompes-funebres' : '/ambulances';
+// La page Contact suit le pôle courant (formulaire différent par pôle).
+const contactHref = isPf ? '/contact-pompes-funebres' : '/contact';
+// Réécrit le href d'un item de nav selon le pôle courant (Contact contextuel).
+const navHref = (item) => (item.href === '/contact' ? contactHref : item.href);
 
 // Marque un item actif si l'URL courante correspond à son href ou à un de ses sous-liens
 function isActive(item) {
   if (item.href === '/' ) return current === '/';
+  if (item.href === '/contact') return current === '/contact' || current === '/contact-pompes-funebres';
   if (current === item.href) return true;
   if (item.groups) {
     return item.groups.some((g) => g.links.some((l) => l.href === current));
@@ -18,7 +25,7 @@ function isActive(item) {
 <header class="site">
   <div class="container">
     <div class="nav-pill">
-      <a href="/" class="nav-logo" aria-label={isPf ? 'Pompes Funèbres Jenna — accueil' : 'Ambulances Doré — accueil'}>
+      <a href={homeHref} class="nav-logo" aria-label={isPf ? 'Pompes Funèbres Jenna — accueil' : 'Ambulances Doré — accueil'}>
         {isPf ? (
           <img src="/images/pf/logo-jenna.webp" alt="Pompes Funèbres Jenna" />
         ) : (
@@ -51,7 +58,7 @@ function isActive(item) {
               </div>
             </div>
           ) : (
-            <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
+            <a href={navHref(item)} aria-current={isActive(item) ? 'page' : undefined}>
               {item.label}
             </a>
           )
@@ -66,8 +73,8 @@ function isActive(item) {
         </span>
       </button>
 
-      <a href="/contact" class="nav-cta">
-        Réserver
+      <a href={contactHref} class="nav-cta">
+        {isPf ? 'Nous contacter' : 'Réserver'}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>

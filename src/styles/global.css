@@ -59,12 +59,12 @@
   --plum-deep: #2a1638;
   --plum-night: #1b0e29;
   --plum-soft: #6a5a6e;
-  /* Surfaces ivoire chaud + encre prune */
-  --bg: #f3ede2;
-  --bg-warm: #efe6d7;
-  --bg-card: #faf5ec;
+  /* Surfaces ivoire teinté mauve (violet plus présent dans le fond) + encre prune */
+  --bg: #ece4ea;
+  --bg-warm: #e6dde6;
+  --bg-card: #f6f0f4;
   --ink: #2a1638;
-  --ink-soft: #6a5a6e;
+  --ink-soft: #685869;
   --line: rgba(58, 33, 80, .16);
 }
 
@@ -80,6 +80,13 @@ body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+/* Pôle funéraire : un SEUL dégradé continu pour toute la page (sections transparentes par-dessus)
+   → transitions de couleur parfaitement douces, jamais de ligne nette entre deux sections. */
+.theme-pf body, body.theme-pf {
+  background:
+    linear-gradient(180deg, #f3ece6 0%, #ece4ea 38%, #e7dee7 72%, #e3d9e4 100%)
+    fixed;
 }
 
 /* Texture moléculaire fixe en fond */
@@ -277,11 +284,11 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   font-weight: 700;
   font-size: 13.5px;
   box-shadow: 0 14px 30px -12px rgba(12, 118, 244, .6);
-  transition: transform .25s, box-shadow .25s;
+  transition: filter .2s;
   white-space: nowrap;
   flex-shrink: 0;
 }
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(12, 118, 244, .75) }
+.nav-cta:hover { filter: brightness(1.06) }
 .nav-cta svg { width: 14px; height: 14px }
 
 .nav-burger {
@@ -323,16 +330,14 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   font-weight: 700;
   font-size: 15px;
   box-shadow: 0 24px 50px -16px rgba(168, 200, 255, .6);
-  transition: transform .25s, box-shadow .25s;
+  transition: filter .2s;
 }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -16px rgba(168, 200, 255, .8) }
+.btn-primary:hover { filter: brightness(1.04) }
 .btn-primary .arrow {
   width: 30px; height: 30px; border-radius: 50%;
   background: var(--accent-deep); color: #fff;
   display: inline-flex; align-items: center; justify-content: center;
-  transition: transform .3s;
 }
-.btn-primary:hover .arrow { transform: rotate(-45deg) }
 
 .btn-solid {
   display: inline-flex; align-items: center; gap: 12px;
@@ -342,9 +347,9 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   border-radius: var(--r-pill);
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
   box-shadow: 0 20px 44px -16px rgba(12,118,244,.5);
-  transition: transform .25s, box-shadow .25s;
+  transition: filter .2s;
 }
-.btn-solid:hover { transform: translateY(-3px); }
+.btn-solid:hover { filter: brightness(1.05); }
 .btn-solid svg { width: 16px; height: 16px; }
 
 .btn-call {
@@ -527,10 +532,65 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
     linear-gradient(180deg, #001a44 0%, #00306e 60%, #0c4ea8 100%);
   overflow: hidden; isolation: isolate;
 }
+/* Hero funéraire CLAIR comme le flyer Jenna (ivoire/mauve, texte prune, accents or) */
 .theme-pf .page-hero {
   background:
-    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(184,137,61,.30) 0%, transparent 60%),
-    linear-gradient(180deg, #1b0e29 0%, #2e1a40 55%, #432a5b 100%);
+    radial-gradient(900px 520px at 82% 8%, rgba(58,33,80,.07) 0%, transparent 60%),
+    linear-gradient(180deg, #f4ede6 0%, #efe7ea 55%, #e9e0e8 100%);
+}
+.theme-pf .page-hero .breadcrumb,
+.theme-pf .page-hero .breadcrumb a { color: var(--ink-soft); }
+.theme-pf .page-hero .breadcrumb a:hover,
+.theme-pf .page-hero .breadcrumb [aria-current="page"] { color: var(--ink); }
+.theme-pf .page-hero h1 { color: var(--ink); }
+.theme-pf .page-hero h1 em { color: var(--gold-deep); }
+.theme-pf .page-hero .hero-slogan { color: var(--gold-deep); }
+.theme-pf .page-hero p.lead { color: var(--ink-soft); }
+.theme-pf .page-hero .eyebrow { color: var(--gold-deep); }
+.theme-pf .page-hero .eyebrow::before { background: var(--gold-deep); }
+/* Logo Jenna directement sur l'ivoire (plus de pastille) */
+.theme-pf .hero-brand { background: none; border: none; box-shadow: none; padding: 0; margin-bottom: 22px; }
+/* Bouton secondaire du HERO (fond clair) : contour prune, texte prune.
+   (Dans les bandes CTA sombres, le .btn-call reste ivoire — cf. règle générale plus bas.) */
+.theme-pf .page-hero .btn-call { border-color: rgba(58,33,80,.34); color: var(--ink); }
+.theme-pf .page-hero .btn-call:hover { background: rgba(58,33,80,.06); border-color: rgba(58,33,80,.6); }
+/* Filigrane arbre derrière le texte : violet très discret sur fond clair */
+.theme-pf .page-hero .hero-tree { background: var(--plum); opacity: .05; }
+/* Plus de voile sombre sur la photo (le hero est clair maintenant) */
+.theme-pf .page-hero-figure::after { display: none; }
+
+/* Barre violette en bas du hero (emblématique du flyer Jenna) */
+.theme-pf .page-hero.has-photo { padding-bottom: 0; }
+.hero-infobar {
+  position: relative; margin-top: 60px; overflow: hidden;
+  background: linear-gradient(135deg, #2a1638 0%, #3a2150 58%, #2e1a40 100%);
+}
+.hero-infobar-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: clamp(20px, 4vw, 48px);
+  padding: 24px 0;
+}
+.hib-item { display: inline-flex; align-items: center; gap: 14px; }
+.hib-item svg { width: 30px; height: 30px; color: var(--gold-200); flex-shrink: 0; }
+.hib-item b {
+  display: block; font-family: 'Montserrat', sans-serif; font-weight: 600;
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(243, 237, 230, .68);
+}
+.hib-item em {
+  font-style: normal; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700;
+  font-size: 21px; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-200); line-height: 1.1;
+}
+.hib-div { width: 1px; height: 44px; background: rgba(243, 237, 230, .18); }
+.hib-tree {
+  position: absolute; right: -8px; top: 50%; transform: translateY(-50%);
+  width: 168px; height: 120px; z-index: 0; pointer-events: none;
+  background: var(--gold-200); opacity: .16;
+  -webkit-mask: url("/images/pf/arbre-de-vie.png") no-repeat right center / contain;
+  mask: url("/images/pf/arbre-de-vie.png") no-repeat right center / contain;
+}
+@media (max-width: 880px) {
+  .hero-infobar-inner { flex-wrap: wrap; gap: 16px 28px; padding: 20px 0; }
+  .hib-div { display: none; }
 }
 /* Mesh moléculaire bleu → teinté violet sur le pôle funéraire */
 .theme-pf .page-hero .hero-mesh { filter: hue-rotate(58deg) saturate(.8); opacity: .85; }
@@ -557,6 +617,55 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 .page-hero p.lead { color: rgba(255,255,255,.85); font-size: 18px; max-width: 600px; line-height: 1.65; font-weight: 400; }
 .page-hero .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; align-items: center; }
 
+/* ── Hero « photo en arche » (pôle funéraire) — remplace la constellation ── */
+.page-hero.has-photo { padding: 150px 0 96px; }
+.page-hero-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.08fr 0.92fr;
+  align-items: center; gap: clamp(32px, 5vw, 64px);
+}
+.page-hero.has-photo .page-hero-inner { max-width: 600px; }
+.page-hero-figwrap { position: relative; justify-self: end; width: 100%; max-width: 460px; }
+/* Branche d'eucalyptus drapée sur le bord gauche de la photo (sépare image/fond, esprit flyer) */
+.page-hero .hero-branch {
+  position: absolute; z-index: 3; pointer-events: none;
+  left: -56px; top: -34px; bottom: -34px; width: 150px;
+  background: url("/images/pf/branche.svg") no-repeat left center / contain;
+  filter: drop-shadow(0 6px 14px rgba(27, 14, 41, .35));
+}
+.page-hero-figure {
+  margin: 0; position: relative;
+  width: 100%;
+  border-radius: 50% 50% 22px 22px / 14% 14% 3% 3%;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 110, .55);
+  box-shadow: 0 40px 90px -36px rgba(0,0,0,.7), 0 0 0 7px rgba(243, 237, 226, .05);
+}
+.page-hero-figure::after {                 /* léger voile haut pour fondre dans le hero */
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(27,14,41,.28) 0%, transparent 26%);
+}
+/* Image ENTIÈRE (pas de recadrage) : la figure prend le ratio naturel de la photo */
+.page-hero-figure img { display: block; width: 100%; height: auto; }
+
+/* Filigrane arbre de vie derrière le texte (silhouette tintée via mask) */
+.page-hero .hero-tree {
+  position: absolute; z-index: 1; pointer-events: none;
+  left: clamp(-80px, -3vw, -20px); top: 50%; transform: translateY(-50%);
+  width: 560px; height: 388px; max-width: 48%;
+  background: var(--gold, #c79a4f); opacity: .10;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+@media (max-width: 880px) {
+  .page-hero.has-photo { padding: 124px 0 64px; }
+  .page-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .page-hero-figwrap { justify-self: center; max-width: 340px; margin-top: 8px; }
+  .page-hero .hero-branch { left: -38px; width: 104px; top: -20px; bottom: -20px; }
+  .page-hero .hero-tree { max-width: 70%; opacity: .07; }
+}
+
 /* ─────────────────────── CONTENU PROSE (pages internes) ─────────────────────── */
 .section { padding: 110px 0; position: relative; overflow: hidden; }
 
@@ -569,11 +678,12 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 .section.warm {
   background: radial-gradient(1100px 360px at 50% -6%, rgba(12, 118, 244, .07), transparent 70%), var(--bg-warm);
 }
-.theme-pf .section.plain {
-  background: radial-gradient(1100px 380px at 50% -6%, rgba(184, 137, 61, .12), transparent 70%), var(--bg);
-}
+/* Pôle funéraire : AUCUNE couleur de fond par section (sinon démarcation nette à la jonction).
+   Le fond est un SEUL dégradé continu posé sur le body (cf. « .theme-pf body ») → les sections
+   sont transparentes et la couleur s'écoule naturellement de haut en bas. */
+.theme-pf .section.plain,
 .theme-pf .section.warm {
-  background: radial-gradient(1100px 360px at 50% -6%, rgba(184, 137, 61, .08), transparent 70%), var(--bg-warm);
+  background: transparent;
 }
 
 /* Le contenu passe au-dessus des décors */
@@ -592,9 +702,14 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   pointer-events: none;
   background: no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z' fill='none' stroke='%2300398c' stroke-width='6' stroke-linejoin='round'/></svg>");
 }
+/* Pôle funéraire : vrai arbre de vie Jenna (silhouette tintée en or via mask) */
 .theme-pf .section.plain::after {
-  opacity: .07;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='%238a6322' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><circle cx='50' cy='40' r='31'/><path d='M50 9 V93 M50 30 Q37 22 28 27 M50 30 Q63 22 72 27 M50 46 Q33 41 23 48 M50 46 Q67 41 77 48 M50 63 Q39 59 31 66 M50 63 Q61 59 69 66 M50 79 Q42 83 36 92 M50 79 Q58 83 64 92'/></g></svg>");
+  width: 300px; height: 300px;
+  right: -40px; bottom: -50px;
+  opacity: .1;
+  background: var(--gold-deep);
+  -webkit-mask: url("/images/pf/arbre-de-vie.png") no-repeat center / contain;
+  mask: url("/images/pf/arbre-de-vie.png") no-repeat center / contain;
 }
 
 /* Séparateur ECG animé en haut (sections .warm) */
@@ -611,9 +726,12 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   background: repeat-x left center / 240px 54px url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 54'><path d='M0 27 H80 l7 -17 l5 34 l6 -40 l5 23 l4 0 H240' fill='none' stroke='%230c76f4' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   animation: ecgRoll 5s linear infinite;
 }
+/* Pôle funéraire : pas de battement cardiaque (déplacé) → fin filigrane végétal centré, statique */
 .theme-pf .section.warm::before {
-  opacity: .35;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 54'><path d='M0 27 H80 l7 -17 l5 34 l6 -40 l5 23 l4 0 H240' fill='none' stroke='%23b8893d' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  height: 40px;
+  opacity: .6;
+  background: no-repeat center top / 360px 40px url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 40'><g stroke='%23b8893d' stroke-width='1.3' fill='none' stroke-linecap='round'><line x1='30' y1='20' x2='330' y2='20'/><path d='M140 20 q-6 -10 -16 -12 q4 11 16 12' fill='%23b8893d' fill-opacity='0.28'/><path d='M168 20 q-6 -11 -16 -13 q4 12 16 13' fill='%23b8893d' fill-opacity='0.28'/><path d='M220 20 q6 -10 16 -12 q-4 11 -16 12' fill='%23b8893d' fill-opacity='0.28'/><path d='M192 20 q6 -11 16 -13 q-4 12 -16 13' fill='%23b8893d' fill-opacity='0.28'/><circle cx='180' cy='20' r='2.4' fill='%23b8893d'/></g></svg>");
+  animation: none;
 }
 @keyframes ecgRoll { to { background-position-x: -240px; } }
 .section-head {
@@ -681,7 +799,7 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   border-radius: var(--r-lg); border: 1px solid var(--line);
   transition: transform .35s, box-shadow .35s;
 }
-.theme-pf .info-card { background: linear-gradient(180deg, #f6f0e4 0%, #efe4cf 100%); }
+.theme-pf .info-card { background: linear-gradient(180deg, #f7f1f5 0%, #ece2ec 100%); }
 .info-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
 .info-card .ico {
   width: 58px; height: 58px; border-radius: 16px;
@@ -898,6 +1016,10 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px rgba(12, 118, 244, .1); }
+.field label .opt { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-soft); opacity: .7; }
+/* Carte autonome (pages contact) — même rendu que les cartes d'agences */
+.map-frame { border-radius: var(--r-lg, 20px); overflow: hidden; border: 1px solid var(--line); box-shadow: 0 24px 60px -28px rgba(0,0,0,.4); }
+.map-frame iframe { width: 100%; height: 380px; border: 0; display: block; filter: saturate(1.05); }
 .vehicle-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 8px; }
 .veh-opt {
   padding: 14px 10px; border: 1.5px solid var(--line); border-radius: var(--r-md);
@@ -913,13 +1035,16 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   color: #fff; border-radius: var(--r-pill);
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
   display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  box-shadow: 0 24px 50px -16px rgba(12, 118, 244, .5); transition: transform .25s, box-shadow .25s;
+  box-shadow: 0 24px 50px -16px rgba(12, 118, 244, .5); transition: filter .2s;
 }
-.form-submit:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -16px rgba(12, 118, 244, .7) }
+.form-submit:hover { filter: brightness(1.05) }
 .form-note { text-align: center; font-size: 12.5px; color: var(--ink-soft); margin-top: 16px; }
 
 /* ─────────────────────── AGENCES ─────────────────────── */
 .agencies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px }
+/* Une seule agence → card pleine largeur, plus grande (carte Maps plus haute) */
+.agencies-grid.single { grid-template-columns: 1fr; }
+.agencies-grid.single .agency { min-height: 460px; grid-template-columns: 1fr 1.25fr; }
 .agency {
   position: relative; background: linear-gradient(180deg, #f1f5fb 0%, #e3ebf8 100%);
   border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line);
@@ -1121,8 +1246,15 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
 /* Sur fonds sombres (CTA), on passe le filigrane en blanc */
 .cta-band .deco-watermark { opacity: .09; }
 .cta-band .deco-watermark path { stroke: #fff; }
-.theme-pf .cta-band .deco-watermark path { stroke: var(--gold); }
 @keyframes spin { to { transform: rotate(360deg); } }
+/* Arbre de vie Jenna (bande CTA funéraire) : vraie silhouette en or, statique */
+.deco-watermark.tree {
+  width: 230px; height: 230px; animation: none;
+  background: var(--gold);
+  -webkit-mask: url("/images/pf/arbre-de-vie.png") no-repeat center / contain;
+  mask: url("/images/pf/arbre-de-vie.png") no-repeat center / contain;
+}
+.cta-band .deco-watermark.tree { opacity: .14; }
 
 /* Preloader "beacon" : anneaux qui pulsent autour de l'emblème du logo */
 .preloader {
@@ -1162,8 +1294,84 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
    D'après les flyers fournis par la cliente le 2026-06-16.
    ============================================================ */
 
-/* Logo Jenna dans la navbar (pages funéraires) — lockup carré, un peu plus haut */
-.theme-pf .nav-logo img { height: 48px; }
+/* ── Icônes pôle funéraire : trait or fin dans un anneau doré (style flyer Jenna) ── */
+/* Sur ivoire (cartes, confessions) : anneau or + icône or-bronze */
+.theme-pf .info-card .ico,
+.theme-pf .pf-faiths-icons li {
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold-deep);
+  box-shadow: none;
+}
+.theme-pf .info-card .ico svg, .theme-pf .pf-faiths-icons svg { stroke-width: 1.5; }
+/* Sur le violet aubergine (encart recrutement) : anneau + icône or clair */
+.theme-pf .pf-recruit-ico {
+  background: transparent;
+  border: 1.5px solid var(--gold-200);
+  color: var(--gold-200);
+}
+.theme-pf .pf-recruit-ico svg { stroke-width: 1.5; }
+/* ── Boutons pôle funéraire (style flyer Jenna) ── */
+/* Primaire = pilule dorée dégradée, texte aubergine serif majuscules, SANS flèche */
+.theme-pf .btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #efd595 0%, #d8b06e 36%, #c2944b 68%, #a97f37 100%);
+  background-size: 100% 100%;
+  color: var(--plum-deep, #2a1638);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700; font-size: 19px;
+  text-transform: uppercase; letter-spacing: .14em;
+  padding: 15px 36px;
+  box-shadow: 0 20px 44px -16px rgba(184, 137, 61, .6);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, filter .35s ease;
+}
+.theme-pf .btn-primary .arrow { display: none; }
+/* Reflet diagonal qui balaie la pilule au survol */
+.theme-pf .btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 252, 240, .85) 48%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform .7s cubic-bezier(.4, 0, .2, 1);
+  pointer-events: none;
+}
+.theme-pf .btn-primary:hover {
+  transform: translateY(-3px) scale(1.025);
+  filter: brightness(1.07) saturate(1.08);
+  box-shadow: 0 26px 50px -14px rgba(184, 137, 61, .8), 0 0 0 1px rgba(255, 244, 214, .5) inset, 0 2px 10px rgba(255, 240, 200, .35);
+}
+.theme-pf .btn-primary:hover::before { transform: translateX(120%); }
+.theme-pf .btn-primary:active { transform: translateY(-1px) scale(1.01); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-pf .btn-primary { transition: filter .2s ease; }
+  .theme-pf .btn-primary::before { display: none; }
+  .theme-pf .btn-primary:hover { transform: none; }
+}
+/* Secondaire = contour fin ivoire, texte ivoire serif majuscules */
+.theme-pf .btn-call {
+  border: 1.5px solid rgba(243, 237, 226, .4);
+  color: #f3ede2;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700; font-size: 18px;
+  text-transform: uppercase; letter-spacing: .1em;
+  padding: 14px 30px;
+}
+.theme-pf .btn-call:hover { background: rgba(243, 237, 226, .08); border-color: rgba(243, 237, 226, .7) }
+
+/* Bouton « Réserver » de la navbar en doré sur les pages funéraires (au lieu du bleu ambulances) */
+.theme-pf .nav-cta {
+  background: linear-gradient(135deg, #d8b06e 0%, #b8893d 60%, #a97f37 100%);
+  color: var(--plum-deep);
+  box-shadow: 0 14px 30px -12px rgba(184, 137, 61, .6);
+}
+
+/* Logo Jenna dans la navbar (pages funéraires) — lockup carré, agrandi + ombre pour le détacher de la pastille blanche */
+.theme-pf .nav-logo img {
+  height: 56px;
+  filter: drop-shadow(0 5px 12px rgba(58, 33, 80, .30)) drop-shadow(0 1px 2px rgba(0, 0, 0, .16));
+}
 /* Logo Jenna dans le footer (pas d'inversion : il est déjà détouré gold/gris) */
 .footer-logo.is-jenna { height: 66px; filter: none; }
 
@@ -1207,12 +1415,11 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .pf-values { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 .pf-values li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
 .pf-v-ico {
-  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
-  background: linear-gradient(135deg, #3a2150 0%, #2a1638 100%); color: var(--gold-200);
-  box-shadow: 0 10px 24px -12px rgba(42, 22, 56, .7);
+  height: 46px; display: grid; place-items: center;
+  background: transparent; color: var(--gold); margin-bottom: 6px;
 }
-.pf-v-ico svg { width: 24px; height: 24px; }
-.pf-values strong { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.pf-v-ico svg { width: 40px; height: 40px; stroke-width: 1.5; }
+.pf-values strong { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 19px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); }
 .pf-values li span { font-size: 13px; color: var(--ink-soft); max-width: 210px; line-height: 1.5; }
 
 /* Artisans locaux (marbrerie) */
@@ -1288,10 +1495,10 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #fff;
   padding: 14px 20px; border-radius: var(--r-pill);
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
-  box-shadow: 0 16px 38px -14px rgba(0, 31, 77, .6); transition: transform .2s ease, box-shadow .2s;
+  box-shadow: 0 16px 38px -14px rgba(0, 31, 77, .6); transition: filter .2s;
 }
 .theme-pf .contact-bubble .cb-toggle { box-shadow: 0 16px 38px -14px rgba(42, 22, 56, .7); }
-.contact-bubble .cb-toggle:hover { transform: translateY(-2px); }
+.contact-bubble .cb-toggle:hover { filter: brightness(1.06); }
 .contact-bubble .cb-toggle svg { width: 20px; height: 20px; }
 .contact-bubble .cb-panel {
   position: absolute; right: 0; bottom: 64px; width: 290px; max-width: calc(100vw - 44px);
@@ -1321,7 +1528,7 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 @media (max-width: 680px) {
   .pf-values { grid-template-columns: 1fr 1fr; }
   .pf-artisans, .pf-team { grid-template-columns: 1fr; }
-  .theme-pf .nav-logo img { height: 38px; }
+  .theme-pf .nav-logo img { height: 46px; }
   .hero-brand { padding: 10px 16px; }
   .hero-brand img { height: 52px; }
   .footer-logo.is-jenna { height: 58px; }

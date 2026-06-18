@@ -35,6 +35,7 @@ src/
 │   ├── Footer.astro
 │   ├── HeroMesh.astro      # Fond moléculaire réutilisable
 │   ├── PageHero.astro      # Hero pages internes (fil d'Ariane, eyebrow, titre, lead)
+│   │                       #   props PF : heroImage/heroImageAlt (photo en arche, remplace HeroMesh) + tree (filigrane arbre de vie via mask)
 │   ├── CtaBand.astro       # Bande CTA (props title/text/phone)
 │   ├── ReserveForm.astro   # Formulaire de réservation
 │   └── Figure.astro        # Placeholder visuel "à venir" (avant photos client)
@@ -44,12 +45,14 @@ index.html                  # ANCIENNE maquette one-page (référence, NON build
 ```
 
 ## URLs (SEO — conservées de l'ancien site)
-Ambulances : `/`, `/a-propos`, `/transport-ambulance`, `/transport-malade-assis`,
+**Portail** : `/` = écran de choix 2 pôles (NE contient plus la home ambulances — déplacée).
+Ambulances : `/ambulances` (home, ex-`/`), `/a-propos`, `/transport-ambulance`, `/transport-malade-assis`,
 `/transport-malade-allonge`, `/taxi-conventionne`, `/taxi-vsl`, `/transport-pmr`,
 `/taxi-prive`, `/mission-samu`, `/nos-agences`, `/chaussee-saint-victor`, `/oucques`,
 `/contact`, `/mentions-legales`, `/vie-privee`
 Pompes funèbres (NOUVELLES URLs) : `/pompes-funebres`, `/organisation-obseques`,
-`/contrat-obseques`, `/marbrerie`, `/retour-a-domicile`, `/articles-funeraires`
+`/contrat-obseques`, `/marbrerie`, `/retour-a-domicile`, `/articles-funeraires`,
+`/contact-pompes-funebres` (formulaire funéraire dédié)
 (⚠️ `/funerarium` SUPPRIMÉ le 2026-06-16 — la cliente n'en propose pas)
 
 ## Commandes
@@ -61,6 +64,16 @@ npm run preview   # prévisualise dist/
 ```
 
 ## Décisions importantes
+- **Portail d'accueil (2026-06-18)** : `/` est devenu un **écran de choix à 2 portes** (page autonome
+  `src/pages/index.astro`, sans Header/Footer de pôle) → bleu/ECG `/ambulances` ↔ violet-or/arbre de vie
+  `/pompes-funebres`. La home ambulances a été **déplacée vers `/ambulances`** (même contenu).
+  Nav recâblée : **logo** → home du pôle courant (`homeHref`), onglet **« Accueil » → `/`** (portail),
+  onglet **« Ambulances » → `/ambulances`**. Compromis SEO assumé (le `/` ne porte plus « ambulance Blois »).
+- **Contact dédié par pôle (2026-06-18)** : 2 formulaires distincts. `/contact` (ambulances, `ReserveForm`
+  transport) et **`/contact-pompes-funebres`** (funéraire, **`ContactFormPF.astro`** : objet de demande,
+  contact anonyme, ton sobre, envoi → e-mail Jenna). L'onglet **Contact** + le **CTA navbar** (« Réserver »
+  ↔ « Nous contacter ») + la **bulle flottante** suivent le pôle (`contactHref` dans `Header`/`Base`).
+  Tous les `ctaHref` des heros + `CtaBand` PF re-pointés vers `/contact-pompes-funebres` (plus de fuite).
 - Textes **ambulances** = repris fidèlement de l'ancien site (rien inventé)
 - Textes **pompes funèbres** = **contenu réel intégré le 2026-06-16** d'après les flyers fournis par la
   cliente (dossier `retour_Lea/`). Plus de lorem. Charte **Jenna : violet aubergine + or sur ivoire**,

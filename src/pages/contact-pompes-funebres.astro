@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactFormPF from '../components/ContactFormPF.astro';
+import { site } from '../data/site.js';
+
+const title = 'Contact — Pompes Funèbres Jenna à Blois | Organisation d\'obsèques';
+const description =
+  "Contactez les Pompes Funèbres Jenna à Blois pour l'organisation d'obsèques, un contrat de prévoyance ou la marbrerie. Une équipe à votre écoute, astreinte décès 24h/24, 7j/7.";
+---
+<Base title={title} description={description} current="/contact-pompes-funebres" theme="theme-pf">
+  <PageHero
+    eyebrow="Contact — Pompes Funèbres Jenna"
+    title="Nous sommes à vos côtés, <em>avec écoute et discrétion</em>."
+    slogan="L'art du funéraire, c'est l'art du détail"
+    lead="Pour toute question ou démarche — organisation d'obsèques, prévoyance, marbrerie — nos conseillers vous reçoivent et vous accompagnent sans précipitation."
+    crumbs={[{ label: 'Pompes Funèbres', href: '/pompes-funebres' }, { label: 'Contact' }]}
+    brandLogo="/images/pf/logo-jenna.webp"
+    brandAlt="Pompes Funèbres Jenna"
+    heroImage="/images/pf/humain.webp"
+    heroImageAlt="L'équipe des Pompes Funèbres Jenna à votre écoute"
+    tree={true}
+    ctaLabel="Nous écrire"
+    ctaHref="#contact-form"
+  />
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Nos coordonnées</div><h2>Une agence de proximité <em>à Blois</em>.</h2></div></div>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <h3>Téléphone</h3>
+          <p><a href={site.pf.phoneHref} style="color:var(--gold-deep);font-weight:700;font-size:18px">{site.pf.phone}</a><br />Astreinte décès 24h/24, 7j/7</p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <h3>E-mail</h3>
+          <p><a href={site.pf.emailHref} style="color:var(--gold-deep);font-weight:700">{site.pf.email}</a></p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Adresse</h3>
+          <p>{site.pf.legalName}<br />{site.pf.address.street}<br />{site.pf.address.zip} {site.pf.address.city}</p>
+        </div>
+        <div class="info-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Horaires</h3>
+          <p>{site.pf.hours.map((h) => (<span>{h.d} : {h.h}<br /></span>))}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactFormPF id="contact-form" />
+
+  <section class="section plain">
+    <div class="container">
+      <div class="map-frame" data-reveal>
+        <iframe
+          title="Carte — Pompes Funèbres Jenna, 76 Av. de Vendôme, Blois"
+          src="https://www.google.com/maps?q=76+Avenue+de+Vend%C3%B4me+41000+Blois&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</Base>
+</content>

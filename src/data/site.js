@@ -65,12 +65,13 @@ export const nav = [
   { label: 'Accueil', href: '/' },
   {
     label: 'Ambulances',
-    href: '/transport-ambulance',
+    href: '/ambulances',
     hasSub: true,
     groups: [
       {
         title: 'Transport en ambulance',
         links: [
+          { label: 'Accueil ambulances', href: '/ambulances' },
           { label: 'Transport en ambulance', href: '/transport-ambulance' },
           { label: 'Malades assis', href: '/transport-malade-assis' },
           { label: 'Malades allongés', href: '/transport-malade-allonge' },

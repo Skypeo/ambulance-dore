@@ -1,0 +1,49 @@
+---
+// Formulaire de contact du PÔLE FUNÉRAIRE (Pompes Funèbres Jenna).
+// Distinct du ReserveForm ambulances : ton sobre, pas de date/véhicule/trajet,
+// objet de la demande, contact anonyme possible. Envoi vers l'e-mail Jenna.
+// action mailto en fallback statique ; à brancher sur un backend/Formspree au déploiement.
+import { site } from '../data/site.js';
+const { id = 'contact-form' } = Astro.props;
+---
+<section class="reserve" id={id}>
+  <div class="container">
+    <div class="reserve-inner" data-reveal>
+      <div class="eyebrow" style="justify-content:center">Nous écrire</div>
+      <h2>Une question, une demande&nbsp;? <em>Nous sommes à votre écoute.</em></h2>
+    </div>
+    <p class="sub">Décrivez votre situation : un conseiller funéraire vous recontacte avec discrétion, sans précipitation. Pour toute urgence (décès), une astreinte vous répond 24h/24, 7j/7 au {site.pf.phone}.</p>
+
+    <form class="form-card" action={site.pf.emailHref} method="post" enctype="text/plain" data-reveal>
+      <div class="form-row">
+        <div class="field"><label for="pf-nom">Nom <span class="opt">(facultatif)</span></label><input id="pf-nom" name="nom" type="text" /></div>
+        <div class="field"><label for="pf-tel">Téléphone</label><input id="pf-tel" name="telephone" type="tel" required /></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="pf-email">E-mail <span class="opt">(facultatif)</span></label><input id="pf-email" name="email" type="email" /></div>
+        <div class="field">
+          <label for="pf-objet">Objet de votre demande</label>
+          <select id="pf-objet" name="objet" required>
+            <option value="" disabled selected>Choisissez…</option>
+            <option value="Organisation d'obsèques">Organisation d'obsèques</option>
+            <option value="Contrat de prévoyance">Contrat de prévoyance (obsèques)</option>
+            <option value="Marbrerie">Marbrerie</option>
+            <option value="Retour à domicile">Retour à domicile</option>
+            <option value="Articles funéraires">Articles funéraires</option>
+            <option value="Autre demande">Autre demande</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" style="margin-top:6px">
+        <label for="pf-message">Votre message</label>
+        <textarea id="pf-message" name="message" rows="5" placeholder="Décrivez votre situation ou votre question. Nous vous répondons avec attention."></textarea>
+      </div>
+      <button class="form-submit" type="submit">
+        Envoyer ma demande
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+      </button>
+      <p class="form-note">Vous pouvez nous écrire de façon anonyme (nom et e-mail facultatifs). Pour une prise en charge immédiate, appelez le {site.pf.phone}.</p>
+    </form>
+  </div>
+</section>
+</content>

@@ -10,11 +10,19 @@ const {
   brandLogo = '',   // src d'un logo co-marque (ex: Pompes Funèbres Jenna)
   brandAlt = '',
   slogan = '',      // accroche en italique sous le titre (ex: slogan Jenna)
+  heroImage = '',   // photo en arche (pôle funéraire) — remplace la constellation
+  heroImageAlt = '',
+  tree = false,     // filigrane arbre de vie derrière le texte (pôle funéraire)
 } = Astro.props;
+const photo = Boolean(heroImage);
 ---
-<section class="page-hero">
-  <HeroMesh />
+<section class={`page-hero${photo ? ' has-photo' : ''}`}>
+  {!photo && <HeroMesh />}
+  {tree && (
+    <span class="hero-tree" aria-hidden="true" style={`-webkit-mask-image:url(${'/images/pf/arbre-de-vie.png'});mask-image:url(${'/images/pf/arbre-de-vie.png'})`}></span>
+  )}
   <div class="container">
+    <div class={photo ? 'page-hero-grid' : ''}>
     <div class="page-hero-inner" data-reveal>
       {crumbs.length > 0 && (
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
@@ -50,5 +58,32 @@ const {
         <slot name="cta" />
       </div>
     </div>
+    {photo && (
+      <div class="page-hero-figwrap" data-reveal>
+        <figure class="page-hero-figure">
+          <img src={heroImage} alt={heroImageAlt} loading="eager" decoding="async" />
+        </figure>
+        {tree && <span class="hero-branch" aria-hidden="true"></span>}
+      </div>
+    )}
+    </div>
   </div>
+  {tree && (
+    <div class="hero-infobar">
+      <span class="hib-tree" aria-hidden="true"></span>
+      <div class="container">
+        <div class="hero-infobar-inner">
+          <span class="hib-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><b>Agence de proximité</b><em>À Blois</em></span>
+          </span>
+          <span class="hib-div"></span>
+          <span class="hib-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg>
+            <span><b>Astreinte décès</b><em>24h/24 — 7j/7</em></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  )}
 </section>

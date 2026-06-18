@@ -1,317 +1,389 @@
 ---
-import Base from '../layouts/Base.astro';
-import HeroMesh from '../components/HeroMesh.astro';
-import ReserveForm from '../components/ReserveForm.astro';
+// PORTAIL D'ACCUEIL — page racine "/" qui laisse le visiteur choisir son univers :
+//   • Pôle santé  → /ambulances        (charte bleue, ECG, Star of Life)
+//   • Pôle funéraire → /pompes-funebres (charte violet aubergine / or, arbre de vie)
+// Page volontairement AUTONOME (pas de Base.astro) : ni header ni footer de pôle,
+// pour rester neutre entre les deux marques du groupe.
 import { site } from '../data/site.js';
+import logo from '../assets/logo-440w.webp';
 
-const title = 'Ambulances Doré - Vos transports en ambulance, VSL et taxi conventionné';
+const title = 'Ambulances Doré & Pompes Funèbres Jenna — Blois (Loir-et-Cher)';
 const description =
-  "Les Ambulances Doré, entreprise de transport sanitaire près de Blois : ambulance, VSL, taxi conventionné et transport PMR. Disponibles 24h/24, 7j/7. L'humain au cœur de nos priorités.";
-
-const stars = Array(5).fill(0);
-const avis = [
-  {
-    name: 'Christine',
-    meta: 'Cliente · Novembre 2021',
-    text: "Ayant eu recours ce vendredi 5 novembre 2021 aux services des Taxis DORÉ, je tenais à remercier toute l'équipe. À l'accueil, j'ai eu une personne à l'écoute, réactive et très arrangeante. Grâce à eux, j'étais rassurée et détendue, ce qui est important dans un cadre médical. Merci encore à cette belle équipe !",
-  },
-  {
-    name: 'Cassandre Georget',
-    meta: 'Cliente',
-    text: "Très performants. Ils ont toujours été très gentils et corrects 😊",
-  },
-  {
-    name: 'Sandrine Dantin',
-    meta: 'Cliente',
-    text: "Très compétents et très courtois.",
-  },
-];
+  "Le groupe Doré à Blois : Ambulances Doré (ambulance, VSL, taxi conventionné, transport PMR, 24h/24) et Pompes Funèbres Jenna (organisation d'obsèques, contrat obsèques, marbrerie). Choisissez votre pôle.";
+const canonical = site.domain + '/';
 ---
 
-<Base title={title} description={description} current="/">
-  <!-- HERO SCINDÉ EN 2 PÔLES -->
-  <section class="hero" id="accueil">
-    <HeroMesh />
-    <div class="container">
-      <div class="hero-titlewrap" data-reveal>
-        <div class="hero-tag" style="margin-left:auto;margin-right:auto">
-          <span class="dot"></span>
-          Disponible 24h/24 — 7j/7 dans tout le Loir-et-Cher
-        </div>
-        <h1>L'humain au cœur de <em>nos priorités.</em></h1>
-        <p class="lead">
-          Les Ambulances Doré, c'est avant tout une entreprise de transport qui met ses
-          compétences au service de ses clients.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Ambulances Doré" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#001f4d" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Groupe Doré",
+    "url": site.domain,
+    "subOrganization": [
+      { "@type": "EmergencyService", "name": "Ambulances Doré", "url": site.domain + "/ambulances", "telephone": "+33254781555" },
+      { "@type": "FuneralHome", "name": site.pf.name, "url": site.domain + "/pompes-funebres", "telephone": "+33279400272" }
+    ]
+  })} />
+</head>
 
-      <div class="hero-split">
-        <!-- PÔLE AMBULANCES -->
-        <div class="pole pole-amb" data-reveal="left">
-          <span class="pole-photo" style="background-image:url('/images/ambulance-route.webp')" aria-hidden="true"></span>
-          <span class="pole-art"></span>
-          <span class="pole-eyebrow">Pôle santé</span>
-          <h2>Vos transports en ambulance, VSL et taxi conventionné</h2>
-          <p>
-            Nos taxis et ambulances sont équipés de tout le matériel médical nécessaire pour vous
-            assurer confort et sécurité à bord. Nos équipes sont formées et aptes à intervenir en
-            toutes circonstances.
-          </p>
-          <ul class="pole-list">
-            <li>Ambulance</li><li>VSL</li><li>Taxi conventionné</li><li>Transport PMR</li><li>Mission SAMU</li>
-          </ul>
-          <div class="pole-cta-row">
-            <a href="/contact" class="btn-solid">
-              Réserver un transport sanitaire
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-            <a href={site.phoneMainHref} class="pole-call">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
-              {site.phoneMain}
-            </a>
-          </div>
-        </div>
+<body class="portal-body">
+  <main class="portal">
+    <header class="portal-top">
+      <img class="portal-logo" src={logo.src} width={logo.width} height={logo.height} alt="Ambulances Doré" />
+      <p class="portal-kicker">La Chaussée-Saint-Victor · Oucques · Blois — depuis 2007</p>
+      <h1 class="portal-h1">Bienvenue. <span>Quel accompagnement recherchez-vous ?</span></h1>
+    </header>
 
-        <!-- PÔLE POMPES FUNÈBRES — Pompes Funèbres Jenna (contenu d'après les flyers cliente) -->
-        <div class="pole pole-pf" data-reveal="right">
-          <span class="pole-art"></span>
-          <span class="pole-eyebrow">Pôle funéraire — {site.pf.name}</span>
-          <h2>Pompes funèbres &amp; accompagnement des familles</h2>
-          <p>
-            <strong style="color:#fff">{site.pf.name}</strong> ({site.pf.legalName.split('— ')[1]}) vous accompagne à Blois :
-            organisation d'obsèques personnalisées, contrat de prévoyance, marbrerie et articles
-            funéraires. <em style="font-style:italic;color:#fff">L'art du funéraire, c'est l'art du détail.</em>
-          </p>
-          <ul class="pole-list">
-            <li>Organisation d'obsèques</li><li>Contrat obsèques</li><li>Marbrerie</li><li>Retour à domicile</li>
-          </ul>
-          <div class="pole-cta-row">
-            <a href="/pompes-funebres" class="btn-solid">
-              Découvrir le pôle funéraire
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-            <a href={site.pf.phoneHref} class="pole-call">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
-              {site.pf.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-ecg" aria-hidden="true">
-      <svg viewBox="0 0 1600 60" preserveAspectRatio="none">
-        <path d="M0,30 L200,30 L210,30 L218,10 L226,50 L234,5 L242,55 L250,30 L450,30 L460,30 L468,12 L476,48 L484,8 L492,52 L500,30 L750,30 L760,30 L768,15 L776,45 L784,5 L792,55 L800,30 L1050,30 L1060,30 L1068,12 L1076,48 L1084,8 L1092,52 L1100,30 L1350,30 L1360,30 L1368,15 L1376,45 L1384,5 L1392,55 L1400,30 L1600,30" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- POINTS FORTS (repris de l'ancien site) -->
-  <section class="values-band">
-    <div class="container">
-      <div class="row">
-        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M8 12l3 3 6-6"/></svg> Démarche RSE</span>
-        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> 24h/24 - 7j/7</span>
-        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg> Ponctualité</span>
-        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg> Humanité</span>
-        <span class="v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Disponibilité et écoute</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- RÉSERVATION (présente sur l'ancien accueil) -->
-  <ReserveForm />
-
-  <!-- SERVICES -->
-  <section class="section plain" id="services">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Nos prestations</div>
-          <h2>Déplacez-vous en toute sécurité aux côtés d'une <em>équipe bienveillante</em>.</h2>
-        </div>
-        <p>Vous recherchez une entreprise de taxi et d'ambulance près de Blois ? Avec près de 15 ans d'expérience, Ambulances Doré est la société de taxi professionnelle, formée et habilitée qu'il vous faut. Nous prenons en charge tous les patients.</p>
-      </div>
-
-      <div class="services-grid">
-        <article class="svc feat photo" style="grid-column:span 7">
-          <span class="svc-media" style="background-image:url('/images/ambulance-patient.webp')" aria-hidden="true"></span>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h2m14 0h2M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" /><path d="M10 12V8h4v4" /><circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" /><path d="M12 6v-2M10 5h4" /></svg></div>
-          <h3>Ambulance</h3>
-          <p><strong style="color:#fff">Transport médical allongé ou semi-assis.</strong><br />Notre équipe est compétente pour accompagner tous nos clients dans les meilleures conditions.</p>
-          <a href="/transport-ambulance" class="more">Découvrir le service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-        </article>
-
-        <article class="svc photo" style="grid-column:span 5">
-          <span class="svc-media" style="background-image:url('/images/vsl.webp')" aria-hidden="true"></span>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17h2m12 0h2M6 17v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /><path d="M11 8h2M12 7v2" /></svg></div>
-          <h3>Véhicule sanitaire léger (VSL)</h3>
-          <p><strong>Transport sanitaire assis.</strong><br />Prenez place à bord de notre véhicule sanitaire léger pour votre transport médicalisé, avec l'accompagnement de professionnels de la santé.</p>
-          <a href="/taxi-vsl" class="more">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-        </article>
-
-        <article class="svc photo" style="grid-column:span 5">
-          <span class="svc-media" style="background-image:url('/images/pmr.webp')" aria-hidden="true"></span>
-          <span class="hex-bg"></span>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="6" r="3" /><path d="M8 10v6M5 22l3-6 3 6M15 8h3l-2 5h3l-4 9" /></svg></div>
-          <h3>Transport PMR</h3>
-          <p><strong>Transport de personnes à mobilité réduite.</strong><br />Nous nous engageons à rendre nos transports plus inclusifs. Nous assurons le transport PMR pour favoriser votre autonomie.</p>
-          <a href="/transport-pmr" class="more">Détails <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-        </article>
-
-        <article class="svc photo" style="grid-column:span 7">
-          <span class="svc-media" style="background-image:url('/images/taxi-conventionne.webp')" aria-hidden="true"></span>
-          <span class="hex-bg"></span>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 17h14M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5" /><circle cx="8" cy="17" r="2" /><circle cx="16" cy="17" r="2" /><rect x="10" y="5" width="4" height="3" rx=".5" /></svg></div>
-          <h3>Taxi conventionné</h3>
-          <p><strong>Transport en position assise.</strong><br />Transport vers vos rendez-vous médicaux : faites appel à nos taxis et ambulances !</p>
-          <a href="/taxi-conventionne" class="more">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- BANDE IMMERSIVE PLEINE LARGEUR -->
-  <section class="fullshot" style="background-image:url('/images/ambulance-route.webp')">
-    <div class="container">
-      <div class="fullshot-inner" data-reveal="left">
-        <div class="eyebrow">Disponibles 24h/24 — 7j/7</div>
-        <h2>Une équipe à vos côtés, <em>à chaque trajet.</em></h2>
-        <p>
-          Ambulance, VSL, taxi conventionné ou transport PMR : nos véhicules sillonnent le
-          Loir-et-Cher pour vous conduire en toute sécurité vers vos rendez-vous de soins.
-        </p>
-        <div class="fs-cta">
-          <a href="/contact" class="btn-solid">
-            Réserver un transport
+    <div class="portal-doors">
+      <!-- PORTE AMBULANCES -->
+      <a class="door door-amb" href="/ambulances">
+        <span class="door-photo" style="background-image:url('/images/ambulance-route.webp')" aria-hidden="true"></span>
+        <span class="door-veil" aria-hidden="true"></span>
+        <span class="door-ecg" aria-hidden="true">
+          <svg viewBox="0 0 600 40" preserveAspectRatio="none"><path d="M0,20 L210,20 L218,6 L226,34 L234,3 L242,37 L250,20 L420,20 L428,8 L436,32 L444,5 L452,35 L460,20 L600,20" /></svg>
+        </span>
+        <span class="door-inner">
+          <span class="door-ico" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+          </span>
+          <span class="door-eyebrow">Pôle santé</span>
+          <span class="door-title">Ambulances Doré</span>
+          <span class="door-desc">Ambulance, VSL, taxi conventionné, transport PMR &amp; mission SAMU. Disponibles 24h/24, 7j/7 dans le Loir-et-Cher.</span>
+          <span class="door-cta">
+            Entrer
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </a>
-          <a href={site.phoneMainHref} class="fs-call">
+          </span>
+          <span class="door-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
             {site.phoneMain}
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+          </span>
+        </span>
+      </a>
 
-  <!-- SERVICE AGRÉÉ + NOTRE ATOUT (repris de l'ancien site) -->
-  <section class="section warm">
-    <div class="container">
-      <div class="split-grid">
-        <div class="split-card dark" data-reveal="left">
-          <span class="card-photo" style="background-image:url('/images/soin-patient.webp')" aria-hidden="true"></span>
-          <div class="eyebrow" style="color:#a8c8ff">Tiers payant</div>
-          <h3>Service de transport sanitaire agréé et conventionné.</h3>
-          <p>Vous avez un rendez-vous médical, mais vous ne pouvez pas utiliser votre voiture ?</p>
-          <p>En faisant appel à un taxi conventionné ou un VSL pour votre transport médical, vos frais de transport peuvent être couverts par l'assurance maladie. Ce remboursement s'effectue sur présentation de l'ordonnance de votre médecin.</p>
-        </div>
-        <div class="split-card light" data-reveal="right">
-          <div class="eyebrow">Notre atout</div>
-          <h3>Placer l'humain au centre de nos préoccupations.</h3>
-          <p>Nous vous garantissons respect, ponctualité et disponibilité pour vous servir. Nous considérons notre profession comme un service médical avant tout.</p>
-          <p>Les Ambulances Doré, c'est une équipe de personnes soucieuses de mieux vous connaître pour répondre à vos attentes. Nous vous accompagnons tout au long de votre parcours de soins et facilitons votre transport.</p>
-        </div>
-      </div>
+      <!-- PORTE POMPES FUNÈBRES -->
+      <a class="door door-pf" href="/pompes-funebres">
+        <span class="door-tree" aria-hidden="true"></span>
+        <span class="door-inner">
+          <span class="door-ico door-ico-tree" aria-hidden="true"></span>
+          <span class="door-eyebrow">Pôle funéraire</span>
+          <span class="door-title">Pompes Funèbres Jenna</span>
+          <span class="door-slogan">L'art du funéraire, c'est l'art du détail</span>
+          <span class="door-desc">Organisation d'obsèques, contrat de prévoyance, marbrerie &amp; articles funéraires. Une agence de proximité à Blois.</span>
+          <span class="door-cta">
+            Entrer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </span>
+          <span class="door-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+            {site.pf.phone}
+          </span>
+        </span>
+      </a>
     </div>
-  </section>
 
-  <!-- FAQ (présente sur l'ancien accueil) -->
-  <section class="section plain">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Questions fréquentes</div>
-          <h2>Vos questions sur la prise en charge en <em>ambulance</em>.</h2>
-        </div>
-      </div>
-      <div class="faq">
-        <details open>
-          <summary>Qui a le droit au transport en ambulance ?</summary>
-          <p>Si votre état de santé l'exige, l'assurance maladie peut prendre en charge tout ou partie des frais liés au transport assis professionnalisé en VSL ou en ambulance. Ce bon de transport CPAM peut être prescrit par le corps médical ou faire l'objet d'un accord préalable.</p>
-        </details>
-        <details>
-          <summary>Qui prend en charge les frais d'ambulance ?</summary>
-          <p>Les frais de transport sont couverts par l'assurance maladie, sur ordonnance, dans les situations suivantes : entrées et sorties de l'hôpital ; transport de patients atteints d'une affection de longue durée (ALD) ; transport longue distance (plus de 150 km) ; transports liés aux examens en rapport avec les accidents du travail et maladies professionnelles.</p>
-        </details>
-        <details>
-          <summary>Comment faire pour avoir un bon de transport VSL ?</summary>
-          <p>Pour obtenir un bon de transport en VSL, vous devez consulter un médecin. Votre médecin vous examine et vous prescrit une ordonnance adaptée à votre état de santé. Par conséquent, le mode de transport, par exemple un VSL, dont vous bénéficiez est mentionné dans l'ordonnance — si votre cas le permet.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+    <footer class="portal-foot">
+      <span>© 2026 Groupe Doré — Ambulances Doré &amp; Pompes Funèbres Jenna</span>
+      <span class="portal-foot-links">
+        <a href="/contact">Contact</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/vie-privee">Vie privée</a>
+      </span>
+    </footer>
+  </main>
+</body>
+</html>
 
-  <!-- AVIS CLIENTS (repris de la maquette validée) -->
-  <section class="section warm">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Ils nous font confiance</div>
-          <h2>Nos clients nous font confiance<br />et le <em>disent !</em></h2>
-        </div>
-        <p>Les retours authentiques de personnes que nous avons accompagnées dans leurs parcours de soins.</p>
-      </div>
-      <div class="avis-grid">
-        {avis.map((a) => (
-          <article class="avis-card" data-reveal>
-            <div class="q">”</div>
-            <div class="stars">
-              {stars.map(() => (
-                <svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></svg>
-              ))}
-            </div>
-            <p>{a.text}</p>
-            <div class="avis-foot">
-              <div class="av">{a.name.charAt(0)}</div>
-              <div><strong>{a.name}</strong><span>{a.meta}</span></div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+<style>
+  :root {
+    --amb-1: #0c76f4;
+    --amb-2: #00398c;
+    --amb-3: #001f4d;
+    --pf-1: #3a2150;
+    --pf-2: #2a1638;
+    --pf-3: #1b0e29;
+    --gold: #b8893d;
+    --gold-soft: #e6c477;
+    --ivory: #f3ede2;
+  }
 
-  <!-- AGENCES -->
-  <section class="section warm" id="agences">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Nos agences</div>
-          <h2>Trois agences<br />au service du <em>Loir-et-Cher</em>.</h2>
-        </div>
-        <p>Deux agences d'ambulances (La Chaussée-Saint-Victor et Oucques) et notre pôle funéraire <strong>{site.pf.name}</strong> à Blois. Disponibles 24h/24, 7j/7.</p>
-      </div>
-      <div class="agencies-grid">
-        <article class="agency">
-          <div class="info">
-            <h3>Chaussée-Saint-Victor / Les Montils</h3>
-            <p class="addr">{site.addressMain.street}<br />{site.addressMain.zip} {site.addressMain.city}</p>
-            <a href={site.phoneMainHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneMain}</a>
-            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
-          </div>
-          <div class="map-side"><span class="agency-photo" style="background-image:url('/images/chaussee.webp')" aria-hidden="true"></span><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
-        </article>
-        <article class="agency">
-          <div class="info">
-            <h3>Oucques</h3>
-            <p class="addr">{site.addressOucques.street}<br />{site.addressOucques.zip} {site.addressOucques.city}</p>
-            <a href={site.phoneOucquesHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.phoneOucques}</a>
-            <div class="hours"><strong>Lun – Dim :</strong> ouvert 24h/24</div>
-          </div>
-          <div class="map-side"><span class="agency-photo" style="background-image:url('/images/oucques.webp')" aria-hidden="true"></span><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
-        </article>
-        <article class="agency agency-pf">
-          <div class="info">
-            <span class="agency-tag">Pôle funéraire</span>
-            <h3>{site.pf.name}</h3>
-            <p class="addr">{site.pf.legalName}<br />{site.pf.address.street}<br />{site.pf.address.zip} {site.pf.address.city}</p>
-            <a href={site.pf.phoneHref} class="tel-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>{site.pf.phone}</a>
-            <div class="hours"><strong>Permanence :</strong> 24h/24, 7j/7</div>
-          </div>
-          <div class="map-side"><div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></div></div>
-        </article>
-      </div>
-    </div>
-  </section>
-</Base>
+  * { box-sizing: border-box; }
+
+  .portal-body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    color: #fff;
+    background: #0a1530;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .portal {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- En-tête ---- */
+  .portal-top {
+    text-align: center;
+    padding: clamp(22px, 4vh, 46px) 20px clamp(14px, 2.4vh, 26px);
+    position: relative;
+    z-index: 3;
+  }
+  .portal-logo {
+    height: clamp(46px, 7vh, 70px);
+    width: auto;
+    filter: drop-shadow(0 6px 20px rgba(0,0,0,.4));
+  }
+  .portal-kicker {
+    margin: 14px 0 0;
+    font-size: clamp(10px, 1.4vw, 12px);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.62);
+    font-weight: 600;
+  }
+  .portal-h1 {
+    margin: 10px auto 0;
+    max-width: 640px;
+    font-size: clamp(20px, 3.2vw, 30px);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .portal-h1 span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold-soft);
+    font-size: clamp(20px, 3.4vw, 32px);
+    margin-top: 2px;
+  }
+
+  /* ---- Les 2 portes ---- */
+  .portal-doors {
+    flex: 1;
+    display: flex;
+    gap: 0;
+    min-height: 0;
+  }
+  .door {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(28px, 5vw, 64px);
+    transition: flex .55s cubic-bezier(.4,0,.2,1);
+    isolation: isolate;
+  }
+  .door-amb { background: linear-gradient(160deg, var(--amb-1), var(--amb-2) 55%, var(--amb-3)); }
+  .door-pf  { background: linear-gradient(160deg, var(--pf-1), var(--pf-2) 55%, var(--pf-3)); }
+
+  /* desktop : la porte survolée s'agrandit doucement */
+  @media (hover:hover) and (min-width: 861px) {
+    .portal-doors:hover .door { flex: .82; }
+    .portal-doors .door:hover { flex: 1.36; }
+  }
+
+  /* photo de fond (ambulances) */
+  .door-photo {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: .26;
+    transform: scale(1.06);
+    transition: opacity .55s ease, transform 6s ease;
+    z-index: -2;
+  }
+  .door-amb:hover .door-photo { opacity: .4; transform: scale(1.12); }
+  .door-veil {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(160deg, rgba(12,118,244,.55), rgba(0,31,77,.82));
+  }
+
+  /* ligne ECG bas de la porte santé */
+  .door-ecg {
+    position: absolute; left: 0; right: 0; bottom: 8%;
+    height: 40px; opacity: .35; z-index: 0;
+    color: var(--amb-1);
+  }
+  .door-ecg svg { width: 100%; height: 100%; }
+  .door-ecg path { fill: none; stroke: #8fc1ff; stroke-width: 2; }
+
+  /* arbre de vie en filigrane (funéraire) */
+  .door-tree {
+    position: absolute; inset: 0; z-index: 0;
+    background: var(--gold);
+    opacity: .12;
+    -webkit-mask: url('/images/pf/arbre-de-vie.png') no-repeat center / 78% auto;
+    mask: url('/images/pf/arbre-de-vie.png') no-repeat center / 78% auto;
+    transition: opacity .55s ease;
+  }
+  .door-pf:hover .door-tree { opacity: .18; }
+
+  .door-inner {
+    position: relative; z-index: 2;
+    max-width: 440px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(0);
+    transition: transform .5s ease;
+  }
+  .door:hover .door-inner { transform: translateY(-4px); }
+
+  .door-ico {
+    width: clamp(46px, 6vw, 62px);
+    height: clamp(46px, 6vw, 62px);
+    margin-bottom: 20px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.4);
+    padding: 13px;
+  }
+  .door-amb .door-ico svg { width: 100%; height: 100%; fill: #fff; }
+  .door-pf .door-ico-tree {
+    border-color: rgba(230,196,119,.55);
+    background: var(--gold-soft);
+    -webkit-mask: url('/images/pf/arbre-de-vie.png') no-repeat center / 70% auto;
+    mask: url('/images/pf/arbre-de-vie.png') no-repeat center / 70% auto;
+    padding: 0;
+  }
+  /* la pastille de l'arbre est dessinée directement par le mask sur fond doré */
+  .door-pf .door-ico-tree { background: var(--gold-soft); border: 1.5px solid rgba(230,196,119,.45); }
+
+  .door-eyebrow {
+    font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255,255,255,.7);
+  }
+  .door-pf .door-eyebrow { color: var(--gold-soft); }
+
+  .door-title {
+    margin-top: 10px;
+    font-size: clamp(26px, 3.6vw, 40px);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .door-pf .door-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    letter-spacing: .01em;
+  }
+  .door-slogan {
+    margin-top: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--gold-soft);
+  }
+  .door-desc {
+    margin-top: 14px;
+    font-size: clamp(13px, 1.5vw, 15px);
+    line-height: 1.6;
+    color: rgba(255,255,255,.82);
+    max-width: 360px;
+  }
+
+  .door-cta {
+    margin-top: 26px;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .02em;
+    background: #fff;
+    color: var(--amb-2);
+    box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    transition: gap .3s ease, transform .3s ease;
+  }
+  .door-cta svg { width: 16px; height: 16px; }
+  .door-pf .door-cta {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color: var(--pf-3);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 15px;
+  }
+  .door:hover .door-cta { gap: 16px; }
+
+  .door-phone {
+    margin-top: 18px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: rgba(255,255,255,.78);
+  }
+  .door-phone svg { width: 15px; height: 15px; }
+
+  /* séparateur lumineux entre les portes (desktop) */
+  .portal-doors::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+  }
+  .door-pf { box-shadow: inset 1px 0 0 rgba(255,255,255,.08); }
+
+  /* ---- Pied ---- */
+  .portal-foot {
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 22px;
+    padding: 16px 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    background: #0a1530;
+    text-align: center;
+  }
+  .portal-foot-links { display: inline-flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .portal-foot a { color: rgba(255,255,255,.65); text-decoration: none; }
+  .portal-foot a:hover { color: #fff; text-decoration: underline; }
+
+  /* ---- Mobile : empilé ---- */
+  @media (max-width: 860px) {
+    .portal-doors { flex-direction: column; }
+    .door { padding: 38px 24px; min-height: 46vh; }
+    .door-desc { display: none; }
+    .door-ecg { bottom: 4%; }
+    .door-inner { transform: none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .door, .door-inner, .door-cta, .door-photo, .door-tree { transition: none; }
+  }
+</style>
+</content>
