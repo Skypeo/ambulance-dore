@@ -84,7 +84,11 @@ const bubbleContactHref = isPf ? '/contact-pompes-funebres' : '/contact';
   <div class="preloader" aria-hidden="true">
     <div class="beacon">
       <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
-      <svg class="beacon-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+      {isPf ? (
+        <img class="beacon-mark is-jenna" src="/images/pf/logo-jenna.webp" alt="" />
+      ) : (
+        <svg class="beacon-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
+      )}
     </div>
     <span class="preloader-label">Chargement…</span>
   </div>

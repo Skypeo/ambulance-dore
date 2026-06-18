@@ -1278,6 +1278,8 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .preloader-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--blue-deep); opacity: .55; }
 .theme-pf .beacon .ring { border-color: var(--gold); }
 .theme-pf .beacon-mark path, .theme-pf .preloader-label { stroke: var(--gold-deep); color: var(--gold-deep); }
+/* Loader funéraire : vrai logo Jenna (au lieu de l'emblème Ambulances Doré) */
+.beacon-mark.is-jenna { width: auto; height: 84px; }
 
 @media (prefers-reduced-motion: reduce) {
   .deco-watermark, .beacon .ring, .beacon-mark { animation: none; }
