@@ -570,6 +570,7 @@ body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transfo
 .theme-pf .page-hero .eyebrow::before { background: var(--gold-deep); }
 /* Logo Jenna directement sur l'ivoire (plus de pastille) */
 .theme-pf .hero-brand { background: none; border: none; box-shadow: none; padding: 0; margin-bottom: 22px; }
+.theme-pf .hero-brand img { border-radius: 14px; box-shadow: 0 8px 22px -6px rgba(58, 33, 80, .4); }
 /* Bouton secondaire du HERO (fond clair) : contour prune, texte prune.
    (Dans les bandes CTA sombres, le .btn-call reste ivoire — cf. règle générale plus bas.) */
 .theme-pf .page-hero .btn-call { border-color: rgba(58,33,80,.34); color: var(--ink); }
@@ -1093,8 +1094,8 @@ body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transfo
 .agency .addr { color: var(--ink-soft); font-size: 14px; margin-bottom: 20px; line-height: 1.6 }
 .agency a.tel-big {
   display: inline-flex; align-items: center; gap: 12px;
-  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 21px; color: var(--blue-deep);
-  padding: 14px 22px; border-radius: var(--r-pill); background: var(--blue-50); align-self: flex-start; transition: background .25s;
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(16px, 4.4vw, 21px); white-space: nowrap; color: var(--blue-deep);
+  padding: 14px clamp(16px, 4vw, 22px); border-radius: var(--r-pill); background: var(--blue-50); align-self: flex-start; transition: background .25s; max-width: 100%;
 }
 .agency a.tel-big:hover { background: var(--blue-100) }
 .agency a.tel-big svg { width: 20px; height: 20px }
@@ -1244,7 +1245,7 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
     padding: 22px 22px 16px; border-bottom: 1px solid rgba(255, 255, 255, .12);
   }
   .drawer-logo img { height: 40px; width: auto; display: block; filter: brightness(0) invert(1); }
-  .nav-drawer.is-pf .drawer-logo img { height: 52px; filter: none; }
+  .nav-drawer.is-pf .drawer-logo img { height: 48px; filter: none; border-radius: 11px; box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .5); }
   .drawer-close {
     width: 42px; height: 42px; flex-shrink: 0; border: none; cursor: pointer;
     border-radius: 50%; background: rgba(255, 255, 255, .12); color: #fff;
@@ -1308,8 +1309,9 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
   .section-head { flex-direction: column; align-items: flex-start }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .svc-1, .svc-2, .svc-3, .svc-4, .svc-5, .svc-6 { grid-column: span 1 }
-  .agency { grid-template-columns: 1fr }
-  .agency .map-side { min-height: 220px }
+  .agency, .agencies-grid.single .agency { grid-template-columns: 1fr }
+  .agency .map-side { min-height: 240px; order: 2 }
+  .agency .info { order: 1 }
 }
 
 @media (max-width: 680px) {
@@ -1382,7 +1384,7 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .theme-pf .beacon .ring { border-color: var(--gold); }
 .theme-pf .beacon-mark path, .theme-pf .preloader-label { stroke: var(--gold-deep); color: var(--gold-deep); }
 /* Loader funéraire : vrai logo Jenna (au lieu de l'emblème Ambulances Doré) */
-.beacon-mark.is-jenna { width: auto; height: 84px; }
+.beacon-mark.is-jenna { width: auto; height: 70px; border-radius: 16px; box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .5); }
 
 @media (prefers-reduced-motion: reduce) {
   .deco-watermark, .beacon .ring, .beacon-mark { animation: none; }
@@ -1473,13 +1475,13 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
   box-shadow: 0 14px 30px -12px rgba(184, 137, 61, .6);
 }
 
-/* Logo Jenna dans la navbar (pages funéraires) — lockup carré, agrandi + ombre pour le détacher de la pastille blanche */
+/* Logo Philae (pages funéraires) — tuile carrée présentée en badge arrondi + ombre */
 .theme-pf .nav-logo img {
-  height: 56px;
-  filter: drop-shadow(0 5px 12px rgba(58, 33, 80, .30)) drop-shadow(0 1px 2px rgba(0, 0, 0, .16));
+  height: 46px; border-radius: 11px;
+  box-shadow: 0 6px 16px -5px rgba(58, 33, 80, .45), 0 1px 2px rgba(0, 0, 0, .14);
 }
-/* Logo Jenna dans le footer (pas d'inversion : il est déjà détouré gold/gris) */
-.footer-logo.is-jenna { height: 66px; filter: none; }
+/* Logo Philae dans le footer — badge arrondi (se détache du fond aubergine) */
+.footer-logo.is-jenna { height: 56px; filter: none; border-radius: 12px; box-shadow: 0 8px 22px -7px rgba(0, 0, 0, .5); }
 
 /* ── Footer aux couleurs Jenna sur les pages funéraires (theme-pf sur <html>) ── */
 .theme-pf footer.site { background: linear-gradient(180deg, #2a1638 0%, #160a23 100%); }
@@ -1671,7 +1673,8 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .pole-switch .ps-arrow { width: 18px; height: 18px; flex-shrink: 0; transition: transform .2s ease; }
 .pole-switch:hover .ps-arrow { transform: translateX(3px); }
 /* Vers le pôle pompes funèbres (depuis ambulances) : aubergine + or */
-.pole-switch.to-pf .ps-logo { background: #f3ede2; }
+.pole-switch.to-pf .ps-logo { background: transparent; border-radius: 9px; }
+.pole-switch.to-pf .ps-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 9px; }
 .pole-switch.to-pf .ps-text small { color: #a97f37; }
 .pole-switch.to-pf .ps-text b { color: #3a2150; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; }
 .pole-switch.to-pf .ps-arrow { color: #3a2150; }
