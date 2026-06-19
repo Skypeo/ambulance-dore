@@ -64,6 +64,15 @@ npm run preview   # prévisualise dist/
 ```
 
 ## Décisions importantes
+- **Navbar indépendante par pôle + bouton de bascule (2026-06-19)** : chaque pôle est un mini-site
+  autonome. `site.js` exporte **`navAmb`** et **`navPf`** (au lieu de l'ancien `nav` unique) ; `Header`
+  choisit selon `isPf`. Plus de sous-menu croisé (pas de PF dans la nav ambulances ni l'inverse). L'onglet
+  **« Accueil » pointe vers la home DU PÔLE** (`/ambulances` ou `/pompes-funebres`), plus vers le portail.
+  Bascule entre pôles via un **bouton flottant `.pole-switch`** (bas-gauche, dans `Base.astro`) portant le
+  **logo + le nom de l'autre pôle** (« Basculer vers le pôle … ») et sa couleur (or/aubergine ↔ bleu) ; il
+  mène directement à l'autre pôle. Le **portail `/`** reste joignable via le footer (« Choisir un pôle »).
+  `isActive` (Header) : les dropdowns s'allument sur leurs sous-liens seulement (évite le double-actif
+  Accueil+dropdown sur la home). Bulle de contact en bas-DROITE (inchangée) → pas de conflit.
 - **Portail d'accueil (2026-06-18)** : `/` est devenu un **écran de choix à 2 portes** (page autonome
   `src/pages/index.astro`, sans Header/Footer de pôle) → bleu/ECG `/ambulances` ↔ violet-or/arbre de vie
   `/pompes-funebres`. La home ambulances a été **déplacée vers `/ambulances`** (même contenu).

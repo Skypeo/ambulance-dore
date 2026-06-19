@@ -16,67 +16,120 @@ const isPf = theme === 'theme-pf';
           <img class="footer-logo" src={logo.src} width={logo.width} height={logo.height} alt="Ambulances Doré" />
         )}
         <p>
-          Ambulances, VSL, taxis conventionnés, transport PMR et pompes funèbres
-          en Loir-et-Cher depuis 2007. L'humain au cœur de nos priorités.
+          {isPf
+            ? "Pompes Funèbres Jenna (Philae Services Funéraires), agence funéraire de proximité à Blois. Organisation d'obsèques, prévoyance et marbrerie, avec respect et humanité."
+            : "Ambulances, VSL, taxis conventionnés et transport PMR en Loir-et-Cher depuis 2007. L'humain au cœur de nos priorités."}
         </p>
         <div class="foot-contact">
-          <a href={site.phoneMainHref}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
-            {site.phoneMain}
+          {isPf ? (
+            <>
+              <a href={site.pf.phoneHref}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+                {site.pf.phone}
+              </a>
+              <a href={site.pf.emailHref}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                {site.pf.email}
+              </a>
+            </>
+          ) : (
+            <>
+              <a href={site.phoneMainHref}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+                {site.phoneMain}
+              </a>
+              <a href={`mailto:${site.email}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                {site.email}
+              </a>
+            </>
+          )}
+        </div>
+        {isPf && (
+          <a class="footer-ig" href={site.pf.instagram} target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Suivez-nous sur Instagram
           </a>
-          <a href={`mailto:${site.email}`}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            {site.email}
-          </a>
+        )}
+      </div>
+
+      <div class="footer-col">
+        <h4>{isPf ? 'Nos services' : 'Nos prestations'}</h4>
+        <ul>
+          {isPf ? (
+            <>
+              <li><a href="/pompes-funebres">Le pôle funéraire</a></li>
+              <li><a href="/organisation-obseques">Organisation des obsèques</a></li>
+              <li><a href="/contrat-obseques">Contrat obsèques</a></li>
+              <li><a href="/marbrerie">Marbrerie</a></li>
+              <li><a href="/retour-a-domicile">Retour à domicile</a></li>
+              <li><a href="/articles-funeraires">Articles funéraires</a></li>
+            </>
+          ) : (
+            <>
+              <li><a href="/transport-ambulance">Transport en ambulance</a></li>
+              <li><a href="/taxi-conventionne">Taxi conventionné</a></li>
+              <li><a href="/taxi-vsl">VSL</a></li>
+              <li><a href="/transport-pmr">Transport PMR</a></li>
+              <li><a href="/taxi-prive">Taxi privé</a></li>
+              <li><a href="/mission-samu">Mission SAMU</a></li>
+            </>
+          )}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horaires</h4>
+        <div class="footer-hours">
+          {isPf ? (
+            <>
+              {site.pf.hours.map((row) => (
+                <div class="fh-row"><span>{row.d}</span><b>{row.h}</b></div>
+              ))}
+              <p class="footer-pf-oncall"><span class="dot"></span>{site.pf.onCall}</p>
+            </>
+          ) : (
+            <>
+              <div class="fh-row"><span>Tous les jours</span><b>24h/24 — 7j/7</b></div>
+              <p class="footer-pf-oncall"><span class="dot"></span>Réservations & urgences à toute heure</p>
+            </>
+          )}
         </div>
       </div>
 
       <div class="footer-col">
-        <h4>Ambulances</h4>
-        <p class="footer-addr-name">Ambulances Doré</p>
-        <p class="footer-addr">{site.addressMain.street}, {site.addressMain.zip} {site.addressMain.city}<br /><a href={site.phoneMainHref}>{site.phoneMain}</a></p>
+        <h4>{isPf ? 'Agence & infos' : 'Agences & infos'}</h4>
+        {isPf ? (
+          <p class="footer-addr">{site.pf.address.street}<br />{site.pf.address.zip} {site.pf.address.city}</p>
+        ) : (
+          <p class="footer-addr">
+            {site.addressMain.street}, {site.addressMain.zip} {site.addressMain.city}<br />
+            {site.addressOucques.street}, {site.addressOucques.zip} {site.addressOucques.city}
+          </p>
+        )}
         <ul>
-          <li><a href="/transport-ambulance">Transport en ambulance</a></li>
-          <li><a href="/taxi-conventionne">Taxi conventionné</a></li>
-          <li><a href="/taxi-vsl">VSL</a></li>
-          <li><a href="/transport-pmr">Transport PMR</a></li>
-          <li><a href="/taxi-prive">Taxi privé</a></li>
-          <li><a href="/mission-samu">Mission SAMU</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Pompes Funèbres</h4>
-        <p class="footer-pf-name">{site.pf.name}</p>
-        <p class="footer-pf-addr">{site.pf.address.street}, {site.pf.address.zip} {site.pf.address.city}<br /><a href={site.pf.phoneHref}>{site.pf.phone}</a><br /><a href={site.pf.emailHref}>{site.pf.email}</a></p>
-        <p class="footer-pf-oncall"><span class="dot"></span>{site.pf.onCall}</p>
-        <ul>
-          <li><a href="/pompes-funebres">Le pôle funéraire</a></li>
-          <li><a href="/organisation-obseques">Organisation des obsèques</a></li>
-          <li><a href="/contrat-obseques">Contrat obsèques</a></li>
-          <li><a href="/marbrerie">Marbrerie</a></li>
-          <li><a href="/retour-a-domicile">Retour à domicile</a></li>
-          <li><a href="/articles-funeraires">Articles funéraires</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Agences & infos</h4>
-        <ul>
-          <li><a href="/nos-agences">Nos agences</a></li>
-          <li><a href={site.phoneMainHref}>Chaussée-St-Victor — {site.phoneMain}</a></li>
-          <li><a href={site.phoneOucquesHref}>Oucques — {site.phoneOucques}</a></li>
-          <li><a href={site.pf.phoneHref}>{site.pf.name} (Blois) — {site.pf.phone}</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/mentions-legales">Mentions légales</a></li>
-          <li><a href="/vie-privee">Vie privée</a></li>
+          {isPf ? (
+            <>
+              <li><a href="/contact-pompes-funebres">Contact</a></li>
+              <li><a href="/mentions-legales">Mentions légales</a></li>
+              <li><a href="/vie-privee">Vie privée</a></li>
+            </>
+          ) : (
+            <>
+              <li><a href="/nos-agences">Nos agences</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/mentions-legales">Mentions légales</a></li>
+              <li><a href="/vie-privee">Vie privée</a></li>
+            </>
+          )}
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© {year} Ambulances Doré — Tous droits réservés</span>
+      <span>© {year} {isPf ? 'Pompes Funèbres Jenna' : 'Ambulances Doré'} — Tous droits réservés</span>
       <span>
+        <a href="/">Choisir un pôle</a> ·
         <a href="/mentions-legales">Mentions légales</a> ·
         <a href="/vie-privee">Vie privée</a>
       </span>

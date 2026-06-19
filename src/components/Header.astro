@@ -1,24 +1,27 @@
 ---
-import { nav } from '../data/site.js';
+import { navAmb, navPf, site } from '../data/site.js';
 import logo from '../assets/logo-440w.webp';
 const { current = '', theme = '' } = Astro.props;
 const isPf = theme === 'theme-pf';
+// Chaque pôle a SA navbar (plus de sous-menu croisé). La bascule se fait
+// via le bouton flottant `.pole-switch` (cf. Base.astro) + le portail "/".
+const nav = isPf ? navPf : navAmb;
 // Le logo ramène à la home du pôle courant (pas au portail "/").
 const homeHref = isPf ? '/pompes-funebres' : '/ambulances';
 // La page Contact suit le pôle courant (formulaire différent par pôle).
 const contactHref = isPf ? '/contact-pompes-funebres' : '/contact';
-// Réécrit le href d'un item de nav selon le pôle courant (Contact contextuel).
-const navHref = (item) => (item.href === '/contact' ? contactHref : item.href);
 
-// Marque un item actif si l'URL courante correspond à son href ou à un de ses sous-liens
+// Marque un item actif. Les dropdowns s'allument sur leurs sous-liens
+// uniquement (pas sur leur href racine, qui = la home du pôle) pour éviter
+// un double-actif "Accueil" + dropdown sur la home.
 function isActive(item) {
-  if (item.href === '/' ) return current === '/';
-  if (item.href === '/contact') return current === '/contact' || current === '/contact-pompes-funebres';
-  if (current === item.href) return true;
   if (item.groups) {
     return item.groups.some((g) => g.links.some((l) => l.href === current));
   }
-  return false;
+  if (item.href === '/contact' || item.href === '/contact-pompes-funebres') {
+    return current === '/contact' || current === '/contact-pompes-funebres';
+  }
+  return current === item.href;
 }
 ---
 
@@ -58,14 +61,14 @@ function isActive(item) {
               </div>
             </div>
           ) : (
-            <a href={navHref(item)} aria-current={isActive(item) ? 'page' : undefined}>
+            <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
               {item.label}
             </a>
           )
         )}
       </nav>
 
-      <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
         <span class="burger-ico" aria-hidden="true">
           <span class="bar top"></span>
           <span class="bar middle"></span>
@@ -73,7 +76,13 @@ function isActive(item) {
         </span>
       </button>
 
-      <a href={contactHref} class="nav-cta">
+      {isPf && (
+        <a href={site.pf.instagram} class="nav-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram — Pompes Funèbres Jenna">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      )}
+
+      <a href={contactHref} class="nav-cta nav-cta-desktop">
         {isPf ? 'Nous contacter' : 'Réserver'}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M5 12h14M13 6l6 6-6 6" />
@@ -81,4 +90,53 @@ function isActive(item) {
       </a>
     </div>
   </div>
+
+  <!-- Menu off-canvas (mobile + tablette ≤1080px) — repris du pôle courant -->
+  <div class="nav-backdrop" aria-hidden="true"></div>
+  <aside id="nav-drawer" class={`nav-drawer${isPf ? ' is-pf' : ''}`} aria-label="Menu de navigation" aria-hidden="true">
+    <div class="drawer-head">
+      <a href={homeHref} class="drawer-logo" aria-label={isPf ? 'Pompes Funèbres Jenna — accueil' : 'Ambulances Doré — accueil'}>
+        {isPf ? (
+          <img src="/images/pf/logo-jenna.webp" alt="Pompes Funèbres Jenna" />
+        ) : (
+          <img src={logo.src} width={logo.width} height={logo.height} alt="Ambulances Doré" />
+        )}
+      </a>
+      <button class="drawer-close" aria-label="Fermer le menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="Navigation mobile">
+      {nav.map((item) =>
+        item.hasSub ? (
+          <div class="drawer-group">
+            <a href={item.href} class="drawer-link" aria-current={isActive(item) ? 'page' : undefined}>{item.label}</a>
+            {item.groups.map((g) => (
+              <div class="drawer-sub">
+                <span class="drawer-sub-title">{g.title}</span>
+                {g.links.map((l) => (
+                  <a href={l.href} class="drawer-sublink" aria-current={current === l.href ? 'page' : undefined}>{l.label}</a>
+                ))}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <a href={item.href} class="drawer-link" aria-current={isActive(item) ? 'page' : undefined}>{item.label}</a>
+        )
+      )}
+    </nav>
+
+    <a href={contactHref} class="drawer-cta">
+      {isPf ? 'Nous contacter' : 'Réserver'}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+    </a>
+
+    {isPf && (
+      <a href={site.pf.instagram} class="drawer-ig" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Suivez-nous sur Instagram
+      </a>
+    )}
+  </aside>
 </header>

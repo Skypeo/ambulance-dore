@@ -291,6 +291,23 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 .nav-cta:hover { filter: brightness(1.06) }
 .nav-cta svg { width: 14px; height: 14px }
 
+/* Icône Instagram dans la navbar (pages funéraires) — pastille dorée bien visible */
+.nav-ig {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  background: linear-gradient(135deg, #d8b06e 0%, #b8893d 60%, #a97f37 100%); color: var(--plum-deep);
+  box-shadow: 0 14px 30px -12px rgba(184, 137, 61, .6); transition: filter .2s, transform .2s;
+}
+.nav-ig:hover { filter: brightness(1.07); transform: translateY(-1px); }
+.nav-ig svg { width: 20px; height: 20px; }
+
+/* Off-canvas masqué en desktop (activé ≤1080px dans le bloc responsive) */
+.nav-backdrop, .nav-drawer { display: none; }
+body.drawer-open { overflow: hidden; }
+/* Off-canvas ouvert : la pill s'efface (le drawer a son propre logo + bouton fermer) */
+header.site .nav-pill { transition: opacity .26s ease, transform .26s ease, visibility .26s ease; }
+body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transform: translateY(-12px); }
+
 .nav-burger {
   display: none;
   width: 44px; height: 44px;
@@ -303,6 +320,8 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
   position: relative;
   padding: 0;
 }
+/* Pôle pompes funèbres : burger doré (au lieu du bleu ambulances) */
+.theme-pf .nav-burger { background: linear-gradient(135deg, #c79a4e 0%, #a97f37 100%); }
 .burger-ico { position: relative; width: 18px; height: 18px; display: block; }
 .burger-ico .bar {
   position: absolute; left: 0; width: 100%; height: 2px;
@@ -554,6 +573,12 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
    (Dans les bandes CTA sombres, le .btn-call reste ivoire — cf. règle générale plus bas.) */
 .theme-pf .page-hero .btn-call { border-color: rgba(58,33,80,.34); color: var(--ink); }
 .theme-pf .page-hero .btn-call:hover { background: rgba(58,33,80,.06); border-color: rgba(58,33,80,.6); }
+/* Boutons du hero PF à la même taille (largeur + hauteur identiques) */
+.theme-pf .page-hero .hero-cta-row { align-items: stretch; }
+.theme-pf .page-hero .hero-cta-row .btn-primary,
+.theme-pf .page-hero .hero-cta-row .btn-call {
+  flex: 1 1 230px; justify-content: center; text-align: center;
+}
 /* Filigrane arbre derrière le texte : violet très discret sur fond clair */
 .theme-pf .page-hero .hero-tree { background: var(--plum); opacity: .05; }
 /* Plus de voile sombre sur la photo (le hero est clair maintenant) */
@@ -1179,24 +1204,94 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
   .nav-pill { justify-content: flex-start; }
   .nav-logo small { display: none }
 
-  .nav-links.mobile-open {
-    display: flex !important; position: fixed; top: 86px; left: 20px; right: 20px;
-    flex-direction: column; align-items: stretch; gap: 4px; padding: 14px;
-    background: rgba(255, 255, 255, .97); backdrop-filter: blur(18px) saturate(1.4);
-    -webkit-backdrop-filter: blur(18px) saturate(1.4); border: 1px solid rgba(255, 255, 255, .6);
-    border-radius: 24px; box-shadow: 0 30px 60px -20px rgba(0, 31, 77, .35); margin-left: 0;
-    max-height: calc(100dvh - 110px); overflow-y: auto;
-    animation: mobileIn .28s cubic-bezier(.2,.7,.2,1);
+  /* Le CTA + l'icône Insta de la navbar passent DANS l'off-canvas → on les retire de la barre */
+  .nav-cta-desktop, .nav-ig { display: none; }
+
+  /* ── Menu off-canvas (mobile + tablette) ── */
+  .nav-backdrop {
+    /* z au-dessus de .container (9999) sinon la navbar intercepte les clics */
+    display: block; position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0, 16, 42, .34); -webkit-backdrop-filter: blur(1.5px); backdrop-filter: blur(1.5px);
+    opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease;
   }
-  .nav-links.mobile-open > a, .nav-links.mobile-open .nav-item > a { text-align: left; padding: 13px 16px; font-size: 15px; border-radius: 12px; }
-  .nav-links.mobile-open .nav-item { width: 100%; }
-  .nav-links.mobile-open .nav-submenu {
-    position: static; opacity: 1; visibility: visible; pointer-events: auto; transform: none;
-    box-shadow: none; background: transparent; border: none; padding: 0 0 6px 14px; min-width: 0;
-    border-left: 2px solid var(--blue-50);
+  .nav-backdrop.open { opacity: 1; visibility: visible; }
+
+  .nav-drawer {
+    --dr-accent: #7fb4ff;             /* accent ambulances (bleu clair) */
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 10001;
+    width: min(380px, 87vw); height: 100dvh; overflow-y: auto;
+    background: linear-gradient(165deg, #001f4d 0%, #00398c 100%); color: #fff;
+    transform: translateX(102%); transition: transform .36s cubic-bezier(.22,.75,.2,1);
+    box-shadow: -34px 0 80px -34px rgba(0, 0, 0, .55);
   }
-  .nav-links.mobile-open .nav-item > a.has-sub::after { margin-left: auto; }
-  @keyframes mobileIn { from { opacity: 0; transform: translateY(-8px) } to { opacity: 1; transform: none } }
+  .nav-drawer.is-pf {
+    --dr-accent: #e0bd7a;             /* accent pompes funèbres (or) */
+    background: linear-gradient(165deg, #1b0e29 0%, #3a2150 100%); color: #f3ede2;
+  }
+  .nav-drawer.open { transform: none; }
+
+  .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 22px 16px; border-bottom: 1px solid rgba(255, 255, 255, .12);
+  }
+  .drawer-logo img { height: 40px; width: auto; display: block; filter: brightness(0) invert(1); }
+  .nav-drawer.is-pf .drawer-logo img { height: 52px; filter: none; }
+  .drawer-close {
+    width: 42px; height: 42px; flex-shrink: 0; border: none; cursor: pointer;
+    border-radius: 50%; background: rgba(255, 255, 255, .12); color: #fff;
+    display: grid; place-items: center; transition: background .2s;
+  }
+  .drawer-close:hover { background: rgba(255, 255, 255, .22); }
+  .drawer-close svg { width: 20px; height: 20px; }
+
+  .drawer-nav { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 16px 16px 10px; }
+  .drawer-group { margin-bottom: 4px; }
+  .drawer-link {
+    display: block; padding: 13px 14px; border-radius: 12px;
+    font-family: 'Comfortaa', sans-serif; font-weight: 600; font-size: 16px;
+    color: rgba(255, 255, 255, .94); transition: background .18s, color .18s;
+  }
+  .drawer-link:hover { background: rgba(255, 255, 255, .09); }
+  .drawer-link[aria-current="page"] { color: #fff; background: rgba(255, 255, 255, .12); box-shadow: inset 3px 0 0 var(--dr-accent); }
+  .nav-drawer.is-pf .drawer-link[aria-current="page"] { color: #fff; }
+
+  .drawer-sub { margin: 2px 0 8px 16px; padding-left: 12px; border-left: 2px solid rgba(255, 255, 255, .16); }
+  .drawer-sub-title {
+    display: block; padding: 8px 8px 4px; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--dr-accent);
+  }
+  .drawer-sublink {
+    display: block; padding: 9px 10px; border-radius: 9px; font-size: 14.5px;
+    color: rgba(255, 255, 255, .8); transition: background .18s, color .18s;
+  }
+  .drawer-sublink:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+  .drawer-sublink[aria-current="page"] { color: var(--dr-accent); font-weight: 700; }
+
+  .drawer-cta {
+    margin: 8px 18px max(22px, env(safe-area-inset-bottom)); padding: 15px 22px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    border-radius: var(--r-pill); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%); color: #fff;
+    box-shadow: 0 16px 34px -14px rgba(12, 118, 244, .7); transition: filter .2s;
+  }
+  .nav-drawer.is-pf .drawer-cta {
+    background: linear-gradient(135deg, #d8b06e 0%, #b8893d 60%, #a97f37 100%); color: var(--plum-deep);
+    box-shadow: 0 16px 34px -14px rgba(184, 137, 61, .7);
+    margin-bottom: 10px;   /* l'icône Instagram suit juste en dessous */
+  }
+  .drawer-cta:hover { filter: brightness(1.05); }
+  .drawer-cta svg { width: 16px; height: 16px; }
+
+  /* Lien Instagram dans l'off-canvas (PF) */
+  .drawer-ig {
+    margin: 0 18px max(22px, env(safe-area-inset-bottom)); padding: 12px 18px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    border-radius: var(--r-pill); border: 1px solid var(--dr-accent); color: var(--dr-accent);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; transition: background .18s;
+  }
+  .drawer-ig:hover { background: rgba(255, 255, 255, .07); }
+  .drawer-ig svg { width: 20px; height: 20px; }
 
   .hero-split { grid-template-columns: 1fr; gap: 20px; min-height: 0; }
   .prose-grid, .prose-grid.reverse { grid-template-columns: 1fr; gap: 44px; }
@@ -1323,9 +1418,10 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
   background-size: 100% 100%;
   color: var(--plum-deep, #2a1638);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 700; font-size: 19px;
-  text-transform: uppercase; letter-spacing: .14em;
-  padding: 15px 36px;
+  font-weight: 700; font-size: clamp(15px, 3.4vw, 19px);
+  text-transform: uppercase; letter-spacing: clamp(.06em, 1.2vw, .14em);
+  padding: 15px clamp(20px, 5vw, 36px);
+  white-space: nowrap;
   box-shadow: 0 20px 44px -16px rgba(184, 137, 61, .6);
   transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, filter .35s ease;
 }
@@ -1376,6 +1472,19 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 }
 /* Logo Jenna dans le footer (pas d'inversion : il est déjà détouré gold/gris) */
 .footer-logo.is-jenna { height: 66px; filter: none; }
+
+/* ── Footer aux couleurs Jenna sur les pages funéraires (theme-pf sur <html>) ── */
+.theme-pf footer.site { background: linear-gradient(180deg, #2a1638 0%, #160a23 100%); }
+.theme-pf footer.site .footer-col h4 { color: #e0bd7a; }
+.theme-pf footer.site .footer-addr-name { color: #f3ede2; }
+.theme-pf footer.site .footer-brand .foot-contact svg { color: var(--gold); }
+.theme-pf footer.site .footer-bottom { border-top-color: rgba(224, 189, 122, .22); }
+/* Liens en survol → or (au lieu du blanc bleuté) */
+.theme-pf footer.site .footer-col a:hover,
+.theme-pf footer.site .footer-addr a:hover,
+.theme-pf footer.site .footer-pf-addr a:hover,
+.theme-pf footer.site .footer-brand .foot-contact a:hover,
+.theme-pf footer.site .footer-bottom a:hover { color: #e6c88a; }
 
 /* Logo co-marque Jenna dans le hero — pastille ivoire pour le faire ressortir sur le violet */
 .hero-brand {
@@ -1453,7 +1562,7 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .pf-faiths-icons li { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-card); border: 1px solid var(--line); color: #3a2150; }
 .pf-faiths-icons svg { width: 32px; height: 32px; }
 
-/* Encart recrutement (vacataires) */
+/* Encart recrutement */
 .pf-recruit {
   display: flex; align-items: center; gap: 28px;
   background: linear-gradient(135deg, #2a1638 0%, #3a2150 100%); color: #fff;
@@ -1467,6 +1576,7 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .pf-recruit h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: clamp(26px, 2.6vw, 36px); color: #fff; margin: 6px 0 10px; line-height: 1.08; }
 .pf-recruit h2 em { font-style: normal; color: var(--gold-200); }
 .pf-recruit p { color: rgba(255, 255, 255, .82); font-size: 15px; line-height: 1.6; max-width: 640px; }
+.pf-recruit p + p { margin-top: 10px; }
 .pf-recruit .btn-ghost { flex-shrink: 0; white-space: nowrap; background: #fff; border-color: #fff; color: #2a1638; }
 .pf-recruit .btn-ghost:hover { background: var(--gold-50); border-color: var(--gold-50); }
 
@@ -1484,6 +1594,14 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 /* Astreinte 24/7 mise en avant dans le footer (colonne Pompes Funèbres) */
 .footer-pf-oncall { display: flex; align-items: center; gap: 9px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: #e9d9bc; margin: 12px 0 16px; }
 .footer-pf-oncall .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); flex-shrink: 0; animation: pulse-dot 2.2s infinite; }
+.footer-ig { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px; font-size: 13.5px; font-weight: 600; color: rgba(255, 255, 255, .82); transition: color .2s; }
+.footer-ig svg { width: 18px; height: 18px; color: #e6c88a; flex-shrink: 0; }
+.footer-ig:hover { color: #e6c88a; }
+.footer-hours { display: flex; flex-direction: column; gap: 10px; }
+.footer-hours .fh-row { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.footer-hours .fh-row span { color: rgba(255, 255, 255, .6); }
+.footer-hours .fh-row b { color: rgba(255, 255, 255, .92); font-weight: 700; }
+.footer-hours .footer-pf-oncall { margin: 4px 0 0; }
 
 /* Filigrane arbre de vie (bande CTA du pôle funéraire) */
 .deco-watermark.tree circle, .deco-watermark.tree path { fill: none; stroke: var(--blue-deep); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
@@ -1491,7 +1609,7 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .theme-pf .cta-band .deco-watermark.tree circle, .theme-pf .cta-band .deco-watermark.tree path { stroke: var(--gold); }
 
 /* Bulle de contact flottante (option contact anonyme) */
-.contact-bubble { position: fixed; right: 22px; bottom: 22px; z-index: 9000; }
+.contact-bubble { position: fixed; right: 22px; bottom: 22px; z-index: 9999; }
 .contact-bubble .cb-toggle {
   display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: none;
   font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #fff;
@@ -1520,6 +1638,42 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .contact-bubble .cb-row a svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
 .contact-bubble .cb-anon { font-size: 11.5px; color: var(--ink-soft); margin-top: 12px; text-align: center; }
 
+/* ── Bouton de bascule entre les deux pôles (bas-gauche) ──
+   Porte le logo + le nom de l'AUTRE pôle, dont il adopte la couleur (aperçu). */
+.pole-switch {
+  position: fixed; left: 22px; bottom: 22px; z-index: 9999;
+  display: inline-flex; align-items: center; gap: 11px;
+  padding: 9px 16px 9px 9px; border-radius: var(--r-pill);
+  background: #fff; border: 1px solid var(--line); text-decoration: none;
+  box-shadow: 0 16px 38px -14px rgba(0, 0, 0, .38);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.pole-switch:hover { transform: translateY(-2px); box-shadow: 0 22px 48px -16px rgba(0, 0, 0, .46); }
+.pole-switch .ps-logo {
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  display: grid; place-items: center; overflow: hidden;
+}
+.pole-switch .ps-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.pole-switch .ps-text { display: flex; flex-direction: column; line-height: 1.12; }
+.pole-switch .ps-text small {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 9.5px;
+  letter-spacing: .09em; text-transform: uppercase;
+}
+.pole-switch .ps-text b { font-size: 14.5px; font-weight: 700; }
+.pole-switch .ps-arrow { width: 18px; height: 18px; flex-shrink: 0; transition: transform .2s ease; }
+.pole-switch:hover .ps-arrow { transform: translateX(3px); }
+/* Vers le pôle pompes funèbres (depuis ambulances) : aubergine + or */
+.pole-switch.to-pf .ps-logo { background: #f3ede2; }
+.pole-switch.to-pf .ps-text small { color: #a97f37; }
+.pole-switch.to-pf .ps-text b { color: #3a2150; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; }
+.pole-switch.to-pf .ps-arrow { color: #3a2150; }
+/* Vers le pôle ambulances (depuis pompes funèbres) : bleu */
+.pole-switch.to-amb .ps-logo { background: #eef4fe; }
+.pole-switch.to-amb .ps-star { width: 24px; height: 24px; fill: #0c76f4; }
+.pole-switch.to-amb .ps-text small { color: #1763c7; }
+.pole-switch.to-amb .ps-text b { color: #00398c; }
+.pole-switch.to-amb .ps-arrow { color: #00398c; }
+
 @media (max-width: 1080px) {
   .pf-values { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
   .pf-artisans { grid-template-columns: 1fr 1fr; }
@@ -1536,5 +1690,28 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
   .footer-logo.is-jenna { height: 58px; }
   .contact-bubble { right: 14px; bottom: 14px; }
   .contact-bubble .cb-toggle span { display: none; }
-  .contact-bubble .cb-toggle { padding: 14px; }
+  /* Bouton contact = même hauteur (50px) que le bouton de bascule, aligné en bas */
+  .contact-bubble .cb-toggle { padding: 0; width: 50px; height: 50px; justify-content: center; }
+  .contact-bubble .cb-toggle svg { width: 22px; height: 22px; }
+  /* Bascule : on garde le libellé (clarté) mais plus compact, calé à gauche */
+  .pole-switch { left: 14px; bottom: 14px; gap: 9px; padding: 7px 13px 7px 7px; }
+  .pole-switch .ps-logo { width: 36px; height: 36px; }
+  .pole-switch .ps-text small { font-size: 9px; }
+  .pole-switch .ps-text b { font-size: 13.5px; }
+  .pole-switch.to-pf .ps-text b { font-size: 15.5px; }
+  .pole-switch .ps-arrow { width: 16px; height: 16px; }
+}
+@media (max-width: 400px) {
+  /* Très petits écrans : bouton de bascule encore plus compact */
+  .pole-switch { left: 10px; bottom: 10px; gap: 7px; padding: 5px 11px 5px 5px; }
+  .pole-switch .ps-logo { width: 30px; height: 30px; }
+  /* Bouton contact = même hauteur (40px) que le bouton de bascule, même bas (10px) */
+  .contact-bubble { right: 10px; bottom: 10px; }
+  .contact-bubble .cb-toggle { width: 40px; height: 40px; }
+  .contact-bubble .cb-toggle svg { width: 19px; height: 19px; }
+  .pole-switch.to-amb .ps-star { width: 18px; height: 18px; }
+  .pole-switch .ps-text small { font-size: 8px; letter-spacing: .07em; }
+  .pole-switch .ps-text b { font-size: 12px; }
+  .pole-switch.to-pf .ps-text b { font-size: 13.5px; }
+  .pole-switch .ps-arrow { width: 14px; height: 14px; }
 }

@@ -38,6 +38,7 @@ export const site = {
     // E-mail PF fourni par la cliente le 2026-06-16 (flyers Jenna)
     email: 'pfjenna@philaeservicesfuneraires.fr',
     emailHref: 'mailto:pfjenna@philaeservicesfuneraires.fr',
+    instagram: 'https://www.instagram.com/jenna_philae_pompes_funebres',
     onCall: 'Astreinte décès 24h/24 — 7j/7',
     hours: [
       { d: 'Lundi – Vendredi', h: '9h00 – 12h30  /  13h30 – 17h00' },
@@ -60,18 +61,26 @@ export const site = {
   },
 };
 
-// Arborescence du menu — URLs ambulances CONSERVÉES (SEO), pôle PF nouveau.
-export const nav = [
-  { label: 'Accueil', href: '/' },
+// ============================================================
+// Navigation — UNE navbar indépendante par pôle (depuis 2026-06-19).
+// Chaque pôle est un "mini-site" autonome : sa nav ne montre QUE ses pages.
+// La bascule entre pôles se fait via le bouton flottant `.pole-switch`
+// (bas-gauche, voir Base.astro) et via le portail `/` (footer).
+// L'onglet "Accueil" pointe vers la home DU PÔLE courant (pas le portail).
+// URLs ambulances CONSERVÉES (SEO).
+// ============================================================
+
+// — Pôle AMBULANCES (bleu) —
+export const navAmb = [
+  { label: 'Accueil', href: '/ambulances' },
   {
-    label: 'Ambulances',
+    label: 'Nos prestations',
     href: '/ambulances',
     hasSub: true,
     groups: [
       {
         title: 'Transport en ambulance',
         links: [
-          { label: 'Accueil ambulances', href: '/ambulances' },
           { label: 'Transport en ambulance', href: '/transport-ambulance' },
           { label: 'Malades assis', href: '/transport-malade-assis' },
           { label: 'Malades allongés', href: '/transport-malade-allonge' },
@@ -94,34 +103,7 @@ export const nav = [
       },
     ],
   },
-  {
-    label: 'Pompes Funèbres',
-    href: '/pompes-funebres',
-    hasSub: true,
-    pf: true,
-    groups: [
-      {
-        title: 'Nos accompagnements',
-        links: [
-          { label: 'Pôle pompes funèbres', href: '/pompes-funebres' },
-          { label: 'Organisation des obsèques', href: '/organisation-obseques' },
-          { label: 'Contrat obsèques', href: '/contrat-obseques' },
-          { label: 'Retour à domicile', href: '/retour-a-domicile' },
-        ],
-      },
-      {
-        title: 'Nos savoir-faire',
-        links: [
-          { label: 'Marbrerie', href: '/marbrerie' },
-          { label: 'Articles funéraires', href: '/articles-funeraires' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'À propos',
-    href: '/a-propos',
-  },
+  { label: 'À propos', href: '/a-propos' },
   {
     label: 'Nos agences',
     href: '/nos-agences',
@@ -138,4 +120,41 @@ export const nav = [
     ],
   },
   { label: 'Contact', href: '/contact' },
+];
+
+// — Pôle POMPES FUNÈBRES (aubergine/or) —
+export const navPf = [
+  { label: 'Accueil', href: '/pompes-funebres' },
+  {
+    label: 'Nos accompagnements',
+    href: '/pompes-funebres',
+    hasSub: true,
+    pf: true,
+    groups: [
+      {
+        title: 'Nos accompagnements',
+        links: [
+          { label: 'Organisation des obsèques', href: '/organisation-obseques' },
+          { label: 'Contrat obsèques', href: '/contrat-obseques' },
+          { label: 'Retour à domicile', href: '/retour-a-domicile' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Nos savoir-faire',
+    href: '/marbrerie',
+    hasSub: true,
+    pf: true,
+    groups: [
+      {
+        title: 'Nos savoir-faire',
+        links: [
+          { label: 'Marbrerie', href: '/marbrerie' },
+          { label: 'Articles funéraires', href: '/articles-funeraires' },
+        ],
+      },
+    ],
+  },
+  { label: 'Contact', href: '/contact-pompes-funebres' },
 ];
