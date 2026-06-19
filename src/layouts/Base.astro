@@ -91,7 +91,7 @@ const switchAria = `Basculer vers le pôle ${isPf ? 'ambulances' : 'pompes funè
     <div class="beacon">
       <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
       {isPf ? (
-        <img class="beacon-mark is-jenna" src="/images/pf/logo-jenna.webp" alt="" />
+        <img class="beacon-mark is-jenna" src="/images/pf/logo-philae.webp" alt="" />
       ) : (
         <svg class="beacon-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
       )}
@@ -110,7 +110,7 @@ const switchAria = `Basculer vers le pôle ${isPf ? 'ambulances' : 'pompes funè
       {isPf ? (
         <svg class="ps-star" viewBox="0 0 100 100" aria-hidden="true"><path d="M74 50 L94.11 38.39 L82.11 17.61 L62 29.22 L62 6 L38 6 L38 29.22 L17.89 17.61 L5.89 38.39 L26 50 L5.89 61.61 L17.89 82.39 L38 70.78 L38 94 L62 94 L62 70.78 L82.11 82.39 L94.11 61.61 Z" /></svg>
       ) : (
-        <img src="/images/pf/logo-jenna.webp" alt="" />
+        <img src="/images/pf/logo-philae.webp" alt="" />
       )}
     </span>
     <span class="ps-text">
@@ -170,21 +170,27 @@ const switchAria = `Basculer vers le pôle ${isPf ? 'ambulances' : 'pompes funè
     const drawer = document.querySelector('.nav-drawer');
     const backdrop = document.querySelector('.nav-backdrop');
     const drawerClose = document.querySelector('.drawer-close');
+    let lockedScrollY = 0;
     const openDrawer = () => {
+      lockedScrollY = window.scrollY;
       drawer?.classList.add('open');
       backdrop?.classList.add('open');
       burger?.classList.add('is-open');
       burger?.setAttribute('aria-expanded', 'true');
       drawer?.setAttribute('aria-hidden', 'false');
+      document.body.style.top = `-${lockedScrollY}px`;
       document.body.classList.add('drawer-open');
     };
     const closeDrawer = () => {
+      if (!drawer?.classList.contains('open')) return;
       drawer?.classList.remove('open');
       backdrop?.classList.remove('open');
       burger?.classList.remove('is-open');
       burger?.setAttribute('aria-expanded', 'false');
       drawer?.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('drawer-open');
+      document.body.style.top = '';
+      window.scrollTo(0, lockedScrollY);
     };
     burger?.addEventListener('click', () => {
       drawer?.classList.contains('open') ? closeDrawer() : openDrawer();

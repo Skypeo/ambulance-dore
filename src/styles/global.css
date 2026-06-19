@@ -303,7 +303,8 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 
 /* Off-canvas masqué en desktop (activé ≤1080px dans le bloc responsive) */
 .nav-backdrop, .nav-drawer { display: none; }
-body.drawer-open { overflow: hidden; }
+/* Verrou de scroll quand l'off-canvas est ouvert (le body est figé, seul le drawer scrolle) */
+body.drawer-open { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
 /* Off-canvas ouvert : la pill s'efface (le drawer a son propre logo + bouton fermer) */
 header.site .nav-pill { transition: opacity .26s ease, transform .26s ease, visibility .26s ease; }
 body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transform: translateY(-12px); }
@@ -1221,6 +1222,8 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
     display: flex; flex-direction: column;
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 10001;
     width: min(380px, 87vw); height: 100dvh; overflow-y: auto;
+    overscroll-behavior: contain;   /* pas de scroll chaining vers la page */
+    scrollbar-width: thin; scrollbar-color: var(--dr-accent) transparent;
     background: linear-gradient(165deg, #001f4d 0%, #00398c 100%); color: #fff;
     transform: translateX(102%); transition: transform .36s cubic-bezier(.22,.75,.2,1);
     box-shadow: -34px 0 80px -34px rgba(0, 0, 0, .55);
@@ -1230,6 +1233,11 @@ header.site .nav-pill.scrolled { background: rgba(255,255,255,.94); box-shadow: 
     background: linear-gradient(165deg, #1b0e29 0%, #3a2150 100%); color: #f3ede2;
   }
   .nav-drawer.open { transform: none; }
+  /* Scrollbar personnalisée, teintée selon le pôle (--dr-accent) */
+  .nav-drawer::-webkit-scrollbar { width: 8px; }
+  .nav-drawer::-webkit-scrollbar-track { background: rgba(255, 255, 255, .06); }
+  .nav-drawer::-webkit-scrollbar-thumb { background: var(--dr-accent); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+  .nav-drawer::-webkit-scrollbar-thumb:hover { filter: brightness(1.1); }
 
   .drawer-head {
     display: flex; align-items: center; justify-content: space-between;
