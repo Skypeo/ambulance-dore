@@ -16,11 +16,11 @@ const { id = 'contact-form' } = Astro.props;
 
     <form class="form-card" action={site.pf.emailHref} method="post" enctype="text/plain" data-reveal>
       <div class="form-row">
-        <div class="field"><label for="pf-nom">Nom <span class="opt">(facultatif)</span></label><input id="pf-nom" name="nom" type="text" /></div>
+        <div class="field"><label for="pf-nom">Nom</label><input id="pf-nom" name="nom" type="text" required /></div>
         <div class="field"><label for="pf-tel">Téléphone</label><input id="pf-tel" name="telephone" type="tel" required /></div>
       </div>
       <div class="form-row">
-        <div class="field"><label for="pf-email">E-mail <span class="opt">(facultatif)</span></label><input id="pf-email" name="email" type="email" /></div>
+        <div class="field"><label for="pf-email">E-mail</label><input id="pf-email" name="email" type="email" required /></div>
         <div class="field">
           <label for="pf-objet">Objet de votre demande</label>
           <select id="pf-objet" name="objet" required>
@@ -42,7 +42,7 @@ const { id = 'contact-form' } = Astro.props;
         Envoyer ma demande
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
       </button>
-      <p class="form-note">Vous pouvez nous écrire de façon anonyme (nom et e-mail facultatifs). Pour une prise en charge immédiate, appelez le {site.pf.phone}.</p>
+      <p class="form-note">Vos coordonnées nous permettent de vous recontacter avec discrétion. Pour une prise en charge immédiate, appelez le {site.pf.phone}.</p>
     </form>
   </div>
 </section>

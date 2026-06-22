@@ -103,6 +103,7 @@ npm run preview   # prévisualise dist/
 1. ~~Contenu réel pompes funèbres~~ ✅ FAIT (2026-06-16, d'après flyers `retour_Lea/`).
 2. ~~Coordonnées PF~~ ✅ FAIT. ~~E-mail PF~~ ✅ **pfjenna@philaeservicesfuneraires.fr** (flyers).
 3. ~~Photos PF~~ ✅ FAIT : 6 visuels recadrés depuis les flyers → `public/images/pf/` + logo Jenna.
+   **MAJ 2026-06-22** : 3 vraies photos fournies par Léa (`retour_Lea/new1-3.jpeg`) converties en webp et intégrées en remplacement des visuels flyer → `accueil.webp` (salon, `/pompes-funebres`), `agence.webp` (façade, `/contact-pompes-funebres`), `showroom.webp` (articles, `/articles-funeraires`).
 4. ~~Noms + parcours des intervenants~~ ✅ FAIT (2026-06-22) : portrait de **Léa** (responsable, Conseillère funéraire & Maître de cérémonie) — texte + photo `Trombi_Lea.jpeg` fournis par la cliente → carte `.pf-portrait` sur `/pompes-funebres`, photo `public/images/pf/lea.webp`.
 5. Articles funéraires : détailler la sélection réelle si la cliente fournit un catalogue.
 6. Brancher le formulaire sur un service d'envoi d'e-mails + **CMS** (cf. décisions).
