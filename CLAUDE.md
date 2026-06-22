@@ -50,9 +50,11 @@ Ambulances : `/ambulances` (home, ex-`/`), `/a-propos`, `/transport-ambulance`, 
 `/transport-malade-allonge`, `/taxi-conventionne`, `/taxi-vsl`, `/transport-pmr`,
 `/taxi-prive`, `/mission-samu`, `/nos-agences`, `/chaussee-saint-victor`, `/oucques`,
 `/contact`, `/mentions-legales`, `/vie-privee`
-Pompes funèbres (NOUVELLES URLs) : `/pompes-funebres`, `/organisation-obseques`,
-`/contrat-obseques`, `/marbrerie`, `/retour-a-domicile`, `/articles-funeraires`,
-`/contact-pompes-funebres` (formulaire funéraire dédié)
+Pompes funèbres (NOUVELLES URLs) : `/pompes-funebres`, `/nos-accompagnements` (aperçu catégorie),
+`/organisation-obseques`, `/contrat-obseques`, `/retour-a-domicile`, `/nos-savoir-faire` (aperçu catégorie),
+`/marbrerie`, `/articles-funeraires`, `/contact-pompes-funebres` (formulaire funéraire dédié)
+(⚠️ `/nos-accompagnements` + `/nos-savoir-faire` créées le 2026-06-22 : pages d'aperçu SEO des 2 groupes de nav
+PF — les labels dropdown y pointent au lieu de l'accueil ; intro + cartes services + JSON-LD breadcrumb/ItemList)
 (⚠️ `/funerarium` SUPPRIMÉ le 2026-06-16 — la cliente n'en propose pas)
 
 ## Commandes

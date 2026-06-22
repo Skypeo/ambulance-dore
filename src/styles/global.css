@@ -837,6 +837,16 @@ body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transfo
 .info-card .ico svg { width: 28px; height: 28px; }
 .info-card h3 { font-size: 21px; margin-bottom: 12px; }
 .info-card p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; }
+/* Lien "En savoir plus" des cartes-services (pages d'aperçu de catégorie) */
+.cards-grid.two { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 880px; margin: 0 auto; }
+.info-card .card-more {
+  display: inline-flex; align-items: center; gap: 7px; margin-top: 18px;
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent-deep);
+}
+.info-card .card-more svg { width: 15px; height: 15px; transition: transform .3s; }
+.info-card:hover .card-more svg { transform: translateX(4px); }
+.theme-pf .info-card .card-more { color: var(--gold-deep); }
 
 /* ─────────────────────── FAQ ─────────────────────── */
 .faq { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
@@ -1020,6 +1030,9 @@ body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transfo
   padding: 8px 14px; border-radius: var(--r-pill); border: 1px solid var(--line);
   background: var(--bg-warm); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px; color: var(--blue-deep);
 }
+/* Carte "rayon d'action" aux couleurs funéraires (or sur ivoire/mauve) */
+.theme-pf .split-card.light { background: linear-gradient(180deg, #f7f1f5 0%, #ece2ec 100%); }
+.theme-pf .split-card .chip { color: var(--gold-deep); background: var(--bg-card); }
 
 /* ─────────────────────── FORMULAIRE ─────────────────────── */
 .reserve { padding: 110px 0; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, var(--blue-50) 100%); }

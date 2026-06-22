@@ -127,7 +127,7 @@ export const navPf = [
   { label: 'Accueil', href: '/pompes-funebres' },
   {
     label: 'Nos accompagnements',
-    href: '/pompes-funebres',
+    href: '/nos-accompagnements',
     hasSub: true,
     pf: true,
     groups: [
@@ -143,7 +143,7 @@ export const navPf = [
   },
   {
     label: 'Nos savoir-faire',
-    href: '/marbrerie',
+    href: '/nos-savoir-faire',
     hasSub: true,
     pf: true,
     groups: [

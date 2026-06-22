@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site.js';
+
+// Page d'aperçu de la catégorie "Nos savoir-faire" (regroupe les pages
+// marbrerie et articles funéraires).
+// Objectif SEO : page de présentation des savoir-faire funéraires à Blois.
+const title = "Nos savoir-faire : marbrerie & articles funéraires à Blois | Pompes Funèbres Jenna";
+const description =
+  "Pompes Funèbres Jenna à Blois : marbrerie funéraire (conception, fabrication, gravure et pose de monuments) et articles funéraires personnalisés — cercueils, urnes, fleurs et plaques. Un hommage fidèle, dans le respect du détail.";
+
+const savoirFaire = [
+  {
+    href: '/marbrerie',
+    title: "Marbrerie funéraire",
+    text: "Conception, fabrication, rénovation et pose de monuments : caveaux, pierres tombales, gravures et redorures. Au cas par cas, en granit ou pierre naturelle, avec des artisans locaux.",
+    icon: '<path d="M5 21V8l7-5 7 5v13M9 21v-6h6v6"/>',
+  },
+  {
+    href: '/articles-funeraires',
+    title: "Articles funéraires",
+    text: "Cercueils, urnes, fleurs, plaques et ornements pour un hommage fidèle et personnalisé. Nous vous conseillons avec attention, en accord avec les volontés du défunt et les souhaits de la famille.",
+    icon: '<path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM5 14c2 4 5 6 7 6s5-2 7-6"/>',
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Pompes funèbres", "item": site.domain + "/pompes-funebres" },
+        { "@type": "ListItem", "position": 2, "name": "Nos savoir-faire", "item": site.domain + "/nos-savoir-faire" },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      "name": "Savoir-faire funéraires — Pompes Funèbres Jenna",
+      "itemListElement": savoirFaire.map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": s.title,
+        "url": site.domain + s.href,
+      })),
+    },
+  ],
+};
+---
+<Base title={title} description={description} current="/nos-savoir-faire" theme="theme-pf">
+  <PageHero
+    eyebrow="Pompes Funèbres Jenna — Blois"
+    title="Nos savoir-faire<br><em>funéraires</em>."
+    slogan="L'art du funéraire, c'est l'art du détail."
+    lead="De la marbrerie aux articles funéraires, nous mettons notre exigence et celle de nos artisans locaux au service d'un hommage fidèle, durable et personnalisé."
+    crumbs={[{ label: 'Pompes funèbres', href: '/pompes-funebres' }, { label: 'Nos savoir-faire' }]}
+    ctaLabel="Demander conseil"
+    ctaHref="/contact-pompes-funebres"
+    brandLogo="/images/pf/logo-philae.webp"
+    brandAlt="Pompes Funèbres Jenna"
+    heroImage="/images/pf/marbrerie.webp"
+    heroImageAlt="Monument funéraire en granit et gravure soignée, savoir-faire de marbrerie"
+    tree
+  >
+    <a slot="cta" href={site.pf.phoneHref} class="btn-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z" /></svg>
+      {site.pf.phone}
+    </a>
+  </PageHero>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose" data-reveal style="max-width:760px;margin:0 auto;text-align:center">
+        <div class="eyebrow" style="justify-content:center">Le détail, notre exigence</div>
+        <h2>Des réalisations <em>durables et soignées</em>.</h2>
+        <p class="lead-p">Les Pompes Funèbres Jenna (Philae Services Funéraires) à Blois s'entourent d'artisans locaux — graveur, marbrier, fleuriste — pour des réalisations à la hauteur de la mémoire que vous souhaitez honorer.</p>
+        <p>Découvrez nos savoir-faire : la marbrerie funéraire, de la conception à la pose des monuments, et nos articles funéraires personnalisés pour rendre un dernier hommage fidèle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Nos savoir-faire</div><h2>Deux métiers, une même <em>exigence</em>.</h2></div>
+        <p>Cliquez sur un savoir-faire pour en savoir plus.</p>
+      </div>
+      <div class="cards-grid two">
+        {savoirFaire.map((s) => (
+          <a class="info-card" href={s.href}>
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon} /></div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <span class="card-more">En savoir plus
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Zone desservie</div><h2>Notre <em>rayon d'action</em>.</h2></div><p>Une agence funéraire de proximité, à Blois et dans les communes alentour.</p></div>
+      <div class="split-card light" data-reveal>
+        <div class="eyebrow">Communes desservies</div>
+        <h3>Pompes Funèbres Jenna intervient à Blois et alentours</h3>
+        <p>Marbrerie et articles funéraires : nous intervenons à Blois et dans tout le secteur. Où que vous soyez, n'hésitez pas à nous contacter.</p>
+        <div class="places">
+          <span class="chip">Blois</span><span class="chip">Vineuil</span><span class="chip">Chambord</span><span class="chip">La Chaussée-Saint-Victor</span><span class="chip">Mer</span><span class="chip">et ses alentours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    motif="tree"
+    title="Un projet de monument ou d'hommage ?"
+    text="Nos conseillers vous reçoivent pour étudier votre projet de marbrerie ou d'articles funéraires, avec attention et sans précipitation."
+    phone={site.pf.phone}
+    phoneHref={site.pf.phoneHref}
+    ctaLabel="Nous contacter"
+    ctaHref="/contact-pompes-funebres"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+</Base>

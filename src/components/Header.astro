@@ -16,7 +16,7 @@ const contactHref = isPf ? '/contact-pompes-funebres' : '/contact';
 // un double-actif "Accueil" + dropdown sur la home.
 function isActive(item) {
   if (item.groups) {
-    return item.groups.some((g) => g.links.some((l) => l.href === current));
+    return item.href === current || item.groups.some((g) => g.links.some((l) => l.href === current));
   }
   if (item.href === '/contact' || item.href === '/contact-pompes-funebres') {
     return current === '/contact' || current === '/contact-pompes-funebres';
