@@ -6,7 +6,7 @@ import Figure from '../components/Figure.astro';
 import { site } from '../data/site.js';
 
 // Contenu repris des flyers Jenna (retours cliente du 2026-06-16).
-// TODO_CLIENT : noms/parcours des intervenants à compléter (section « Notre équipe »).
+// Notre équipe : portrait de Léa (responsable) intégré le 2026-06-22 (texte + photo fournis par la cliente).
 const title = "Pompes Funèbres Jenna à Blois — Organisation d'obsèques | Ambulances Doré";
 const description =
   "Pompes Funèbres Jenna (Philae Services Funéraires) à Blois : organisation d'obsèques personnalisées, contrat de prévoyance, marbrerie et accompagnement humain. Astreinte décès 24h/24, 7j/7.";
@@ -125,21 +125,21 @@ const prises = [
         <div><div class="eyebrow">Le côté humain</div><h2>Celles et ceux qui vous <em>accompagnent</em>.</h2></div>
         <p>Des visages, des prénoms : derrière chaque accompagnement, une équipe à votre écoute.</p>
       </div>
-      <!-- TODO_CLIENT : remplacer par les vrais intervenants (prénom + parcours + photo) -->
-      <div class="pf-team">
-        <article class="pf-member">
-          <span class="pf-avatar" aria-hidden="true">PF</span>
-          <h3>Notre équipe</h3>
-          <p class="pf-role">Conseillers funéraires</p>
-          <p>Une équipe formée et disponible, qui vous reçoit avec écoute et discrétion, à chaque étape du parcours.</p>
-        </article>
-        <article class="pf-member is-pending">
-          <span class="pf-avatar" aria-hidden="true">+</span>
-          <h3>Présentations à venir</h3>
-          <p class="pf-role">Prénoms &amp; parcours</p>
-          <p>Les présentations détaillées de chaque membre de l'équipe seront ajoutées prochainement.</p>
-        </article>
-      </div>
+      <article class="pf-portrait">
+        <figure class="pf-portrait-photo">
+          <img src="/images/pf/lea.webp" width="720" height="720" loading="lazy" decoding="async"
+               alt="Léa, responsable des Pompes Funèbres Jenna" />
+        </figure>
+        <div class="pf-portrait-text">
+          <h3>Léa</h3>
+          <p class="pf-role">Responsable · Conseillère funéraire &amp; Maître de cérémonie</p>
+          <p>Je m'appelle Léa, responsable des Pompes Funèbres Jenna.</p>
+          <p>Après plusieurs années d'expérience dans le secteur funéraire, j'ai souhaité rejoindre une structure à taille humaine, où l'accompagnement des familles reste au cœur de chaque décision.</p>
+          <p>Ce métier est avant tout une passion de l'humain. J'y retrouve des valeurs qui me sont essentielles : l'écoute, le respect, la discrétion et l'authenticité. J'accorde une importance particulière au temps consacré aux familles, afin que chacune puisse être entendue, comprise et accompagnée selon ses besoins.</p>
+          <p>Diplômée Conseillère Funéraire et Maître de Cérémonie, je mets aujourd'hui mon expérience au service des familles de Blois et de ses environs, avec la volonté d'offrir un accompagnement humain, transparent et personnalisé.</p>
+          <p>Mon objectif est simple : vous permettre de traverser cette épreuve avec un interlocuteur de confiance à vos côtés, du premier échange jusqu'au dernier hommage.</p>
+        </div>
+      </article>
     </div>
   </section>
 

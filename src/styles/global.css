@@ -1564,6 +1564,29 @@ html.preloading.preloader-hidden .preloader { opacity: 0; visibility: hidden; po
 .pf-member.is-pending { border-style: dashed; opacity: .9; }
 .pf-member.is-pending .pf-avatar { background: var(--bg-warm); color: var(--gold-deep); }
 
+/* Portrait intervenant (Léa) — carte mise en avant photo + texte */
+.pf-portrait {
+  display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: center;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 40px; box-shadow: 0 18px 50px -28px rgba(58, 33, 80, .35);
+}
+.pf-portrait-photo { margin: 0; }
+.pf-portrait-photo img {
+  width: 100%; height: auto; display: block;
+  border-radius: 14px;
+  border: 3px solid var(--gold); box-shadow: 0 16px 38px -18px rgba(58, 33, 80, .5);
+}
+.pf-portrait-text h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; color: var(--ink); margin-bottom: 4px; }
+.pf-portrait-text .pf-role { margin-bottom: 16px; }
+.pf-portrait-text p { font-size: 15px; color: var(--ink-soft); line-height: 1.72; margin-bottom: 12px; }
+.pf-portrait-text p:first-of-type { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-style: italic; color: var(--gold-deep); }
+.pf-portrait-text p:last-child { margin-bottom: 0; }
+@media (max-width: 720px) {
+  .pf-portrait { grid-template-columns: 1fr; gap: 28px; padding: 28px; text-align: center; }
+  .pf-portrait-photo { max-width: 220px; margin: 0 auto; }
+  .pf-portrait-text .pf-role { text-align: center; }
+}
+
 /* Respect de toutes les confessions */
 .pf-faiths { display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; align-items: center; }
 .pf-faiths-text h2 em { font-style: normal; color: var(--accent); }
