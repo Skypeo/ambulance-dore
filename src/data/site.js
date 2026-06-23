@@ -39,6 +39,8 @@ export const site = {
     email: 'pfjenna@philaeservicesfuneraires.fr',
     emailHref: 'mailto:pfjenna@philaeservicesfuneraires.fr',
     instagram: 'https://www.instagram.com/jenna_philae_pompes_funebres',
+    // LinkedIn fourni par la cliente le 2026-06-23 (icône affichée en PF : navbar/drawer/footer)
+    linkedin: 'https://www.linkedin.com/in/pompes-funèbres-jenna-philae/',
     onCall: 'Astreinte décès 24h/24 — 7j/7',
     hours: [
       { d: 'Lundi – Vendredi', h: '9h00 – 12h30  /  13h30 – 17h00' },

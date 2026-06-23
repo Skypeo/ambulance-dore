@@ -300,6 +300,8 @@ header.site { position: fixed; top: 18px; left: 0; right: 0; z-index: 10000; iso
 }
 .nav-ig:hover { filter: brightness(1.07); transform: translateY(-1px); }
 .nav-ig svg { width: 20px; height: 20px; }
+/* 2e pastille (LinkedIn) collée à l'Instagram */
+.nav-li { margin-left: -8px; }
 
 /* Off-canvas masqué en desktop (activé ≤1080px dans le bloc responsive) */
 .nav-backdrop, .nav-drawer { display: none; }
