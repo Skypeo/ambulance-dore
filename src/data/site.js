@@ -41,6 +41,8 @@ export const site = {
     instagram: 'https://www.instagram.com/jenna_philae_pompes_funebres',
     // LinkedIn fourni par la cliente le 2026-06-23 (icône affichée en PF : navbar/drawer/footer)
     linkedin: 'https://www.linkedin.com/in/pompes-funèbres-jenna-philae/',
+    // Facebook fourni par la cliente le 2026-06-24 (icône affichée en PF : navbar/drawer/footer)
+    facebook: 'https://www.facebook.com/people/Pompes-Fun%C3%A8bres-Jenna/61590953597319/',
     onCall: 'Astreinte décès 24h/24 — 7j/7',
     hours: [
       { d: 'Lundi – Vendredi', h: '9h00 – 12h30  /  13h30 – 17h00' },
