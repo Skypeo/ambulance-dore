@@ -789,6 +789,44 @@ body.drawer-open header.site .nav-pill { opacity: 0; visibility: hidden; transfo
   background: var(--gold-50) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6322' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>") center/13px no-repeat;
 }
 
+/* Liste "croix" (points négatifs) — réutilise le gabarit de .ticks */
+.prose ul.crosses { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 22px 0; }
+.prose ul.crosses li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+.prose ul.crosses li::before {
+  content: ''; flex-shrink: 0; margin-top: 3px;
+  width: 20px; height: 20px; border-radius: 6px;
+  background: rgba(122,96,112,.12) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a6070' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M18 6 6 18M6 6l12 12'/></svg>") center/12px no-repeat;
+}
+
+/* Étapes numérotées (souscription) */
+.pf-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 18px; max-width: 780px; margin: 36px auto 0; }
+.pf-steps li { counter-increment: step; display: flex; gap: 20px; align-items: flex-start; }
+.pf-steps li::before {
+  content: counter(step); flex-shrink: 0;
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22px;
+  background: var(--accent-50); color: var(--accent);
+}
+.pf-steps li p { margin: 0; padding-top: 8px; font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
+
+/* Nuancier de granits */
+.granit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px; margin-top: 10px; }
+.granit { margin: 0; }
+.granit img {
+  width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block;
+  border-radius: 10px; box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0,0,0,.06);
+}
+.theme-pf .granit img { border-color: var(--gold-50); }
+.granit figcaption {
+  margin-top: 9px; text-align: center;
+  font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.theme-pf .granit figcaption { font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: .03em; text-transform: none; font-size: 15px; color: var(--gold-deep); }
+@media (max-width: 640px) { .granit-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; } }
+
 .media-frame {
   margin: 0;
   position: relative; border-radius: var(--r-lg); overflow: hidden;

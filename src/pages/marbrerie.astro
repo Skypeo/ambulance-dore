@@ -9,6 +9,28 @@ import { site } from '../data/site.js';
 const title = "Travaux de marbrerie funéraire à Blois | Pompes Funèbres Jenna";
 const description =
   "Conception, fabrication artisanale, rénovation et pose de monuments funéraires en granit, pierre naturelle et bronze. Un savoir-faire au service du souvenir, à Blois.";
+
+// Nuancier des teintes de granit (références GPG Granit) — vignettes dans /images/pf/granits/
+const granits = [
+  ['Balmoral ME', 'balmoral-me'], ['Bararp', 'bararp'], ['Bois de Rose', 'bois-de-rose'],
+  ['Cachemire', 'cachemire'], ['Columbo Juparana', 'columbo-juparana'], ['Rose Dalva', 'rose-dalva'],
+  ['Himalaya Gandhi', 'himalaya-gandhi'], ['Steel Grey', 'steel-grey'], ['Himalaya Dark', 'himalaya-dark'],
+  ['Himalaya Orange', 'himalaya-orange'], ['Indian Aurora', 'indian-aurora'], ['Impala Black', 'impala-black'],
+  ['Indian Dark', 'indian-dark'], ['Indian Juparana Pink', 'indian-juparana-pink'], ['Kinawa Raissa', 'kinawa-raissa'],
+  ['Kuppam Green', 'kuppam-green'], ['Rose de la Clarté', 'rose-de-la-clarte'], ['Labrador Bleu HQ', 'labrador-bleu-hq'],
+  ['Mondariz', 'mondariz'], ['Noir Fin', 'noir-fin'], ['Paradiso', 'paradiso'],
+  ['Rose Diam', 'rose-diam'], ['Romantica', 'romantica'], ['Noir Rusten', 'noir-rusten'],
+  ['Salina', 'salina'], ['Tarn Saint-Salvy', 'tarn-saint-salvy'], ['Tarn Royal', 'tarn-royal'],
+  ['Vizag Blue', 'vizag-blue'], ['Vert Tropical', 'vert-tropical'], ['Viscont White', 'viscont-white'],
+  ['Amazone', 'amazone'], ['Karapurna', 'karapurna'], ['Kinawa Classico', 'kinawa-classico'],
+  ['Labrador Vert', 'labrador-vert'], ['Rosa Bella', 'rosa-bella'], ['Vert Olive 2', 'vert-olive-2'],
+  ['Lanhélin', 'lanhelin'], ['Blue Mountain', 'blue-mountain'], ['Rose Karina', 'rose-karina'],
+  ['Bleu Azur', 'bleu-azur'], ['Black Galaxy', 'black-galaxy'], ['Lilas Gerais', 'lilas-gerais'],
+  ['Tiger White', 'tiger-white'], ['Blanc Cervin', 'blanc-cervin'], ['Gris Everest', 'gris-everest'],
+  ['Rose Levant', 'rose-levant'], ['Himalaya Tara', 'himalaya-tara'], ['Rouge Cardinal', 'rouge-cardinal'],
+  ['Noir Écume', 'noir-ecume'], ['Rouge Écarlate', 'rouge-ecarlate'], ['Noir Crépuscule', 'noir-crepuscule'],
+  ["Gris d'Angkor", 'gris-d-angkor'],
+];
 ---
 <Base title={title} description={description} current="/marbrerie" theme="theme-pf">
   <PageHero
@@ -55,8 +77,8 @@ const description =
       <div class="cards-grid">
         <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/></svg></div><h3>Conception personnalisée</h3><p>Un monument unique, conçu selon vos souhaits et à l'image de votre proche.</p></div>
         <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l-9 9 3 3 9-9"/><path d="M13 8l3-3 4 4-3 3"/></svg></div><h3>Fabrication artisanale</h3><p>Des matériaux de qualité, travaillés avec soin et expertise.</p></div>
-        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Rénovation et entretien</h3><p>Nous redonnons éclat et durabilité à vos monuments pour préserver leur beauté dans le temps.</p></div>
         <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>Pose et installation</h3><p>Une installation réalisée dans le respect des lieux et des normes en vigueur.</p></div>
+        <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Rénovation et entretien</h3><p>Nous redonnons éclat et durabilité à vos monuments pour préserver leur beauté dans le temps.</p></div>
       </div>
     </div>
   </section>
@@ -68,11 +90,26 @@ const description =
         <p>Parce que l'art du funéraire, c'est l'art du détail, nous travaillons avec des artisans de la région.</p>
       </div>
       <div class="pf-artisans">
-        <div class="pf-artisan"><span class="dot"></span><h3>Graveur</h3><p>Gravure de stèles et plaques, lettrage et motifs personnalisés.</p></div>
-        <div class="pf-artisan"><span class="dot"></span><h3>Sablage</h3><p>Décors et inscriptions réalisés au sable, à la main ou à la machine.</p></div>
+        <div class="pf-artisan"><span class="dot"></span><h3>Graveur</h3><p>Gravure de stèles et plaques en technique mixte, sableuse et manuelle&nbsp;: lettrage et motifs personnalisés.</p></div>
         <div class="pf-artisan"><span class="dot"></span><h3>Fleuriste</h3><p>Compositions, gerbes et couronnes pour un dernier hommage fleuri.</p></div>
-        <div class="pf-artisan"><span class="dot"></span><h3>Housses de cercueil</h3><p>Habillage soigné du cercueil, dans le respect des volontés.</p></div>
         <div class="pf-artisan"><span class="dot"></span><h3>Nappes de fleurs</h3><p>Réalisation de nappes et décors floraux sur mesure.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Nuancier — références GPG Granit</div><h2>Les différentes <em>teintes de granit</em>.</h2></div>
+        <p>Du plus clair au plus profond, voici un aperçu des granits que nous proposons pour vos monuments. D'autres teintes sont disponibles : nos conseillers vous présentent le nuancier complet en agence.</p>
+      </div>
+      <div class="granit-grid" data-reveal="up">
+        {granits.map(([name, sl]) => (
+          <figure class="granit">
+            <img src={`/images/pf/granits/${sl}.webp`} alt={`Granit ${name}`} loading="lazy" width="360" height="234" />
+            <figcaption>{name}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>

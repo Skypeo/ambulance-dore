@@ -10,13 +10,6 @@ const title = "Organisation d'obsèques personnalisées à Blois | Pompes Funèb
 const description =
   "Des obsèques à votre image : cérémonie personnalisée, textes, musiques et rituels, fleurs et hommages. PF Jenna coordonne chaque détail, avec écoute et respect, à Blois.";
 
-const accompagne = [
-  "Créer une cérémonie à l'image du défunt",
-  'Choisir les textes, musiques et rituels qui comptent',
-  'Sélectionner des fleurs et décorations personnalisées',
-  'Organiser des hommages mémorables',
-  'Prévoir des moments de partage et de recueillement',
-];
 const prises = [
   'Les démarches administratives',
   "L'organisation complète des obsèques",
@@ -52,13 +45,10 @@ const prises = [
     <div class="container">
       <div class="prose-grid">
         <div class="prose" data-reveal="left">
-          <div class="eyebrow">Une cérémonie personnalisée</div>
-          <h2>Honorer une vie, <em>transmettre l'amour</em>.</h2>
-          <p class="lead-p">Parce que chaque vie est unique, nous vous proposons des obsèques personnalisées, en accord avec les volontés du défunt et les valeurs de votre famille.</p>
-          <p class="prose-note"><strong>Nous vous accompagnons pour :</strong></p>
-          <ul class="ticks">
-            {accompagne.map((a) => <li>{a}</li>)}
-          </ul>
+          <div class="eyebrow">Un accompagnement sur mesure</div>
+          <h2>Pensé pour vous, <em>dans chaque détail</em>.</h2>
+          <p class="lead-p">Perdre un être cher est l'une des épreuves les plus douloureuses qui soit. Auprès des Pompes Funèbres Jenna, nous sommes là pour porter avec vous le poids de l'organisation, afin que vous puissiez, vous et vos proches, vivre pleinement ce moment d'adieu.</p>
+          <p>Dès le premier contact, vous êtes accueillis dans notre salon chaleureux, conçu pour vous offrir un espace de calme et de bienveillance, loin de toute froideur administrative. C'est ici, dans cet espace pensé pour vous, que nous prenons le temps de vous écouter, de vous connaître, et surtout de connaître celui ou celle que vous avez perdu.</p>
         </div>
         <Figure src="/images/pf/obseques.webp" alt="Bouquet de lys et roses blanches, bougie et carte « Célébrer une vie, honorer un souvenir, transmettre l'amour »" />
       </div>
@@ -70,14 +60,43 @@ const prises = [
       <div class="prose-grid reverse">
         <Figure src="/images/pf/etapes.webp" alt="Cadre « À vos côtés avec respect et humanité », lys blancs et bougie" />
         <div class="prose" data-reveal="right">
-          <div class="eyebrow">Accompagnés, à chaque étape</div>
-          <h2>Un <em>soutien complet</em> dans les moments essentiels.</h2>
-          <p class="lead-p">PF Jenna vous accompagne avec bienveillance pour prendre en charge toutes les démarches et vous permettre de vous concentrer sur l'essentiel.</p>
+          <div class="eyebrow">Une équipe à vos côtés</div>
+          <h2>Une <em>équipe pluridisciplinaire</em>.</h2>
+          <p class="lead-p">Organiser les obsèques ne se résume pas à une suite de démarches. C'est un acte profondément humain, qui demande des compétences variées et une coordination sans faille.</p>
+          <p>Notre équipe pluridisciplinaire réunit des conseillers funéraires, des maîtres de cérémonie, des porteurs et marbriers, qui travaillent tous ensemble pour que rien ne soit laissé au hasard. Chaque membre de l'équipe s'implique dans votre dossier, vos souhaits et les particularités de la cérémonie. Nous prenons le relais.</p>
           <p class="prose-note"><strong>Nous prenons en charge :</strong></p>
           <ul class="ticks">
             {prises.map((p) => <li>{p}</li>)}
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid">
+        <div class="prose" data-reveal="left">
+          <div class="eyebrow">La personnalisation fait la différence</div>
+          <h2>Des obsèques à votre image — <em>et à la sienne</em>.</h2>
+          <p class="lead-p">Inhumation ou crémation, cérémonie religieuse ou laïque : nous organisons les obsèques là où vous le souhaitez, selon vos convictions et celles du défunt.</p>
+          <p>Mais au-delà du cadre, c'est la personnalisation qui fait toute la différence. Nous accordons une attention particulière aux détails auxquels on ne pense pas toujours — et qui pourtant font de cette cérémonie un moment vrai, unique, à la hauteur de la personne que nous accompagnons.</p>
+          <p>La musique qui lui ressemblait. Un texte écrit par ses proches. Une décoration florale qui reflète sa personnalité. Un monument gravé avec soin. Ce sont ces détails qui transforment des obsèques en un véritable hommage.</p>
+          <p>Pour cela, nous avons bâti des alliances avec des artisans locaux : notre fleuriste et notre graveur partenaires partagent nos valeurs d'attention et de qualité, et contribuent à donner à chaque cérémonie son caractère singulier.</p>
+        </div>
+        <Figure src="/images/pf/retour.webp" alt="Composition florale et bougie, ambiance de recueillement" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="prose" data-reveal="up" style="max-width:780px;margin:0 auto">
+        <div class="eyebrow">Après la cérémonie</div>
+        <h2>Nous ne <em>disparaissons pas</em>.</h2>
+        <p class="lead-p">Le deuil ne s'arrête pas au jour des obsèques. C'est pourquoi nous avons noué un partenariat exclusif avec <a href="https://www.olivierdessouvenirs.fr/" target="_blank" rel="noopener">L'Olivier des Souvenirs</a>, une structure dédiée à l'accompagnement post-cérémonie.</p>
+        <p>Selon vos besoins et votre sensibilité, vous pouvez bénéficier du soutien d'un psychologue, d'une thanadoula ou encore d'un énergéticien, ainsi que d'autres professionnels, pour cheminer à votre rythme vers l'apaisement.</p>
+        <p>Parce que chaque deuil est unique, et que chacun mérite d'être accompagné selon ce qui lui fait du bien.</p>
       </div>
     </div>
   </section>

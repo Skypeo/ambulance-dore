@@ -16,6 +16,25 @@ const permet = [
   'De maîtriser votre budget',
   'De bénéficier d\'un contrat adapté à votre situation',
 ];
+
+const consBanque = [
+  "Le capital versé à vos proches est une somme d'argent — rien de plus. Ce sont eux qui devront ensuite organiser les obsèques, choisir les prestataires et prendre toutes les décisions, souvent dans l'urgence.",
+  "Les contrats en capital financent les obsèques mais ne garantissent pas toujours l'exécution des volontés du défunt.",
+  "Le montant prévu peut s'avérer insuffisant si les prix ont augmenté entre la souscription et le décès. Vos proches devront alors compléter.",
+  "Il n'y a aucun lien avec un professionnel funéraire.",
+];
+const prosJenna = [
+  "Vos obsèques sont organisées en amont, dans les moindres détails, selon vos volontés.",
+  "Ces volontés ont une valeur testamentaire : elles s'imposent d'elles-mêmes. Personne ne peut décider à votre place (inhumation ou crémation, cérémonie religieuse ou civile).",
+  "Votre dossier est suivi pour assurer les garanties.",
+  "Vos proches n'ont qu'un seul geste à faire : nous appeler. Nous nous occupons de tout.",
+];
+const etapes = [
+  "Un premier rendez-vous dans notre salon, autour d'un café ou d'un thé, pour vous présenter le contrat et répondre à toutes vos questions.",
+  "L'expression de vos volontés, guidée par notre conseiller, étape par étape, pour ne rien oublier.",
+  "La signature du contrat et le choix de votre mode de règlement : versement unique ou mensualités, selon votre situation.",
+  "La remise de votre exemplaire, que vous conserverez et pourrez compléter ou ajuster à tout moment.",
+];
 ---
 <Base title={title} description={description} current="/contrat-obseques" theme="theme-pf">
   <PageHero
@@ -43,8 +62,9 @@ const permet = [
       <div class="prose-grid">
         <div class="prose" data-reveal="left">
           <div class="eyebrow">Anticiper, c'est protéger</div>
-          <h2>Organiser et financer ses funérailles <em>à l'avance</em>.</h2>
-          <p class="lead-p">Le contrat obsèques est une solution pour organiser et financer vos funérailles à l'avance, en toute sérénité.</p>
+          <h2>Un cadeau inestimable <em>à ceux qu'on aime</em>.</h2>
+          <p class="lead-p">Parler de sa propre mort n'est jamais facile. Et pourtant, prendre le temps d'y réfléchir aujourd'hui, c'est épargner à vos proches une charge immense au moment où ils seront le plus vulnérables : celle de devoir organiser, décider et financer des obsèques.</p>
+          <p>Le contrat de prévoyance obsèques est la solution la plus complète et la plus sécurisante qui existe pour anticiper sereinement. Chez les Pompes Funèbres Jenna, nous vous accompagnons dans cette démarche avec toute la douceur et le sérieux qu'elle mérite.</p>
           <p class="prose-note"><strong>Il vous permet :</strong></p>
           <ul class="ticks">
             {permet.map((p) => <li>{p}</li>)}
@@ -52,6 +72,55 @@ const permet = [
         </div>
         <Figure src="/images/pf/contrat.webp" alt="Bougie allumée et bouquet de fleurs séchées, ambiance apaisante" />
       </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">La différence</div><h2>Pourquoi pas sa <em>banque</em>, son assurance ou sa mutuelle ?</h2></div>
+        <p>C'est une question légitime, et nous y répondons en toute transparence. Banques, assurances et mutuelles proposent des produits d'épargne ou des garanties obsèques. Mais il existe une différence fondamentale avec le contrat de prévoyance funéraire que nous vous proposons.</p>
+      </div>
+      <div class="cards-grid two">
+        <div class="info-card prose" data-reveal="up">
+          <h3>Avec une banque, une assurance ou une mutuelle</h3>
+          <ul class="crosses">
+            {consBanque.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+        <div class="info-card prose" data-reveal="up">
+          <h3>Avec nos Pompes Funèbres</h3>
+          <ul class="ticks">
+            {prosJenna.map((p) => <li>{p}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plain">
+    <div class="container">
+      <div class="prose-grid reverse">
+        <Figure src="/images/pf/retour.webp" alt="Composition florale et bougie, ambiance apaisante" />
+        <div class="prose" data-reveal="right">
+          <div class="eyebrow">Un cadre protecteur</div>
+          <h2>Un contrat <em>sécurisé, réglementé et garanti</em>.</h2>
+          <p class="lead-p">Le contrat de prévoyance obsèques est encadré par la loi française. Les fonds que vous versez sont obligatoirement placés auprès d'un organisme habilité et sont totalement indisponibles jusqu'à votre décès : ils ne peuvent pas être utilisés à d'autres fins, même par l'entreprise funéraire.</p>
+          <p>En cas de déménagement, si vous souhaitez changer de prestataire, ou si notre entreprise venait à cesser son activité, vos fonds et vos volontés sont intégralement protégés et transférables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section warm">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">En toute simplicité</div><h2>Comment se passe la <em>souscription</em> ?</h2></div>
+        <p>La démarche est simple, progressive et se fait entièrement à votre rythme.</p>
+      </div>
+      <ol class="pf-steps" data-reveal="up">
+        {etapes.map((e) => <li><p>{e}</p></li>)}
+      </ol>
     </div>
   </section>
 
